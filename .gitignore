@@ -13,3 +13,11 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Working asset files
+*.ase
+*.aseprite
+*.pdn
+
+# Temp files
+*tmp
