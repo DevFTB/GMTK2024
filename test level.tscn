@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=4 uid="uid://b5t5o65wwoeyv"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_4wlp3"]
+[ext_resource type="Script" path="res://level/world.gd" id="2_bptha"]
+[ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="3_rs2dw"]
+[ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="4_c1b1v"]
+[ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="5_yks3f"]
+[ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="6_4pyca"]
+[ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="7_23up6"]
+[ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="8_fdepy"]
+[ext_resource type="Script" path="res://level/components/puzzle_controls/switch.gd" id="9_46cwm"]
+[ext_resource type="Script" path="res://level/components/puzzle_controls/pressure_plate.gd" id="10_lspgm"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="11_fgmvv"]
+[ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="12_4yw5l"]
+[ext_resource type="Script" path="res://gui/debug_gui.gd" id="13_2oq3b"]
+[ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="14_0iqnl"]
+[ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="15_w815l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gn30"]
+size = Vector2(32, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cvii8"]
+size = Vector2(32, 4)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_4wlp3")
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("2_bptha")
+
+[node name="Platforms" type="TileMapLayer" parent="World"]
+tile_map_data = PackedByteArray("AAAQAPv/AAADAAEAAAAQAPz/AAADAAEAAAAQAP3/AAADAAEAAAAQAP7/AAADAAEAAAAQAP//AAADAAEAAAAQAAAAAAADAAEAAAAQAAYAAAADAAEAAAAQAAcAAAADAAIAAAALAAcAAAADAAIAAAALAAYAAAADAAEAAAALAAUAAAADAAEAAAALAAQAAAADAAAAAAAKAAEAAAACAAMAAAAJAAEAAAABAAMAAAAIAAEAAAABAAMAAAAHAAEAAAABAAMAAAAGAAEAAAABAAMAAAAFAAEAAAAAAAMAAAALAAoAAAACAAMAAAAMAAoAAAACAAMAAAANAAoAAAACAAMAAAAOAAoAAAACAAMAAAAPAAoAAAACAAMAAAAQAAoAAAACAAMAAAALAAgAAAADAAMAAAALAAkAAAADAAMAAAAKAP//AAADAAMAAAD//wAAAAADAAMAAAAAAAAAAAADAAMAAAABAAAAAAADAAMAAAACAAAAAAADAAMAAAADAAAAAAADAAMAAAALAPj/AAABAAMAAAAMAPj/AAABAAMAAAANAPj/AAABAAMAAAAOAPj/AAABAAMAAAAPAPj/AAABAAMAAAAQAPj/AAABAAMAAAALAPn/AAABAAMAAAAMAPn/AAABAAMAAAANAPn/AAABAAMAAAAOAPn/AAABAAMAAAAPAPn/AAABAAMAAAAQAPn/AAABAAMAAAARAPn/AAABAAIAAAASAPn/AAABAAIAAAATAPn/AAABAAIAAAAUAPn/AAABAAIAAAAVAPn/AAABAAIAAAASAPr/AAABAAIAAAASAPv/AAABAAIAAAASAPz/AAABAAIAAAAUAP7/AAABAAIAAAAWAPn/AAABAAIAAAAWAPr/AAABAAIAAAAWAPv/AAABAAIAAAAWAPz/AAABAAIAAAAWAP3/AAABAAIAAAAWAP7/AAABAAIAAAAXAPn/AAABAAIAAAAYAPn/AAABAAIAAAAZAPn/AAABAAIAAAAZAPr/AAABAAIAAAAZAPv/AAABAAIAAAAZAPz/AAABAAIAAAAZAP3/AAABAAIAAAAZAP7/AAABAAIAAAAZAP//AAABAAIAAAAZAAAAAAABAAIAAAAWAP//AAABAAIAAAAWAAAAAAAAAAIAAAARAAcAAAABAAIAAAASAAcAAAABAAIAAAATAAcAAAABAAIAAAAUAAcAAAABAAIAAAAVAAcAAAABAAIAAAAWAAcAAAABAAIAAAAXAAcAAAABAAIAAAAYAAcAAAABAAIAAAAZAAcAAAABAAIAAAAfAAYAAAABAAIAAAAaAAcAAAABAAIAAAAbAAcAAAABAAIAAAAcAAcAAAABAAIAAAAdAAcAAAABAAIAAAAeAAcAAAABAAIAAAAfAAcAAAABAAIAAAAgAAYAAAABAAIAAAAhAAYAAAABAAIAAAAiAAYAAAABAAIAAAAjAAYAAAABAAIAAAAjAAUAAAABAAIAAAAjAAQAAAABAAIAAAAjAAMAAAABAAIAAAAjAAIAAAABAAIAAAAjAAEAAAABAAIAAAAjAAAAAAABAAIAAAAiAAAAAAABAAIAAAAhAAAAAAABAAIAAAAgAAAAAAABAAIAAAAfAAAAAAABAAIAAAAeAAAAAAABAAIAAAAdAAAAAAABAAIAAAAcAAAAAAABAAIAAAAbAAAAAAABAAIAAAAaAAAAAAABAAIAAAAKAP7/AAABAAIAAAAKAPj/AAABAAIAAAAKAPn/AAABAAIAAAAKAPr/AAABAAIAAAAKAPv/AAABAAIAAAAKAPz/AAABAAIAAAARAAoAAAABAAMAAAASAAoAAAABAAMAAAATAAoAAAABAAMAAAAUAAoAAAABAAMAAAAVAAoAAAABAAMAAAAVAAgAAAABAAMAAAAVAAkAAAABAAMAAAARAP7/AAAAAAIAAAASAP7/AAAAAAIAAAATAP7/AAAAAAIAAAAUAP3/AAAAAAIAAAASAAAAAAAAAAIAAAATAAAAAAAAAAIAAAAUAAAAAAAAAAIAAAAVAAAAAAAAAAIAAAAKAP3/AAAEAAMAAAAKAAIAAAAEAAMAAAAKAAMAAAAEAAMAAAAKAAQAAAAEAAMAAAA=")
+tile_set = ExtResource("3_rs2dw")
+
+[node name="Decor" type="TileMapLayer" parent="World"]
+
+[node name="Player" parent="World" instance=ExtResource("4_c1b1v")]
+
+[node name="SizeChanger" parent="World" instance=ExtResource("5_yks3f")]
+position = Vector2(64, 0)
+
+[node name="SizeChanger2" parent="World" instance=ExtResource("5_yks3f")]
+position = Vector2(1058, 191)
+
+[node name="SizeChanger3" parent="World" instance=ExtResource("5_yks3f")]
+position = Vector2(449, 319)
+
+[node name="Fan" parent="World" instance=ExtResource("6_4pyca")]
+position = Vector2(448, 224)
+force = Vector2(0, -200)
+powered = true
+inverted_self = true
+
+[node name="Spikes" parent="World" instance=ExtResource("7_23up6")]
+position = Vector2(544, 223)
+
+[node name="Spikes2" parent="World" instance=ExtResource("7_23up6")]
+position = Vector2(705, 223)
+
+[node name="Spikes3" parent="World" instance=ExtResource("7_23up6")]
+position = Vector2(833, 223)
+
+[node name="SpawnPoint" type="Node2D" parent="World"]
+
+[node name="Switch" parent="World" node_paths=PackedStringArray("listeners") instance=ExtResource("8_fdepy")]
+script = ExtResource("9_46cwm")
+powering = false
+listeners = [NodePath("../Fan"), NodePath("../MovingPlatform")]
+
+[node name="Switch" parent="World/Switch" node_paths=PackedStringArray("listeners") instance=ExtResource("8_fdepy")]
+position = Vector2(1011, 193)
+script = ExtResource("9_46cwm")
+powering = false
+listeners = [NodePath("../../Fan"), NodePath("../../MovingPlatform")]
+
+[node name="PressurePlate" type="Node2D" parent="World" node_paths=PackedStringArray("listeners")]
+position = Vector2(599, 303)
+script = ExtResource("10_lspgm")
+listeners = [NodePath("../MovingPlatform")]
+
+[node name="PlayerInteractor" parent="World/PressurePlate" instance=ExtResource("11_fgmvv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/PressurePlate/PlayerInteractor"]
+shape = SubResource("RectangleShape2D_1gn30")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/PressurePlate"]
+position = Vector2(0, 16)
+texture = SubResource("PlaceholderTexture2D_cvii8")
+offset = Vector2(0, -2)
+
+[node name="MovingPlatform" parent="World" instance=ExtResource("12_4yw5l")]
+position = Vector2(560, 180)
+powered = true
+
+[node name="StaticBody2D" parent="World/MovingPlatform" index="1"]
+scale = Vector2(3, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GUI" node_paths=PackedStringArray("player")]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 104.0
+script = ExtResource("13_2oq3b")
+player = NodePath("../../../World/Player")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GlidingLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FrameInputLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1, -12)
+scale = Vector2(8, 8)
+texture = ExtResource("14_0iqnl")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+visible = false
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(61, -4)
+scale = Vector2(6, 6)
+texture = ExtResource("15_w815l")
+
+[editable path="World/MovingPlatform"]
