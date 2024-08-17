@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnaxl32si8phc"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_cmdjv"]
+[ext_resource type="Script" path="res://world.gd" id="2_l61em"]
+[ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_f6g5f"]
+[ext_resource type="PackedScene" uid="uid://dn1pv1sfl065b" path="res://level/level_scenes/level1.tscn" id="4_1a48l"]
+[ext_resource type="PackedScene" uid="uid://c6jlqamc5l531" path="res://level/level_scenes/leveltest.tscn" id="4_4v16t"]
+[ext_resource type="Script" path="res://gui/debug_gui.gd" id="5_mwcyg"]
+[ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="6_o84ph"]
+[ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="7_uarww"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_cmdjv")
+
+[node name="World" type="Node2D" parent="." node_paths=PackedStringArray("level_transition_screen")]
+script = ExtResource("2_l61em")
+levels = {
+"level1": ExtResource("4_1a48l"),
+"leveltest": ExtResource("4_4v16t")
+}
+level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
+
+[node name="Player" parent="World" instance=ExtResource("3_f6g5f")]
+
+[node name="Level" parent="World" instance=ExtResource("4_1a48l")]
+
+[node name="SpawnPoint" type="Node2D" parent="World"]
+position = Vector2(-181, 70)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GUI" node_paths=PackedStringArray("player")]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 104.0
+script = ExtResource("5_mwcyg")
+player = NodePath("../../../World/Player")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GlidingLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FrameInputLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1, -12)
+scale = Vector2(8, 8)
+texture = ExtResource("6_o84ph")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(6, 6)
+texture = ExtResource("7_uarww")
+
+[node name="LevelTransitionScreen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColourRect" type="ColorRect" parent="CanvasLayer/LevelTransitionScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
