@@ -37,11 +37,7 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 
 	spawn_point.global_position = level.get_spawn_point(spawn_point_name)
 	player.global_position = spawn_point.global_position
-	
-	print(level.get_camera_bounds())
 
-	#pause()
-	#resume()
 	level_transition_screen.fade_in()
 	connect_level_transitions(level)
 	
