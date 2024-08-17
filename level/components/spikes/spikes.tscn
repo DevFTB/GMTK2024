@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1n6yi2vb51yw"]
+
+[ext_resource type="Script" path="res://level/components/spikes/spikes.gd" id="1_2pncc"]
+[ext_resource type="Texture2D" uid="uid://wbir48vj5ioi" path="res://level/components/spikes/spike_texture.png" id="2_nmoqx"]
+[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_6437b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n083"]
+size = Vector2(160, 32)
+
+[node name="Spikes" type="Node2D"]
+script = ExtResource("1_2pncc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_nmoqx")
+centered = false
+offset = Vector2(0, -32)
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 32)
+
+[node name="DeathArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_6437b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(80, -16)
+shape = SubResource("RectangleShape2D_7n083")
