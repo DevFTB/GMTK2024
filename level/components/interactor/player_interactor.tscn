@@ -6,6 +6,8 @@
 size = Vector2(64, 64)
 
 [node name="PlayerInteractor" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_1v3n3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

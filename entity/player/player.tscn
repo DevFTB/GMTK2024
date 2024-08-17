@@ -246,6 +246,7 @@ parameters/move/blend_position = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+position_smoothing_speed = 10.0
 
 [node name="ActiveEnvironmentDetector" type="Node2D" parent="."]
 position = Vector2(0, -29)
