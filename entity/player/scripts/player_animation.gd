@@ -8,12 +8,15 @@ const BASE_SCALE := Vector2(1,2)
 @onready var playback : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var size_change_particles: GPUParticles2D = $"../SizeChangeParticles"
 
+var directional_parameters : Array[String] = ["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position"]
+
 func _ready() -> void:
 	_bind_signal_to_state(player.jumped, "jump")
 	player.size_mode_changed.connect(_on_size_mode_changed)
 
 func _physics_process(delta: float) -> void:
-	animation_tree.set("parameters/move/blend_position", signi(player.last_inputted_direction.x))
+	for param in directional_parameters:
+		animation_tree.set(param, signi(player.last_inputted_direction.x))
 
 func _bind_signal_to_state(player_signal: Signal, state: StringName) -> void:
 	player_signal.connect(playback.travel.bind(state))
@@ -23,13 +26,13 @@ func _on_size_mode_changed(new_size: Player.SizeMode) -> void:
 	var new_scale := Vector2()
 	match new_size:
 		Player.SizeMode.SMALL:
-			new_scale = Vector2(0.5, 0.5) * BASE_SCALE
+			new_scale = Vector2(0.5, 0.25) 
 
 		Player.SizeMode.NORMAL:
-			new_scale = Vector2(2, 2) * BASE_SCALE
+			new_scale = Vector2(1, 1)
 
 		Player.SizeMode.BIG:
-			new_scale = Vector2(6, 4) * BASE_SCALE
+			new_scale = Vector2(4, 3)
 	size_change_particles.scale = new_scale
 	size_change_particles.restart()
 	

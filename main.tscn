@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dheorebroev8w"]
+[gd_scene load_steps=28 format=4 uid="uid://dheorebroev8w"]
 
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="1_c5hwl"]
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
@@ -7,9 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://pgy5hs6anvdn" path="res://level/components/spikes/boulder.png" id="4_bfgoy"]
 [ext_resource type="Script" path="res://level/level.gd" id="4_uaw0u"]
 [ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="4_ytqrs"]
-[ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="5_0243f"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="6_d2dco"]
-[ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="6_tvffr"]
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="8_4wsop"]
 [ext_resource type="Script" path="res://level/components/puzzle_controls/switch.gd" id="9_g2o1s"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="9_ywo7v"]
@@ -21,12 +19,22 @@
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="15_0nl63"]
 [ext_resource type="AudioStream" uid="uid://dtq8jp1qnugja" path="res://level/components/turret_camera/turret_shoot.wav" id="15_p2t8h"]
 [ext_resource type="Script" path="res://level/components/turret_camera/ray_shooter.gd" id="17_nwmtn"]
+[ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="20_5u6a7"]
+[ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="21_x057a"]
+[ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="22_smtcp"]
+[ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="23_veqsw"]
+[ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="24_epq18"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5pb40"]
 radius = 16.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_icrty"]
 size = Vector2(16, 16)
+
+[sub_resource type="Environment" id="Environment_yrqld"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_contrast = 1.15
 
 [node name="Main" type="Node"]
 script = ExtResource("1_rs1g5")
@@ -119,6 +127,9 @@ texture = SubResource("PlaceholderTexture2D_icrty")
 
 [node name="LevelTransitions" type="Node2D" parent="World/Level"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_yrqld")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" type="Control" parent="CanvasLayer"]
@@ -153,9 +164,32 @@ layout_mode = 2
 motion_scale = Vector2(0.01, 0.01)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, -232)
 scale = Vector2(6, 6)
-texture = ExtResource("5_0243f")
+texture = ExtResource("20_5u6a7")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.02, 0.02)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(6, 6)
+texture = ExtResource("21_x057a")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.03, 0.03)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(6, 6)
+texture = ExtResource("22_smtcp")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.04, 0.04)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer5"]
+scale = Vector2(6, 6)
+texture = ExtResource("23_veqsw")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
@@ -163,7 +197,14 @@ position = Vector2(0, -48)
 motion_scale = Vector2(0.05, 0.05)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
-position = Vector2(0, -232)
 scale = Vector2(6, 6)
-texture = ExtResource("6_tvffr")
+texture = ExtResource("24_epq18")
 centered = false
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)

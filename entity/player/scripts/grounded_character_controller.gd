@@ -85,6 +85,8 @@ func handle_jump() -> void:
 	if not is_on_floor() and stats.can_glide:
 		if _frame_input.jump_down:
 			_gliding = not _gliding
+			if _gliding:
+				_frame_velocity.y = 0
 			print("set to ", _gliding)
 			
 	if not _jump_queued and not has_buffered_jump:
