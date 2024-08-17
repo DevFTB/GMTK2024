@@ -37,3 +37,9 @@ func switch_size(size: SizeMode) -> void:
 
 func kill() -> void:
 	killed.emit()
+	
+func set_camera_limits(left, top, right, bottom):
+	$Camera2D.limit_top = top
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right
+	$Camera2D.limit_bottom = bottom

@@ -16,6 +16,13 @@ func _ready() -> void:
 	player.global_position = spawn_point.global_position
 	player.killed.connect(_on_player_kill)
 	connect_level_transitions(level)
+	
+	var camera_bounds = level.get_camera_bounds()
+	print(camera_bounds)
+	player.set_camera_limits(
+		camera_bounds["left"], camera_bounds["top"],
+		camera_bounds["right"], camera_bounds["bottom"]
+	)
 
 func _on_player_kill() -> void:
 	player.global_position = spawn_point.global_position
@@ -27,8 +34,6 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	spawn_point.global_position = level.get_node("Spawns").get_node(spawn_point_name).global_position
 	player.global_position = spawn_point.global_position
 	
-	print(level.get_camera_bounds())
-	
 	pause()
 	level_transition_screen.visible = true
 	await get_tree().create_timer(level_transition_time).timeout
@@ -36,6 +41,12 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	resume()
 	
 	connect_level_transitions(level)
+	
+	var camera_bounds = level.get_camera_bounds()
+	player.set_camera_limits(
+		camera_bounds["left"], camera_bounds["top"],
+		camera_bounds["right"], camera_bounds["bottom"]
+	)
 	
 func _on_level_transition(level_name: String, spawn_point_name: String):
 	assert(levels.has(level_name), "level %s not in levels dictionary" % level_name)
