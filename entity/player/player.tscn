@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=34 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
@@ -45,10 +45,6 @@ height = 64.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eapav"]
 radius = 8.0
 height = 16.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2k4wn"]
-radius = 48.0
-height = 128.0
 
 [sub_resource type="Animation" id="Animation_8ljjk"]
 length = 0.001
@@ -191,7 +187,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 9
+collision_mask = 25
 script = ExtResource("1_4po7g")
 size_stats = {
 0: ExtResource("2_37fej"),
@@ -225,9 +221,8 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_eapav")
 disabled = true
 
-[node name="BigCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
-shape = SubResource("CapsuleShape2D_2k4wn")
+[node name="BigCollider" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(24, -8, 16, 0, -24, 0, -32, -8, -32, -96, -24, -112, 16, -112, 24, -96)
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]

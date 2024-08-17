@@ -29,11 +29,22 @@ func switch_size(size: SizeMode) -> void:
 	
 	# change colliders
 	for s in SizeMode.values():
-		var collider : CollisionShape2D = colliders.get(s)
+		var collider = colliders.get(s)
 		prints(collider.name, s != size_mode)
 		collider.set_deferred("disabled", s != size_mode)
 
 	size_mode_changed.emit(size_mode)
+
+
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			var vec = -c.get_normal()
+			vec.y = 0
+			c.get_collider().apply_central_impulse(-c.get_normal() * stats.mass)
 
 func kill() -> void:
 	killed.emit()
