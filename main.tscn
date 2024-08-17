@@ -1,199 +1,13 @@
-[gd_scene load_steps=41 format=4 uid="uid://dheorebroev8w"]
+[gd_scene load_steps=9 format=4 uid="uid://dheorebroev8w"]
 
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="1_c5hwl"]
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
-[ext_resource type="Script" path="res://player.gd" id="3_8l74e"]
-[ext_resource type="Texture2D" uid="uid://cpawvpq4qahd4" path="res://entity/player/assets/goblin-sheet.png" id="3_pdruj"]
-[ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="3_q4mkf"]
-[ext_resource type="Resource" uid="uid://cn6yin4quysjt" path="res://entity/player/assets/normal_stats.tres" id="3_r8ncy"]
-[ext_resource type="Script" path="res://player_animation.gd" id="4_u35yr"]
+[ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_yqlic"]
+[ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="4_ytqrs"]
 [ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="5_0243f"]
-[ext_resource type="Resource" uid="uid://bta17un35teqs" path="res://entity/player/assets/big_stats.tres" id="5_xgwg4"]
 [ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="6_tvffr"]
-[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/player_interactor.tscn" id="9_5hao0"]
-[ext_resource type="Script" path="res://size_changer.gd" id="9_h4dcp"]
-[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/keyboard_q.png" id="11_5tf0j"]
-[ext_resource type="Texture2D" uid="uid://dyuh7ssg0aokc" path="res://gui/keyboard_e.png" id="12_s8ub5"]
-
-[sub_resource type="Gradient" id="Gradient_flrl2"]
-colors = PackedColorArray(0, 0.439216, 0.686275, 1, 0.207558, 0.000121289, 0.672063, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dvb2q"]
-gradient = SubResource("Gradient_flrl2")
-
-[sub_resource type="Curve" id="Curve_g8ng8"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.990148, 0), -2.29563, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_dos7s"]
-curve = SubResource("Curve_g8ng8")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wup63"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 8.0
-angle_min = 1.07288e-05
-angle_max = 182.4
-direction = Vector3(0, -1, 0)
-spread = 80.238
-initial_velocity_min = 60.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, 60, 0)
-scale_min = 3.0
-scale_max = 4.0
-scale_curve = SubResource("CurveTexture_dos7s")
-color_ramp = SubResource("GradientTexture1D_dvb2q")
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssuf1"]
-radius = 17.0
-height = 64.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eapav"]
-radius = 8.0
-height = 16.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2k4wn"]
-radius = 48.0
-height = 128.0
-
-[sub_resource type="Animation" id="Animation_8ljjk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_a3k11"]
-resource_name = "idle"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 5]
-}
-
-[sub_resource type="Animation" id="Animation_v2y58"]
-resource_name = "jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_6u34k"]
-resource_name = "move_left"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [5, 6, 7, 8]
-}
-
-[sub_resource type="Animation" id="Animation_055o3"]
-resource_name = "move_right"
-length = 0.6
-loop_mode = 1
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yq77u"]
-_data = {
-"RESET": SubResource("Animation_8ljjk"),
-"idle": SubResource("Animation_a3k11"),
-"jump": SubResource("Animation_v2y58"),
-"move_left": SubResource("Animation_6u34k"),
-"move_right": SubResource("Animation_055o3")
-}
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8e2a5"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8bloe"]
-animation = &"jump"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7nfrw"]
-animation = &"move_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ktx7n"]
-animation = &"move_right"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_46ajk"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_7nfrw")
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_ktx7n")
-blend_point_1/pos = 1.0
-snap = 1.0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_808h2"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qo66w"]
-advance_mode = 2
-advance_expression = "not velocity.is_zero_approx()"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6spo5"]
-advance_mode = 2
-advance_expression = "velocity.is_zero_approx()"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6m86e"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8t25k"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dfjjv"]
-advance_mode = 2
-advance_expression = "is_on_floor()"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xhdto"]
-states/idle/node = SubResource("AnimationNodeAnimation_8e2a5")
-states/idle/position = Vector2(375, 52)
-states/jump/node = SubResource("AnimationNodeAnimation_8bloe")
-states/jump/position = Vector2(506, 159)
-states/move/node = SubResource("AnimationNodeBlendSpace1D_46ajk")
-states/move/position = Vector2(579, 86)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_808h2"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_qo66w"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_6spo5"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_6m86e"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_8t25k"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_dfjjv")]
+[ext_resource type="Script" path="res://gui/debug_gui.gd" id="13_26jet"]
+[ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="15_0nl63"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_rs1g5")
@@ -206,108 +20,13 @@ tile_set = ExtResource("1_c5hwl")
 
 [node name="Decor" type="TileMapLayer" parent="World"]
 
-[node name="Player" type="CharacterBody2D" parent="World"]
-script = ExtResource("3_8l74e")
-size_stats = {
-0: ExtResource("3_q4mkf"),
-1: ExtResource("3_r8ncy"),
-2: ExtResource("5_xgwg4")
-}
-stats = ExtResource("3_r8ncy")
+[node name="Player" parent="World" instance=ExtResource("3_yqlic")]
 
-[node name="SizeChangeParticles" type="GPUParticles2D" parent="World/Player"]
-position = Vector2(0, -18)
-emitting = false
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_wup63")
-one_shot = true
-explosiveness = 1.0
+[node name="SizeChanger" parent="World" instance=ExtResource("4_ytqrs")]
+position = Vector2(64, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="World/Player"]
-scale = Vector2(2, 4)
-texture = ExtResource("3_pdruj")
-centered = false
-offset = Vector2(-12, -20)
-hframes = 5
-vframes = 8
-
-[node name="NormalCollider" type="CollisionShape2D" parent="World/Player"]
-position = Vector2(0, -32)
-shape = SubResource("CapsuleShape2D_ssuf1")
-
-[node name="SmallCollider" type="CollisionShape2D" parent="World/Player"]
-position = Vector2(0, -8)
-shape = SubResource("CapsuleShape2D_eapav")
-disabled = true
-
-[node name="BigCollider" type="CollisionShape2D" parent="World/Player"]
-position = Vector2(0, -64)
-shape = SubResource("CapsuleShape2D_2k4wn")
-disabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="World/Player" node_paths=PackedStringArray("sprite_2d")]
-libraries = {
-"": SubResource("AnimationLibrary_yq77u")
-}
-script = ExtResource("4_u35yr")
-sprite_2d = NodePath("../Sprite2D")
-
-[node name="AnimationTree" type="AnimationTree" parent="World/Player/AnimationPlayer"]
-root_node = NodePath("../..")
-tree_root = SubResource("AnimationNodeStateMachine_xhdto")
-advance_expression_base_node = NodePath("../..")
-anim_player = NodePath("..")
-parameters/move/blend_position = 1.0
-
-[node name="Camera2D" type="Camera2D" parent="World/Player"]
-zoom = Vector2(2, 2)
-
-[node name="SizeChanger" type="Node2D" parent="World"]
-position = Vector2(64, -16)
-script = ExtResource("9_h4dcp")
-size_flags = 7
-
-[node name="Sprite2D" type="Sprite2D" parent="World/SizeChanger"]
-
-[node name="PlayerInteractor" parent="World/SizeChanger" instance=ExtResource("9_5hao0")]
-
-[node name="ControlGUI" type="HBoxContainer" parent="World/SizeChanger"]
-offset_left = -64.0
-offset_top = -112.0
-offset_right = 68.0
-offset_bottom = -53.0
-
-[node name="HBoxContainer" type="VBoxContainer" parent="World/SizeChanger/ControlGUI"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="World/SizeChanger/ControlGUI/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("11_5tf0j")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="World/SizeChanger/ControlGUI/HBoxContainer"]
-layout_mode = 2
-text = "shrink"
-horizontal_alignment = 1
-
-[node name="HBoxContainer3" type="VBoxContainer" parent="World/SizeChanger/ControlGUI"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="World/SizeChanger/ControlGUI/HBoxContainer3"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("12_s8ub5")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="World/SizeChanger/ControlGUI/HBoxContainer3"]
-layout_mode = 2
-text = "grow"
-horizontal_alignment = 1
+[node name="Fan" parent="World" instance=ExtResource("15_0nl63")]
+position = Vector2(448, 224)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -319,12 +38,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="CanvasLayer/GUI" node_paths=PackedStringArray("player")]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 104.0
+script = ExtResource("13_26jet")
+player = NodePath("../../../World/Player")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GlidingLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FrameInputLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
+layout_mode = 2
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 motion_scale = Vector2(0.05, 0.05)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1, -12)
 scale = Vector2(8, 8)
 texture = ExtResource("5_0243f")
 

@@ -20,7 +20,6 @@ func _input(event: InputEvent) -> void:
 			var index = order.find(player.size_mode)
 			var new_index = index - 1
 			if _can_change_down(player, new_index):
-
 				player.switch_size(order[new_index])
 			
 		if event.is_action_pressed("change_size_up"):

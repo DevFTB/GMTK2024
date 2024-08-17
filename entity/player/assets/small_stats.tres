@@ -6,7 +6,7 @@
 script = ExtResource("1_q5e4s")
 max_speed = 300
 acceleration = 500
-ground_deceleration = 1000
+ground_deceleration = 1500
 air_deceleration = 350
 grounding_force = 1.5
 jump_power = 300
@@ -15,3 +15,7 @@ fall_acceleration = 600
 jump_end_early_gravity_modifier = 2
 coyote_time = 0.15
 jump_buffer = 0.2
+can_double_jump = false
+can_glide = true
+glide_modifier = 0.05
+mass = 0.01

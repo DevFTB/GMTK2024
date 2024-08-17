@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_2dqrn")
-max_speed = 60
+max_speed = 90
 acceleration = 150
 ground_deceleration = 800
 air_deceleration = 350
@@ -15,3 +15,7 @@ fall_acceleration = 300
 jump_end_early_gravity_modifier = 2
 coyote_time = 0.15
 jump_buffer = 0.2
+can_double_jump = false
+can_glide = false
+glide_modifier = 0.1
+mass = 10.0

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj0swktf7h5tp"]
+
+[ext_resource type="Script" path="res://level/components/fan/fan.gd" id="1_gt6ov"]
+[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="2_gs2by"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqpuj"]
+size = Vector2(128, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kln5d"]
+size = Vector2(128, 418)
+
+[node name="Fan" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_gt6ov")
+force = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="FanArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_gs2by")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FanArea"]
+position = Vector2(0, -207)
+shape = SubResource("RectangleShape2D_kln5d")
