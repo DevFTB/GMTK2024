@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_dva23")
-max_speed = 200
+max_speed = 180
 acceleration = 300
 ground_deceleration = 800
 air_deceleration = 500
