@@ -40,6 +40,8 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
+			var vec = -c.get_normal()
+			vec.y = 0
 			c.get_collider().apply_central_impulse(-c.get_normal() * stats.mass)
 
 func kill() -> void:
