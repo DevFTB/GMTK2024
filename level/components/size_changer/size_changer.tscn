@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjybd10jscmqw"]
+
+[ext_resource type="Script" path="res://level/components/size_changer/size_changer.gd" id="1_rgg0e"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_3u6aj"]
+[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/keyboard_q.png" id="3_7a00s"]
+[ext_resource type="Texture2D" uid="uid://dyuh7ssg0aokc" path="res://gui/keyboard_e.png" id="4_lkax5"]
+
+[node name="SizeChanger" type="Node2D"]
+script = ExtResource("1_rgg0e")
+size_flags = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("2_3u6aj")]
+collision_layer = 0
+collision_mask = 5
+
+[node name="ControlGUI" type="HBoxContainer" parent="."]
+offset_left = -64.0
+offset_top = -112.0
+offset_right = 68.0
+offset_bottom = -53.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="ControlGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ControlGUI/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_7a00s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ControlGUI/HBoxContainer"]
+layout_mode = 2
+text = "shrink"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="ControlGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ControlGUI/HBoxContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_lkax5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ControlGUI/HBoxContainer3"]
+layout_mode = 2
+text = "grow"
+horizontal_alignment = 1

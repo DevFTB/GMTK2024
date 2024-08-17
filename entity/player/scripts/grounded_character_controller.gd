@@ -25,24 +25,37 @@ var _ended_jump_early := false
 var _grounded := false
 var _double_jump_available := false
 
+var _gliding := false
 var _jump_queued := false
 var _time_jump_was_pressed := 0.0
 
 var _frame_left_grounded := 0
 
+var external_forces = []
+
 func _process(delta: float) -> void:
 	_time += delta
 	
-	gather_input()
 	
 func _physics_process(delta: float) -> void:
+	gather_input()
+
 	check_collsions()
 	
 	handle_jump()
 	handle_direction(delta)
 	handle_gravity(delta)
 	
+	handle_external_forces(delta)
+	
 	apply_movement()
+
+func handle_external_forces(delta) -> void:
+	var sum_forces := Vector2()
+	for force in external_forces:
+		sum_forces += force
+		
+	_frame_velocity += sum_forces * delta
 
 func check_collsions() -> void:
 	if is_on_ceiling():
@@ -54,7 +67,9 @@ func check_collsions() -> void:
 		_buffered_jump_usable = true
 		_ended_jump_early = false
 		_double_jump_available = true
-		
+		_gliding  = false
+		print("set to grounded ", false)
+
 		grounded_changed.emit(true)
 	
 	if not is_on_floor() and _grounded:
@@ -66,14 +81,19 @@ func check_collsions() -> void:
 func handle_jump() -> void:
 	if not _ended_jump_early and not _grounded and not _frame_input.jump_held and velocity.y < 0:
 		_ended_jump_early = true
-	
+		
+	if not is_on_floor() and stats.can_glide:
+		if _frame_input.jump_down:
+			_gliding = not _gliding
+			print("set to ", _gliding)
+			
 	if not _jump_queued and not has_buffered_jump:
 		return
 		
 	if _grounded or can_use_coyote:
 		execute_jump()
 	
-	if not _grounded and _double_jump_available:
+	if not _grounded and _double_jump_available and stats.can_double_jump:
 		execute_jump()
 		_double_jump_available = false
 	
@@ -100,7 +120,12 @@ func handle_gravity(delta: float) -> void:
 	if _grounded and _frame_velocity.y >= 0.0:
 		_frame_velocity.y = stats.grounding_force
 	else:
-		var in_air_gravity := stats.fall_acceleration
+		var _anti_upwards_modifier := 1
+		if _gliding and _frame_velocity.y < 0:
+			_anti_upwards_modifier = 10
+		
+		var in_air_gravity := ((_anti_upwards_modifier * stats.glide_modifier) if _gliding else 1.0) * stats.fall_acceleration
+		
 		if _ended_jump_early and _frame_velocity.y < 0:
 			in_air_gravity *= stats.jump_end_early_gravity_modifier
 		

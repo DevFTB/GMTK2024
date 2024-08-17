@@ -35,3 +35,10 @@ class_name PlayerStats
 
 ## The amount of time we buffer a jump. This allows jump input before actually hitting the ground
 @export var jump_buffer := .2
+
+@export var can_double_jump := false
+
+@export var can_glide := false
+@export var glide_modifier := 0.1
+
+@export var mass : float

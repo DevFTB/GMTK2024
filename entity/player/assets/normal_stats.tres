@@ -15,3 +15,7 @@ fall_acceleration = 500
 jump_end_early_gravity_modifier = 2
 coyote_time = 0.15
 jump_buffer = 0.2
+can_double_jump = true
+can_glide = false
+glide_modifier = 0.1
+mass = 1.0

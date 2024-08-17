@@ -17,6 +17,9 @@ var size_mode := SizeMode.NORMAL
 	SizeMode.BIG: $BigCollider,
 }
 
+@onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
+@onready var com: Node2D = $COM
+
 func switch_size(size: SizeMode) -> void:
 	size_mode = size
 	
