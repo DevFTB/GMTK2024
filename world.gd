@@ -27,6 +27,8 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	spawn_point.global_position = level.get_node("Spawns").get_node(spawn_point_name).global_position
 	player.global_position = spawn_point.global_position
 	
+	print(level.get_camera_bounds())
+	
 	pause()
 	level_transition_screen.visible = true
 	await get_tree().create_timer(level_transition_time).timeout

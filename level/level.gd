@@ -1,11 +1,17 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var camera_min_x: int
+@export var camera_max_x: int
+@export var camera_min_y: int
+@export var camera_max_y: int
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+# returns min_x, max_x, min_y, max_y
+func get_camera_bounds():
+	var tilemap = $Platforms
+	var boundary_rect = tilemap.get_used_rect()
+	var top_left_corner = boundary_rect.position
+	var bottom_right_corner = boundary_rect.end
+	#if not camera_max_x:
+		#camera_max_x = tilemap.map_to_local()
+	
