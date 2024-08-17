@@ -16,7 +16,14 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/mode=3
+
+[global_group]
+
+transition=""
+spawn_point=""
 
 [input]
 
@@ -86,6 +93,7 @@ interact={
 3d_physics/layer_3="player"
 2d_physics/layer_4="enemy"
 3d_physics/layer_4="enemy"
+2d_physics/layer_5="pushable"
 
 [rendering]
 

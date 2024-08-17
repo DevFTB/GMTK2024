@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv6bxphghmjsm"]
+
+[ext_resource type="Script" path="res://level/components/level_transition/level_transition.gd" id="1_a3ksn"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_sioiu"]
+
+[node name="LevelTransition" type="Node2D" groups=["transition"]]
+script = ExtResource("1_a3ksn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("2_sioiu")]
+collision_mask = 5

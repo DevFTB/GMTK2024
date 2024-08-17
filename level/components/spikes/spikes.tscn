@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_6437b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n083"]
-size = Vector2(160, 32)
+size = Vector2(248, 32)
 
 [node name="Spikes" type="Node2D"]
 script = ExtResource("1_2pncc")
@@ -24,5 +24,5 @@ collision_mask = 4
 script = ExtResource("3_6437b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
-position = Vector2(80, -16)
+position = Vector2(124, -16)
 shape = SubResource("RectangleShape2D_7n083")
