@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnaxl32si8phc"]
+[gd_scene load_steps=10 format=3 uid="uid://b52bapkgpv2l7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rejiy"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_nv8iv"]
