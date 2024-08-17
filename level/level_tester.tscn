@@ -1,28 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnaxl32si8phc"]
+[gd_scene load_steps=10 format=3 uid="uid://cnaxl32si8phc"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_cmdjv"]
-[ext_resource type="Script" path="res://level/world.gd" id="2_l61em"]
-[ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_f6g5f"]
-[ext_resource type="PackedScene" uid="uid://dn1pv1sfl065b" path="res://level/level_scenes/level1.tscn" id="4_1a48l"]
-[ext_resource type="PackedScene" uid="uid://c6jlqamc5l531" path="res://level/level_scenes/leveltest.tscn" id="4_4v16t"]
-[ext_resource type="Script" path="res://gui/debug_gui.gd" id="5_mwcyg"]
-[ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="6_o84ph"]
-[ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="7_uarww"]
+[ext_resource type="Script" path="res://main.gd" id="1_rejiy"]
+[ext_resource type="Script" path="res://level/world.gd" id="2_nv8iv"]
+[ext_resource type="PackedScene" uid="uid://dn1pv1sfl065b" path="res://level/level_scenes/level1.tscn" id="3_1dpgo"]
+[ext_resource type="PackedScene" uid="uid://c6jlqamc5l531" path="res://level/level_scenes/leveltest.tscn" id="4_o7dt3"]
+[ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="5_yj6n7"]
+[ext_resource type="Script" path="res://gui/debug_gui.gd" id="6_5xopj"]
+[ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="7_qchw3"]
+[ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="8_chab2"]
+[ext_resource type="Script" path="res://level/level_transition_screen.gd" id="9_rbdml"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_cmdjv")
+script = ExtResource("1_rejiy")
 
 [node name="World" type="Node2D" parent="." node_paths=PackedStringArray("level_transition_screen")]
-script = ExtResource("2_l61em")
+script = ExtResource("2_nv8iv")
 levels = {
-"level1": ExtResource("4_1a48l"),
-"leveltest": ExtResource("4_4v16t")
+"level1": ExtResource("3_1dpgo"),
+"leveltest": ExtResource("4_o7dt3")
 }
 level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
 
-[node name="Player" parent="World" instance=ExtResource("3_f6g5f")]
+[node name="Player" parent="World" instance=ExtResource("5_yj6n7")]
 
-[node name="Level" parent="World" instance=ExtResource("4_1a48l")]
+[node name="Level" parent="World" instance=ExtResource("3_1dpgo")]
 
 [node name="SpawnPoint" type="Node2D" parent="World"]
 position = Vector2(-181, 70)
@@ -41,7 +42,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 104.0
 offset_bottom = 104.0
-script = ExtResource("5_mwcyg")
+script = ExtResource("6_5xopj")
 player = NodePath("../../../World/Player")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Panel"]
@@ -64,14 +65,14 @@ motion_scale = Vector2(0.05, 0.05)
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
 position = Vector2(-1, -12)
 scale = Vector2(8, 8)
-texture = ExtResource("6_o84ph")
+texture = ExtResource("7_qchw3")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
 scale = Vector2(6, 6)
-texture = ExtResource("7_uarww")
+texture = ExtResource("8_chab2")
 
 [node name="LevelTransitionScreen" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -84,6 +85,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("9_rbdml")
+transition_time = 0.6
 
 [node name="ColourRect" type="ColorRect" parent="CanvasLayer/LevelTransitionScreen"]
 layout_mode = 1

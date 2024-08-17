@@ -35,6 +35,8 @@ func switch_size(size: SizeMode) -> void:
 
 	size_mode_changed.emit(size_mode)
 
+
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	for i in get_slide_collision_count():
