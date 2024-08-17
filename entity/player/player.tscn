@@ -191,7 +191,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 9
+collision_mask = 25
 script = ExtResource("1_4po7g")
 size_stats = {
 0: ExtResource("2_37fej"),

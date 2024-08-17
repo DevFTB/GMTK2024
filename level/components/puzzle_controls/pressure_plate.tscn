@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb2vyfq2h3prd"]
+
+[ext_resource type="Script" path="res://level/components/puzzle_controls/pressure_plate.gd" id="1_a53yt"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_brlfd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gn30"]
+size = Vector2(32, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cvii8"]
+size = Vector2(32, 4)
+
+[node name="PressurePlate" type="Node2D" node_paths=PackedStringArray("listeners")]
+position = Vector2(336, -80)
+script = ExtResource("1_a53yt")
+listeners = [null]
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("2_brlfd")]
+collision_mask = 20
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
+shape = SubResource("RectangleShape2D_1gn30")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = SubResource("PlaceholderTexture2D_cvii8")
+offset = Vector2(0, -2)

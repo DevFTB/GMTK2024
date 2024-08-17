@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_lml2l"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_yqlic"]
+[ext_resource type="Texture2D" uid="uid://pgy5hs6anvdn" path="res://level/components/spikes/boulder.png" id="4_bfgoy"]
 [ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="4_ytqrs"]
 [ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="5_0243f"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="6_d2dco"]
@@ -11,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="8_4wsop"]
 [ext_resource type="Script" path="res://level/components/puzzle_controls/switch.gd" id="9_g2o1s"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="9_ywo7v"]
-[ext_resource type="Script" path="res://level/components/puzzle_controls/pressure_plate.gd" id="10_bbhfv"]
+[ext_resource type="PackedScene" uid="uid://cb2vyfq2h3prd" path="res://level/components/puzzle_controls/pressure_plate.tscn" id="10_4e23f"]
 [ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="10_j8sl6"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="13_26jet"]
 [ext_resource type="Script" path="res://level/components/turret_camera/turret_camera.gd" id="13_amm0k"]
@@ -20,11 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://dtq8jp1qnugja" path="res://level/components/turret_camera/turret_shoot.wav" id="15_p2t8h"]
 [ext_resource type="Script" path="res://level/components/turret_camera/ray_shooter.gd" id="17_nwmtn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gn30"]
-size = Vector2(32, 32)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cvii8"]
-size = Vector2(32, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5pb40"]
+radius = 16.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_icrty"]
 size = Vector2(16, 16)
@@ -40,6 +38,17 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAA
 tile_set = ExtResource("1_c5hwl")
 
 [node name="Decor" type="TileMapLayer" parent="World"]
+
+[node name="PushableObject" type="RigidBody2D" parent="World" groups=["activator"]]
+position = Vector2(272, -96)
+collision_layer = 17
+linear_damp = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="World/PushableObject"]
+texture = ExtResource("4_bfgoy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/PushableObject"]
+shape = SubResource("CircleShape2D_5pb40")
 
 [node name="Player" parent="World" instance=ExtResource("3_yqlic")]
 
@@ -60,20 +69,8 @@ position = Vector2(192, 224)
 script = ExtResource("9_g2o1s")
 listeners = [NodePath("../Fan"), NodePath("../MovingPlatform")]
 
-[node name="PressurePlate" type="Node2D" parent="World" node_paths=PackedStringArray("listeners")]
-position = Vector2(336, -80)
-script = ExtResource("10_bbhfv")
+[node name="PressurePlate" parent="World" node_paths=PackedStringArray("listeners") instance=ExtResource("10_4e23f")]
 listeners = [NodePath("../MovingPlatform")]
-
-[node name="PlayerInteractor" parent="World/PressurePlate" instance=ExtResource("9_ywo7v")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/PressurePlate/PlayerInteractor"]
-shape = SubResource("RectangleShape2D_1gn30")
-
-[node name="Sprite2D" type="Sprite2D" parent="World/PressurePlate"]
-position = Vector2(0, 16)
-texture = SubResource("PlaceholderTexture2D_cvii8")
-offset = Vector2(0, -2)
 
 [node name="MovingPlatform" parent="World" instance=ExtResource("10_j8sl6")]
 
