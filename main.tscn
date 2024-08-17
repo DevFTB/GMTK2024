@@ -1,15 +1,23 @@
-[gd_scene load_steps=11 format=4 uid="uid://dheorebroev8w"]
+[gd_scene load_steps=15 format=4 uid="uid://dheorebroev8w"]
 
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="1_c5hwl"]
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
-[ext_resource type="Script" path="res://world.gd" id="2_lml2l"]
+[ext_resource type="Script" path="res://level/world.gd" id="2_lml2l"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_yqlic"]
 [ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="4_ytqrs"]
 [ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="5_0243f"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="6_d2dco"]
 [ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="6_tvffr"]
+[ext_resource type="Script" path="res://level/components/common/puzzle_control.gd" id="8_55fjc"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="9_ywo7v"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="13_26jet"]
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="15_0nl63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvxt4"]
+size = Vector2(40, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lycx2"]
+size = Vector2(16, 32)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_rs1g5")
@@ -30,11 +38,27 @@ position = Vector2(64, 0)
 
 [node name="Fan" parent="World" instance=ExtResource("15_0nl63")]
 position = Vector2(448, 224)
+force = Vector2(0, -200)
+inverted_self = true
 
 [node name="Spikes" parent="World" instance=ExtResource("6_d2dco")]
 position = Vector2(192, 224)
 
 [node name="SpawnPoint" type="Node2D" parent="World"]
+
+[node name="Switch" type="Node2D" parent="World" node_paths=PackedStringArray("listeners")]
+position = Vector2(64, -16)
+script = ExtResource("8_55fjc")
+listeners = [NodePath("../Fan")]
+
+[node name="PlayerInteractor" parent="World/Switch" instance=ExtResource("9_ywo7v")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Switch/PlayerInteractor"]
+position = Vector2(-28, 0)
+shape = SubResource("RectangleShape2D_xvxt4")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Switch"]
+texture = SubResource("PlaceholderTexture2D_lycx2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
