@@ -41,7 +41,8 @@ tile_set = ExtResource("1_c5hwl")
 
 [node name="PushableObject" type="RigidBody2D" parent="World" groups=["activator"]]
 position = Vector2(272, -96)
-collision_layer = 17
+collision_layer = 16
+mass = 10.0
 linear_damp = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="World/PushableObject"]
