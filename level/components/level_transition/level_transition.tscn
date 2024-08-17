@@ -9,7 +9,4 @@ script = ExtResource("1_a3ksn")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_sioiu")]
-collision_layer = 0
 collision_mask = 5
-
-[connection signal="player_entered" from="PlayerInteractor" to="." method="_on_player_interactor_player_entered"]

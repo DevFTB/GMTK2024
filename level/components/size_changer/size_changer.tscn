@@ -12,7 +12,6 @@ size_flags = 7
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_3u6aj")]
-collision_layer = 0
 collision_mask = 5
 
 [node name="ControlGUI" type="HBoxContainer" parent="."]
