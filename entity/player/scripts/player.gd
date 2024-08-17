@@ -2,6 +2,7 @@ extends GroundedCharacterController
 class_name Player
 
 signal size_mode_changed(new_size: SizeMode)
+signal killed
 
 enum SizeMode {
 	SMALL, NORMAL, BIG
@@ -33,3 +34,6 @@ func switch_size(size: SizeMode) -> void:
 		collider.set_deferred("disabled", s != size_mode)
 
 	size_mode_changed.emit(size_mode)
+
+func kill() -> void:
+	killed.emit()

@@ -6,6 +6,10 @@ signal player_exited(player: Player)
 
 var interacting_player : Player
 
+var has_player: bool:
+	get:
+		return interacting_player != null
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
