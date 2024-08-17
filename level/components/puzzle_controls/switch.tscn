@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1hm8bmiruoi"]
+
+[ext_resource type="Script" path="res://level/components/puzzle_controls/puzzle_control.gd" id="1_ftxwj"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_e4po0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvxt4"]
+size = Vector2(40, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lycx2"]
+size = Vector2(16, 32)
+
+[node name="Switch" type="Node2D" node_paths=PackedStringArray("listeners")]
+position = Vector2(64, -16)
+script = ExtResource("1_ftxwj")
+listeners = [NodePath("")]
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("2_e4po0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
+position = Vector2(-28, 0)
+shape = SubResource("RectangleShape2D_xvxt4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_lycx2")

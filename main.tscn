@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dheorebroev8w"]
+[gd_scene load_steps=18 format=4 uid="uid://dheorebroev8w"]
 
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="1_c5hwl"]
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
@@ -10,8 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="6_tvffr"]
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="8_4wsop"]
 [ext_resource type="Script" path="res://level/components/puzzle_controls/switch.gd" id="9_g2o1s"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="9_ywo7v"]
+[ext_resource type="Script" path="res://level/components/puzzle_controls/pressure_plate.gd" id="10_bbhfv"]
+[ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="10_j8sl6"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="13_26jet"]
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="15_0nl63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gn30"]
+size = Vector2(32, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cvii8"]
+size = Vector2(32, 4)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_rs1g5")
@@ -40,8 +49,26 @@ position = Vector2(192, 224)
 
 [node name="SpawnPoint" type="Node2D" parent="World"]
 
-[node name="Switch" parent="World" instance=ExtResource("8_4wsop")]
+[node name="Switch" parent="World" node_paths=PackedStringArray("listeners") instance=ExtResource("8_4wsop")]
 script = ExtResource("9_g2o1s")
+listeners = [NodePath("../Fan"), NodePath("../MovingPlatform")]
+
+[node name="PressurePlate" type="Node2D" parent="World" node_paths=PackedStringArray("listeners")]
+position = Vector2(336, -80)
+script = ExtResource("10_bbhfv")
+listeners = [NodePath("../MovingPlatform")]
+
+[node name="PlayerInteractor" parent="World/PressurePlate" instance=ExtResource("9_ywo7v")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/PressurePlate/PlayerInteractor"]
+shape = SubResource("RectangleShape2D_1gn30")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/PressurePlate"]
+position = Vector2(0, 16)
+texture = SubResource("PlaceholderTexture2D_cvii8")
+offset = Vector2(0, -2)
+
+[node name="MovingPlatform" parent="World" instance=ExtResource("10_j8sl6")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://casf0qfuf7r6f"]
+
+[ext_resource type="Script" path="res://level/components/moving_platforms/moving_platform.gd" id="1_wd56a"]
+
+[sub_resource type="Curve2D" id="Curve2D_ojvna"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 0, 0, 0, 320, 0, 0, 0, 0, 0, 320, -64, 0, 0, 0, 0, 128, -64)
+}
+point_count = 5
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_btlgc"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvxee"]
+size = Vector2(32, 16)
+
+[node name="MovingPlatform" type="Node2D"]
+position = Vector2(0, -128)
+script = ExtResource("1_wd56a")
+movement_speed = 50.0
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ojvna")
+
+[node name="StaticBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("PlaceholderTexture2D_btlgc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_vvxee")
