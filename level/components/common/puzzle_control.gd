@@ -1,8 +1,7 @@
 extends Node2D
+class_name PuzzleControl
 
 signal power_changed(new_state: bool)
-
-@onready var player_interactor: PlayerInteractor = $PlayerInteractor
 
 @export var powering := true:
 	set(value):
@@ -17,8 +16,3 @@ func _ready() -> void:
 
 func _add_listener(powerable: Powerable) -> void:
 	power_changed.connect(powerable.set_power)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
-		if player_interactor.has_player:
-			powering = not powering
