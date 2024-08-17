@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://bta17un35teqs"]
+
+[ext_resource type="Script" path="res://entity/player/scripts/player_stats.gd" id="1_2dqrn"]
+
+[resource]
+script = ExtResource("1_2dqrn")
+max_speed = 60
+acceleration = 150
+ground_deceleration = 800
+air_deceleration = 350
+grounding_force = 1.5
+jump_power = 200
+max_fall_speed = 330
+fall_acceleration = 300
+jump_end_early_gravity_modifier = 2
+coyote_time = 0.15
+jump_buffer = 0.2

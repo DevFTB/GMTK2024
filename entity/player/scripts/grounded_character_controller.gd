@@ -4,48 +4,15 @@ class_name GroundedCharacterController
 signal grounded_changed(grounded: bool)
 signal jumped
 
-@export_group("Movement")
-## The top horizontal movement speed
-@export var max_speed := 14
-
-## The player's capacity to gain horizontal speed
-@export var acceleration := 120
-
-## The pace at which the player comes to a stop
-@export var ground_deceleration := 60
-
-## Deceleration in air only after stopping input mid-air"
-@export var air_deceleration := 30
-
-## A constant downward force applied while grounded. Helps on slopes
-@export var grounding_force := 1.5
-
-@export_group("Jump")
-## The immediate velocity applied when jumping
-@export var jump_power := 36
-
-## The maximum vertical movement speed
-@export var max_fall_speed := 40
-
-## The player's capacity to gain fall speed. a.k.a. In Air Gravity
-@export var fall_acceleration := 110
-
-## The gravity multiplier added when jump is released early
-@export var jump_end_early_gravity_modifier := 3
-
-## The time before coyote jump becomes unusable. Coyote jump allows jump to execute even after leaving a ledge
-@export var coyote_time := .15
-
-## The amount of time we buffer a jump. This allows jump input before actually hitting the ground
-@export var jump_buffer := .2
+@export var stats : PlayerStats
 
 var has_buffered_jump: bool:
 	get:
-		return _buffered_jump_usable and _time < _time_jump_was_pressed + jump_buffer
+		return _buffered_jump_usable and _time < _time_jump_was_pressed + stats.jump_buffer
 		
 var can_use_coyote: bool:
 	get:
-		return _coyote_usable and not _grounded and _time < _frame_left_grounded + coyote_time
+		return _coyote_usable and not _grounded and _time < _frame_left_grounded + stats.coyote_time
 
 var _time := 0.0
 var _frame_input : FrameInput = FrameInput.new()
@@ -76,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	handle_gravity(delta)
 	
 	apply_movement()
-	
+
 func check_collsions() -> void:
 	if is_on_ceiling():
 		_frame_velocity.y = maxf(0, _frame_velocity.y)
@@ -117,27 +84,27 @@ func execute_jump() -> void:
 	_time_jump_was_pressed = 0.0
 	_buffered_jump_usable = false
 	_coyote_usable = false
-	_frame_velocity.y = -jump_power
+	_frame_velocity.y = -stats.jump_power
 	
 	jumped.emit()
 	
 func handle_direction(delta: float) -> void:
 	if is_zero_approx(_frame_input.move.x):
-		var deceleration := ground_deceleration if _grounded else air_deceleration
+		var deceleration := stats.ground_deceleration if _grounded else stats.air_deceleration
 		_frame_velocity.x = move_toward(_frame_velocity.x, 0 , deceleration * delta)
 	else:
 		last_inputted_direction = Vector2(signi(_frame_velocity.x), 0)
-		_frame_velocity.x = move_toward(_frame_velocity.x, _frame_input.move.x * max_speed, acceleration * delta)
+		_frame_velocity.x = move_toward(_frame_velocity.x, _frame_input.move.x * stats.max_speed, stats.acceleration * delta)
 
 func handle_gravity(delta: float) -> void:
 	if _grounded and _frame_velocity.y >= 0.0:
-		_frame_velocity.y = grounding_force
+		_frame_velocity.y = stats.grounding_force
 	else:
-		var in_air_gravity := fall_acceleration
+		var in_air_gravity := stats.fall_acceleration
 		if _ended_jump_early and _frame_velocity.y < 0:
-			in_air_gravity *= jump_end_early_gravity_modifier
+			in_air_gravity *= stats.jump_end_early_gravity_modifier
 		
-		_frame_velocity.y = move_toward(_frame_velocity.y, max_fall_speed, in_air_gravity * delta)
+		_frame_velocity.y = move_toward(_frame_velocity.y, stats.max_fall_speed, in_air_gravity * delta)
 	
 func apply_movement() -> void:
 	velocity = _frame_velocity
