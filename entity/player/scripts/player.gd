@@ -8,6 +8,8 @@ enum SizeMode {
 	SMALL, NORMAL, BIG
 }
 
+const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BIG]
+
 @export var size_stats: Dictionary
 
 var size_mode := SizeMode.NORMAL
@@ -34,8 +36,19 @@ func switch_size(size: SizeMode) -> void:
 
 	size_mode_changed.emit(size_mode)
 
-
-
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("change_size_down"):
+		var index = order.find(size_mode)
+		var new_index = index - 1
+		if new_index >= 0:
+			switch_size(order[new_index])
+		
+	if event.is_action_pressed("change_size_up"):
+		var index = order.find(size_mode)
+		var new_index = index + 1
+		if new_index < order.size():
+			switch_size(order[new_index])
+			
 func _physics_process(delta: float) -> void:
 	super(delta)
 	for i in get_slide_collision_count():
@@ -53,3 +66,4 @@ func set_camera_limits(left, top, right, bottom):
 	$Camera2D.limit_left = left
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
+	print(top,left,right,bottom)

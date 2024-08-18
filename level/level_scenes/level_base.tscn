@@ -24,7 +24,7 @@ tile_set = ExtResource("2_tjccq")
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-681, -299)
+position = Vector2(-749, -298)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(857, 133)
