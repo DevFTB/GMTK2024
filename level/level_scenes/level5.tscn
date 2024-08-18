@@ -76,6 +76,9 @@ inverted_self = true
 position = Vector2(0, -255)
 shape = SubResource("RectangleShape2D_iufvu")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan/Fan" index="1"]
+position = Vector2(0, -8)
+
 [node name="Switch" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_xfu21")]
 position = Vector2(-15, -656)
 listeners = [NodePath("../PowerableFan")]
@@ -106,8 +109,14 @@ shape = SubResource("RectangleShape2D_yxxrt")
 [node name="SizeChanger" parent="Components" instance=ExtResource("14_mb2ks")]
 position = Vector2(-496, -416)
 
+[node name="Switch3" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_xfu21")]
+position = Vector2(-480, -656)
+listeners = [NodePath("../MovingPlatform")]
+
+[node name="CollisionShape2D" parent="Components/Switch3/PlayerInteractor" index="0"]
+position = Vector2(-28, 0)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.01, 0.01)
@@ -183,6 +192,7 @@ shape = SubResource("RectangleShape2D_hutjp")
 
 [editable path="Components/PowerableFan"]
 [editable path="Components/MovingPlatform"]
+[editable path="Components/Switch3"]
 [editable path="LevelTransitions/LevelTransition"]
 [editable path="LevelTransitions/LevelTransition2"]
 [editable path="LevelTransitions/LevelTransition3"]
