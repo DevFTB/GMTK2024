@@ -176,6 +176,7 @@ shape = SubResource("CapsuleShape2D_ssuf1")
 
 [node name="BigCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_lg18q")
+disabled = true
 
 [node name="SmallCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

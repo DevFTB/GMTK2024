@@ -91,7 +91,7 @@ func _check_size(size: SizeMode) -> bool:
 	#print(result_array)
 	var vertical_clearance = active_environment_detector.up.get_clearance().length()
 	#print("vert: ", vertical_clearance)
-	var has_vertical_clearance = active_environment_detector.up.get_clearance().length() > SCALES[size].y
+	var has_vertical_clearance = active_environment_detector.up.get_clearance().length() > SCALES[size].y / 2
 
 	#prints("Size check since %d is greater than 3" % result_array.size(), has_vertical_clearance)
 	

@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1n6yi2vb51yw"]
+[gd_scene load_steps=4 format=3 uid="uid://b1n6yi2vb51yw"]
 
 [ext_resource type="Script" path="res://level/components/spikes/spikes.gd" id="1_2pncc"]
 [ext_resource type="Texture2D" uid="uid://wbir48vj5ioi" path="res://level/components/spikes/spike_texture.png" id="2_nmoqx"]
 [ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_6437b"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n083"]
-size = Vector2(248, 32)
 
 [node name="Spikes" type="Node2D"]
 script = ExtResource("1_2pncc")
@@ -23,6 +20,5 @@ collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_6437b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
-position = Vector2(124, -16)
-shape = SubResource("RectangleShape2D_7n083")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathArea"]
+polygon = PackedVector2Array(0, 0, 16, -32, 32, 0)
