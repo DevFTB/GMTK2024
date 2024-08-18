@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://nqq71oxvmmll"]
+
+[ext_resource type="Script" path="res://level/components/tutorial/tutorial_in_world.gd" id="1_g1u87"]
+[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/keyboard_q.png" id="2_hsql6"]
+[ext_resource type="Texture2D" uid="uid://dyuh7ssg0aokc" path="res://gui/keyboard_e.png" id="3_sxbv3"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="4_eg6qx"]
+
+[sub_resource type="Animation" id="Animation_i3dua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1oefq"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0xi0a"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_htkvc"]
+_data = {
+"RESET": SubResource("Animation_i3dua"),
+"fade_in": SubResource("Animation_1oefq"),
+"fade_out": SubResource("Animation_0xi0a")
+}
+
+[node name="TutorialInWorld" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_g1u87")
+
+[node name="ControlGUI" type="HBoxContainer" parent="."]
+offset_left = -64.0
+offset_top = -112.0
+offset_right = 68.0
+offset_bottom = -53.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="ControlGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ControlGUI/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_hsql6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ControlGUI/HBoxContainer"]
+layout_mode = 2
+text = "left"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="ControlGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ControlGUI/HBoxContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_sxbv3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ControlGUI/HBoxContainer3"]
+layout_mode = 2
+text = "right"
+horizontal_alignment = 1
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_htkvc")
+}
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("4_eg6qx")]
+
+[connection signal="player_entered" from="PlayerInteractor" to="." method="_on_player_detector_body_entered"]
+[connection signal="player_exited" from="PlayerInteractor" to="." method="_on_player_detector_body_exited"]

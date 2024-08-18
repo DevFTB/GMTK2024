@@ -18,7 +18,7 @@ func _ready() -> void:
 	level.start()
 	
 	var camera_bounds = level.get_camera_bounds()
-	print(camera_bounds)
+
 	player.set_camera_limits(
 		camera_bounds["left"], camera_bounds["top"],
 		camera_bounds["right"], camera_bounds["bottom"]
@@ -32,6 +32,10 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	await level_transition_screen.fade_out_completed
 	
 	level.queue_free()
+	# fix? stoopid weird bug where u spawn at global position of prev level spawn point
+	# TODO: go to level and renable the timer in level.gd if double level transition bug keeps occurring
+	await level.tree_exited
+	#await get_tree().physics_frame
 	level = new_level.instantiate()
 	add_child(level)
 
@@ -42,8 +46,9 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	connect_level_transitions(level)
 	
 	level.start()
-
+	
 	var camera_bounds = level.get_camera_bounds()
+
 	player.set_camera_limits(
 		camera_bounds["left"], camera_bounds["top"],
 		camera_bounds["right"], camera_bounds["bottom"]
