@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var player_detector = $PlayerDetector
 @onready var control_gui: HBoxContainer = $ControlGUI
 @onready var transition: AnimationPlayer = $Transition
 

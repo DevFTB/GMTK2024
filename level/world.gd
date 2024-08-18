@@ -7,22 +7,18 @@ extends Node2D
 #@export var level_transition_time = 1.0
 @export var level_transition_screen: Control
 
-@onready var level: Level = $Level
+@export var start_level_name := "level0"
+@export var start_spawn_point := "Left1"
+
+@onready var level: Level = get_node_or_null("Level")
 @onready var spawn_point: Node2D = $SpawnPoint
 @onready var player: Player = $Player
 
 func _ready() -> void:
 	player.global_position = spawn_point.global_position
 	player.killed.connect(_on_player_kill)
-	connect_level_transitions(level)
-	level.start()
 	
-	var camera_bounds = level.get_camera_bounds()
-
-	player.set_camera_limits(
-		camera_bounds["left"], camera_bounds["top"],
-		camera_bounds["right"], camera_bounds["bottom"]
-	)
+	load_level(levels.get_level(start_level_name), start_spawn_point)
 
 func _on_player_kill() -> void:
 	player.global_position = spawn_point.global_position
@@ -31,11 +27,14 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	level_transition_screen.fade_out()
 	await level_transition_screen.fade_out_completed
 	
-	level.queue_free()
+	if level:
+		level.queue_free()
+		await level.tree_exited
+		
 	# fix? stoopid weird bug where u spawn at global position of prev level spawn point
 	# TODO: go to level and renable the timer in level.gd if double level transition bug keeps occurring
-	await level.tree_exited
-	#await get_tree().physics_frame
+	await get_tree().physics_frame
+
 	level = new_level.instantiate()
 	add_child(level)
 
@@ -61,7 +60,8 @@ func _on_level_transition(level_name: String, spawn_point_name: String):
 func connect_level_transitions(level: Level):
 	if level.level_transitions:
 		for c in level.level_transitions:
-			c.change_level.connect(_on_level_transition)
+			if not c.change_level.is_connected(_on_level_transition):
+				c.change_level.connect(_on_level_transition)
 
 # TODO: do i need to stop more when pausing and resuming?
 func pause():
@@ -71,4 +71,3 @@ func pause():
 func resume():
 	player.set_process(true)
 	player.set_physics_process(true)
-	

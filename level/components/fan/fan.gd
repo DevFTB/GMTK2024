@@ -3,6 +3,8 @@ extends Powerable
 @onready var fan_area: PlayerInteractor = $Fan/FanArea
 @export var force : Vector2
 
+@onready var gpu_particles_2d: GPUParticles2D = $Fan/Sprite2D/ClippingRect/GPUParticles2D
+
 var _added_force : bool = false
 
 var _player : Player
@@ -13,8 +15,9 @@ var _dir_to_player:
 
 var should_apply: bool:
 	get:
-		return powered and not _added_force and _player.active_environment_detector.is_active_colliding(_dir_to_player)
-
+		var should = powered and not _added_force and _player.active_environment_detector.is_active_colliding(_dir_to_player)
+		return should
+		
 var should_remove: bool:
 	get:
 		return not powered or (_added_force and not _player.active_environment_detector.is_active_colliding(_dir_to_player))
@@ -45,12 +48,12 @@ func _remove_player(player: Player) -> void:
 	_player = null
 
 func _apply_force(player: Player) -> void:
-	player.external_forces.append(force / _player.stats.mass)
+	player.external_forces[self] = force / _player.stats.mass
 	_added_force = true
 	
 func _remove_force(player: Player) -> void:
-	player.external_forces.erase(force / _player.stats.mass)
+	player.external_forces.erase(self)
 	_added_force = false
 
 func _on_power_changed(new_value: bool) -> void:
-	$Fan/GPUParticles2D.emitting = new_value
+	gpu_particles_2d.emitting = new_value

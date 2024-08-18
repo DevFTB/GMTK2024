@@ -31,7 +31,7 @@ var _time_jump_was_pressed := 0.0
 
 var _frame_left_grounded := 0
 
-var external_forces = []
+var external_forces = {}
 
 func _process(delta: float) -> void:
 	_time += delta
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 
 func handle_external_forces(delta) -> void:
 	var sum_forces := Vector2()
-	for force in external_forces:
+	for force in external_forces.values():
 		sum_forces += force
 		
 	_frame_velocity += sum_forces * delta
@@ -76,6 +76,11 @@ func check_collsions() -> void:
 		_frame_left_grounded = _time
 		
 		grounded_changed.emit(false)
+		
+	var collision : KinematicCollision2D = get_last_slide_collision()
+	if collision:
+		if abs(collision.get_normal().x) > 0.8:
+			_frame_velocity.x = 0
 
 func handle_jump() -> void:
 	if not _ended_jump_early and not _grounded and not _frame_input.jump_held and velocity.y < 0:
@@ -113,7 +118,10 @@ func handle_direction(delta: float) -> void:
 		var deceleration := stats.ground_deceleration if _grounded else stats.air_deceleration
 		_frame_velocity.x = move_toward(_frame_velocity.x, 0 , deceleration * delta)
 	else:
-		last_inputted_direction = Vector2(signi(_frame_velocity.x), 0)
+		var new_input_x = Vector2(signi(_frame_input.move.x), 0)
+		if not new_input_x.is_zero_approx():
+			last_inputted_direction = new_input_x 
+		
 		_frame_velocity.x = move_toward(_frame_velocity.x, _frame_input.move.x * stats.max_speed, stats.acceleration * delta)
 
 func handle_gravity(delta: float) -> void:

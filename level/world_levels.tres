@@ -1,16 +1,20 @@
-[gd_resource type="Resource" script_class="WorldLevels" load_steps=6 format=3 uid="uid://ca0ien87if0hp"]
+[gd_resource type="Resource" script_class="WorldLevels" load_steps=8 format=3 uid="uid://ca0ien87if0hp"]
 
 [ext_resource type="Script" path="res://level/WorldLevels.gd" id="1_6waot"]
 [ext_resource type="PackedScene" uid="uid://dn1pv1sfl065b" path="res://level/level_scenes/level1.tscn" id="1_8sdv6"]
 [ext_resource type="PackedScene" uid="uid://c6jlqamc5l531" path="res://level/level_scenes/leveltest.tscn" id="2_n0mpx"]
-[ext_resource type="PackedScene" path="res://level/level_scenes/level0.tscn" id="3_41smi"]
-[ext_resource type="PackedScene" path="res://level/level_scenes/level0b.tscn" id="4_ssn02"]
+[ext_resource type="PackedScene" uid="uid://yycecebwni2u" path="res://level/level_scenes/level_old_main.tscn" id="3_o6kvr"]
+[ext_resource type="PackedScene" uid="uid://b58gwei0d8fc3" path="res://level/level_scenes/level2.tscn" id="4_llo1m"]
+[ext_resource type="PackedScene" uid="uid://bpivvhh6cmhrf" path="res://level/level_scenes/level0.tscn" id="5_41smi"]
+[ext_resource type="PackedScene" uid="uid://bap81ui0aassh" path="res://level/level_scenes/level0b.tscn" id="6_ssn02"]
 
 [resource]
 script = ExtResource("1_6waot")
 levels = {
-"level0": ExtResource("3_41smi"),
-"level0b": ExtResource("4_ssn02"),
+"level0": ExtResource("5_41smi"),
+"level0b": ExtResource("6_ssn02"),
 "level1": ExtResource("1_8sdv6"),
-"leveltest": ExtResource("2_n0mpx")
+"level2": ExtResource("4_llo1m"),
+"leveltest": ExtResource("2_n0mpx"),
+"old_main": ExtResource("3_o6kvr")
 }

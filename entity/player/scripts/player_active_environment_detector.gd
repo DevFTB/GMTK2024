@@ -9,6 +9,7 @@ func is_active_colliding(dir: Vector2) -> bool:
 	dir = dir.normalized()
 	dir.x = roundi(dir.x)
 	dir.y = roundi(dir.y)
+	
 	match dir:
 		Vector2.UP:
 			return up.is_active_colliding()
