@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bykhox1oj68i8"]
+
+[ext_resource type="Script" path="res://level/components/spikes/spike.gd" id="1_cq7l5"]
+[ext_resource type="Texture2D" uid="uid://wbir48vj5ioi" path="res://level/components/spikes/spike_texture.png" id="1_rtqbf"]
+[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="2_5dhn3"]
+
+[node name="Spike" type="Node2D"]
+script = ExtResource("1_cq7l5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rtqbf")
+centered = false
+offset = Vector2(0, -32)
+region_rect = Rect2(0, 0, 160, 32)
+
+[node name="DeathArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_5dhn3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathArea"]
+polygon = PackedVector2Array(0, -1, 16, -32, 31, -1)
