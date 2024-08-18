@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c1hm8bmiruoi"]
 
-[ext_resource type="Script" path="res://level/components/puzzle_controls/puzzle_control.gd" id="1_ftxwj"]
+[ext_resource type="Script" path="res://level/components/puzzle_controls/switch.gd" id="1_gweot"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_e4po0"]
 [ext_resource type="Script" path="res://level/components/puzzle_controls/powerable_sprite.gd" id="3_jqf30"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="4_u0ocl"]
@@ -18,7 +18,7 @@ region = Rect2(64, 0, 32, 32)
 
 [node name="Switch" type="Node2D" node_paths=PackedStringArray("listeners")]
 position = Vector2(64, -16)
-script = ExtResource("1_ftxwj")
+script = ExtResource("1_gweot")
 listeners = [null]
 
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_e4po0")]
