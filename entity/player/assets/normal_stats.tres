@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_dva23")
 max_speed = 180
-acceleration = 300
+acceleration = 800
 ground_deceleration = 800
 air_deceleration = 500
 grounding_force = 1.5
-jump_power = 290
+jump_power = 320
 max_fall_speed = 330
 fall_acceleration = 500
 jump_end_early_gravity_modifier = 2

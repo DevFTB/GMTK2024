@@ -20,9 +20,12 @@ var should_remove: bool:
 		return not powered or (_added_force and not _player.active_environment_detector.is_active_colliding(_dir_to_player))
 
 func _ready() -> void:
+	super()
+	
 	fan_area.player_entered.connect(_add_player)
 	fan_area.player_exited.connect(_remove_player)
-	power_changed.connect(prints.bind("hehe"))
+	power_changed.connect(_on_power_changed)
+	_on_power_changed(powered)
 	
 func _physics_process(delta: float) -> void:
 	if _player:
@@ -48,3 +51,6 @@ func _apply_force(player: Player) -> void:
 func _remove_force(player: Player) -> void:
 	player.external_forces.erase(force / _player.stats.mass)
 	_added_force = false
+
+func _on_power_changed(new_value: bool) -> void:
+	$Fan/GPUParticles2D.emitting = new_value

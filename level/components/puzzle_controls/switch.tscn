@@ -24,7 +24,7 @@ listeners = [null]
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_e4po0")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
-position = Vector2(-28, 0)
+position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_xvxt4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." node_paths=PackedStringArray("puzzle_control")]

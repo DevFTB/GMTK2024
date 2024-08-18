@@ -36,4 +36,8 @@ func _on_size_mode_changed(new_size: Player.SizeMode) -> void:
 	size_change_particles.scale = new_scale
 	size_change_particles.restart()
 	
-	sprite_2d.scale = new_scale
+	_tween_to_new_scale(new_scale)
+
+func _tween_to_new_scale(new_scale) -> void:
+	var tween = create_tween()
+	tween.tween_property(sprite_2d, "scale", new_scale, 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
