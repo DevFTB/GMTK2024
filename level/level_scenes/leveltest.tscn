@@ -19,10 +19,10 @@ tile_set = ExtResource("1_trhd7")
 
 [node name="Spawns" type="Node2D" parent="."]
 
-[node name="Left1" type="Node2D" parent="Spawns"]
+[node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(-681, -299)
 
-[node name="Right1" type="Node2D" parent="Spawns"]
+[node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(857, 133)
 
 [node name="Components" type="Node2D" parent="."]
@@ -59,9 +59,10 @@ position = Vector2(734, 338)
 
 [node name="LevelTransitions" type="Node2D" parent="."]
 
-[node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("3_6vxyr")]
+[node name="LevelTransition" parent="LevelTransitions" groups=["spawn_point"] instance=ExtResource("3_6vxyr")]
 position = Vector2(910, 160)
-level_name = "poop"
+level_name = "level1"
+spawn_point_name = "Left1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(5.5, 0)

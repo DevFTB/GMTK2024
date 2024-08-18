@@ -2,9 +2,9 @@ extends Node2D
  
 # TODO: note, this way we can stil potentailly make a minimap by putting all levels in the same scene after
 
-@export var levels: Dictionary
-# don't make this 0 or stuff will break lmao - the getenger
-@export var level_transition_time = 1.0
+@export var levels: WorldLevels
+## don't make this 0 or stuff will break lmao - the getenger
+#@export var level_transition_time = 1.0
 @export var level_transition_screen: Control
 
 @onready var level: Level = $Level
@@ -50,9 +50,9 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	)
 	
 func _on_level_transition(level_name: String, spawn_point_name: String):
-	assert(levels.has(level_name), "level %s not in levels dictionary" % level_name)
-	load_level(levels[level_name], spawn_point_name)
+	load_level(levels.get_level(level_name), spawn_point_name)
 
+# TODO: seems to be an error that changle_level is already connected. not causing any grif at the moment, but could be connected to the prior issue
 func connect_level_transitions(level: Level):
 	if level.level_transitions:
 		for c in level.level_transitions:
