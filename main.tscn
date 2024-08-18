@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=4 uid="uid://dheorebroev8w"]
+[gd_scene load_steps=31 format=4 uid="uid://dheorebroev8w"]
 
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="1_c5hwl"]
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_lml2l"]
+[ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_s4mag"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_yqlic"]
 [ext_resource type="Texture2D" uid="uid://pgy5hs6anvdn" path="res://level/components/spikes/boulder.png" id="4_bfgoy"]
 [ext_resource type="Script" path="res://level/level.gd" id="4_uaw0u"]
@@ -48,6 +49,7 @@ script = ExtResource("1_rs1g5")
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("2_lml2l")
+levels = ExtResource("3_s4mag")
 
 [node name="Player" parent="World" instance=ExtResource("3_yqlic")]
 

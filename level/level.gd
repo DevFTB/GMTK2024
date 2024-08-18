@@ -31,14 +31,19 @@ func get_camera_bounds() -> Dictionary:
 	var boundary_rect = tilemap.get_used_rect()
 	var top_left_corner = boundary_rect.position
 	var bottom_right_corner = boundary_rect.end
+	
+	var tileset = tilemap.tile_set
+	var x_offset = tileset.tile_size.x / 2
+	var y_offset = tileset.tile_size.y / 2
+	
 	if not camera_min_x:
-		camera_min_x = tilemap.map_to_local(top_left_corner).x
+		camera_min_x = tilemap.map_to_local(top_left_corner).x - x_offset
 	if not camera_max_x:
-		camera_max_x = tilemap.map_to_local(bottom_right_corner).x
+		camera_max_x = tilemap.map_to_local(bottom_right_corner).x - x_offset
 	if not camera_min_y:
-		camera_min_y = tilemap.map_to_local(top_left_corner).y
+		camera_min_y = tilemap.map_to_local(top_left_corner).y - y_offset
 	if not camera_max_y:
-		camera_max_y = tilemap.map_to_local(bottom_right_corner).y
+		camera_max_y = tilemap.map_to_local(bottom_right_corner).y - y_offset
 		
 	return {
 		"left": camera_min_x,
