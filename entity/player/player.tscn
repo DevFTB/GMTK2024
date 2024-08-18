@@ -494,6 +494,14 @@ collide_with_areas = true
 [node name="COM" type="Node2D" parent="."]
 position = Vector2(0, -29)
 
+[node name="Small" type="Node2D" parent="COM"]
+position = Vector2(0, 21)
+
+[node name="Normal" type="Node2D" parent="COM"]
+
+[node name="Big" type="Node2D" parent="COM"]
+position = Vector2(0, -30)
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, -30)
 color = Color(0.1518, 0.33814, 0.66, 1)

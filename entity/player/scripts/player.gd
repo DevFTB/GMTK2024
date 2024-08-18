@@ -14,15 +14,23 @@ const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BI
 
 var size_mode := SizeMode.NORMAL
 
+var com: Vector2:
+	get:
+		return com_dict[size_mode].global_position
+
 @onready var colliders := {
 	SizeMode.SMALL: $SmallCollider,
 	SizeMode.NORMAL: $NormalCollider,
 	SizeMode.BIG: $BigCollider,
 }
 
-@onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
-@onready var com: Node2D = $COM
+@onready var com_dict := {
+	SizeMode.SMALL: $COM/Small,
+	SizeMode.NORMAL: $COM/Normal,
+	SizeMode.BIG: $COM/Big,
+}
 
+@onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
 func switch_size(size: SizeMode) -> void:
 	size_mode = size
 	
