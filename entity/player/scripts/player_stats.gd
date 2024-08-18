@@ -39,6 +39,7 @@ class_name PlayerStats
 @export var can_double_jump := false
 
 @export var can_glide := false
+
 @export var glide_modifier := 0.1
 
 @export var mass : float

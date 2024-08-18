@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=29 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
@@ -49,6 +49,9 @@ color_ramp = SubResource("GradientTexture1D_dvb2q")
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssuf1"]
 radius = 12.0
 height = 48.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_lg18q"]
+points = PackedVector2Array(26, -9, 18, 0, -24, 0, -32, -8, -32, -96, -19, -122, 14, -122, 26, -97)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eapav"]
 radius = 8.0
@@ -171,13 +174,12 @@ frame = 2
 position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_ssuf1")
 
+[node name="BigCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_lg18q")
+
 [node name="SmallCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_eapav")
-disabled = true
-
-[node name="BigCollider" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(26, -9, 18, 0, -24, 0, -32, -8, -32, -96, -19, -122, 14, -122, 26, -97)
 disabled = true
 
 [node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
@@ -299,15 +301,15 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="COM" type="Node2D" parent="."]
-position = Vector2(0, -29)
 
 [node name="Small" type="Node2D" parent="COM"]
-position = Vector2(0, 21)
+position = Vector2(0, -8)
 
 [node name="Normal" type="Node2D" parent="COM"]
+position = Vector2(0, -29)
 
 [node name="Big" type="Node2D" parent="COM"]
-position = Vector2(0, -30)
+position = Vector2(0, -78)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, -30)

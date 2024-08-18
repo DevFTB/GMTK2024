@@ -12,11 +12,7 @@ signal transition_tween_completed
 
 @onready var default_scale := sprite_2d.scale
 
-const scales = {
-	Player.SizeMode.SMALL: Vector2(16,16),
-	Player.SizeMode.NORMAL: Vector2(32, 48),
-	Player.SizeMode.BIG: Vector2(128, 144),
-}
+
 
 func _ready() -> void:
 	_bind_signal_to_state(player.jumped, "jump")
@@ -37,8 +33,8 @@ func transition_to() -> void:
 	tween.tween_callback(size_change_particles.restart)
 
 func transition_from(old_size: Player.SizeMode, new_size: Player.SizeMode) -> void:
-	var new_scale = scales[new_size]
-	var scale_ratio = new_scale / scales[old_size]
+	var new_scale = Player.SCALES[new_size]
+	var scale_ratio = new_scale / Player.SCALES[old_size]
 	size_change_particles.scale = scale_ratio
 	
 	_tween_to_new_scale(scale_ratio)

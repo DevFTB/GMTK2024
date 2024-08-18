@@ -60,7 +60,8 @@ func _on_level_transition(level_name: String, spawn_point_name: String):
 func connect_level_transitions(level: Level):
 	if level.level_transitions:
 		for c in level.level_transitions:
-			c.change_level.connect(_on_level_transition)
+			if not c.change_level.is_connected(_on_level_transition):
+				c.change_level.connect(_on_level_transition)
 
 # TODO: do i need to stop more when pausing and resuming?
 func pause():
