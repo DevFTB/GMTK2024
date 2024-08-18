@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		if c.get_collider() is RigidBody2D:
 			var vec = -c.get_normal()
 			vec.y = 0
-			c.get_collider().apply_central_impulse(-c.get_normal() * stats.mass)
+			c.get_collider().apply_central_impulse(vec * stats.mass)
 
 func kill() -> void:
 	killed.emit()

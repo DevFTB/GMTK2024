@@ -8,7 +8,7 @@ const BASE_SCALE := Vector2(1,2)
 @onready var playback : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var size_change_particles: GPUParticles2D = $"../SizeChangeParticles"
 
-var directional_parameters : Array[String] = ["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position"]
+var directional_parameters : Array[String] = ["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position"]
 
 func _ready() -> void:
 	_bind_signal_to_state(player.jumped, "jump")

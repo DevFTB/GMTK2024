@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=4 uid="uid://b6em6tpib01x"]
+[gd_scene load_steps=10 format=4 uid="uid://b6em6tpib01x"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_whljt"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_tjccq"]
+[ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="3_h5rqc"]
+[ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="4_8nfci"]
+[ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="5_m57b2"]
+[ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_f45a2"]
+[ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_d4uph"]
+[ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_ctfoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
+size = Vector2(21, 64)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_whljt")
@@ -21,3 +30,65 @@ position = Vector2(-681, -299)
 position = Vector2(857, 133)
 
 [node name="Components" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.01, 0.01)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(6, 6)
+texture = ExtResource("3_h5rqc")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.02, 0.02)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(6, 6)
+texture = ExtResource("4_8nfci")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.03, 0.03)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(6, 6)
+texture = ExtResource("5_m57b2")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.04, 0.04)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+scale = Vector2(6, 6)
+texture = ExtResource("6_f45a2")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -48)
+motion_scale = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(6, 6)
+texture = ExtResource("7_d4uph")
+centered = false
+
+[node name="TextureRect" type="ColorRect" parent="ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
+
+[node name="LevelTransitions" type="Node2D" parent="."]
+
+[node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_ctfoo")]
+position = Vector2(915, 146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
+position = Vector2(2.5, 14)
+shape = SubResource("RectangleShape2D_cvi8s")
+
+[editable path="LevelTransitions/LevelTransition"]

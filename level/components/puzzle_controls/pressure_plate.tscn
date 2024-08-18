@@ -1,16 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb2vyfq2h3prd"]
+[gd_scene load_steps=8 format=3 uid="uid://cb2vyfq2h3prd"]
 
 [ext_resource type="Script" path="res://level/components/puzzle_controls/pressure_plate.gd" id="1_a53yt"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_brlfd"]
+[ext_resource type="Script" path="res://level/components/puzzle_controls/powerable_sprite.gd" id="3_38xj4"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="4_ny6fl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gn30"]
 size = Vector2(32, 32)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cvii8"]
-size = Vector2(32, 4)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3duwh"]
+atlas = ExtResource("4_ny6fl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhhdf"]
+atlas = ExtResource("4_ny6fl")
+region = Rect2(0, 0, 32, 32)
 
 [node name="PressurePlate" type="Node2D" node_paths=PackedStringArray("listeners")]
-position = Vector2(336, -80)
 script = ExtResource("1_a53yt")
 listeners = [null]
 
@@ -21,7 +27,8 @@ script = null
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
 shape = SubResource("RectangleShape2D_1gn30")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 16)
-texture = SubResource("PlaceholderTexture2D_cvii8")
-offset = Vector2(0, -2)
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("puzzle_control")]
+script = ExtResource("3_38xj4")
+puzzle_control = NodePath("..")
+powered_texture = SubResource("AtlasTexture_3duwh")
+unpowered_texture = SubResource("AtlasTexture_yhhdf")

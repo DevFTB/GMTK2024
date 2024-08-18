@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://casf0qfuf7r6f"]
+[gd_scene load_steps=6 format=3 uid="uid://casf0qfuf7r6f"]
 
 [ext_resource type="Script" path="res://level/components/moving_platforms/moving_platform.gd" id="1_wd56a"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_3jpmx"]
 
 [sub_resource type="Curve2D" id="Curve2D_ojvna"]
 _data = {
@@ -8,14 +9,14 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_btlgc"]
-size = Vector2(32, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qew7u"]
+atlas = ExtResource("2_3jpmx")
+region = Rect2(0, 32, 64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvxee"]
-size = Vector2(32, 16)
+size = Vector2(64, 16)
 
 [node name="MovingPlatform" type="Node2D"]
-position = Vector2(0, -128)
 script = ExtResource("1_wd56a")
 movement_speed = 50.0
 
@@ -25,7 +26,8 @@ curve = SubResource("Curve2D_ojvna")
 [node name="StaticBody2D" type="AnimatableBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = SubResource("PlaceholderTexture2D_btlgc")
+texture = SubResource("AtlasTexture_qew7u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_vvxee")
