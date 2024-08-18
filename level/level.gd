@@ -16,7 +16,7 @@ var spawn_points:
 
 func start():
 	# TODO: renable if double level transitions still occuring
-	#await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1).timeout
 	for lt in level_transitions:
 		lt.enable()
 

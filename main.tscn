@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cb2vyfq2h3prd" path="res://level/components/puzzle_controls/pressure_plate.tscn" id="10_4e23f"]
 [ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="10_j8sl6"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="13_26jet"]
-[ext_resource type="PackedScene" path="res://level/components/turret_camera/turret_camera.tscn" id="14_wc56d"]
+[ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="14_wc56d"]
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="15_0nl63"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="20_5u6a7"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="21_x057a"]

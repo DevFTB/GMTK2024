@@ -35,7 +35,7 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	# fix? stoopid weird bug where u spawn at global position of prev level spawn point
 	# TODO: go to level and renable the timer in level.gd if double level transition bug keeps occurring
 	await level.tree_exited
-	await get_tree().physics_frame
+	#await get_tree().physics_frame
 	level = new_level.instantiate()
 	add_child(level)
 
