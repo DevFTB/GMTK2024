@@ -2,6 +2,7 @@ extends Powerable
 class_name TurretCamera
 
 @export var auto_polygon_2d : bool = true
+@export var tracking_duration: float = 1.5
 
 var _in_area := false
 var _is_shooting = false
@@ -29,7 +30,11 @@ var player_position: Vector2:
 func _ready() -> void:
 	player_interactor.player_entered.connect(_on_player_entered.unbind(1))
 	player_interactor.player_exited.connect(_on_player_exited.unbind(1))
+	
+	shoot_timer.wait_time = tracking_duration
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+	
+	
 	if auto_polygon_2d:
 		polygon_2d.polygon = collision_polygon_2d.polygon * collision_polygon_2d.transform.inverse() * player_interactor.transform.inverse()
 
@@ -43,9 +48,6 @@ func _physics_process(delta: float) -> void:
 	if _in_area:
 		ray_cast_2d.target_position = player_position
 		ray_cast_2d.force_raycast_update()
-
-
-
 		if _is_shooting:
 			queue_redraw()
 			

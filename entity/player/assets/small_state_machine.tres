@@ -1,0 +1,128 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=29 format=3 uid="uid://dh3h2srvegr8a"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ev7hy"]
+animation = &"small/fall_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5eml4"]
+animation = &"small/fall_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8iuox"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ev7hy")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_5eml4")
+blend_point_1/pos = 1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vx1nu"]
+animation = &"small/glide_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4aw0"]
+animation = &"small/glide_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_2meyc"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_vx1nu")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_o4aw0")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8e2a5"]
+animation = &"small/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ymbpk"]
+animation = &"small/jump_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j0vfu"]
+animation = &"small/jump_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_m0ugl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ymbpk")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_j0vfu")
+blend_point_1/pos = 1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f57xr"]
+animation = &"small/land_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ktqq7"]
+animation = &"small/land_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_tg8ux"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_f57xr")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_ktqq7")
+blend_point_1/pos = 1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7nfrw"]
+animation = &"small/move_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ktx7n"]
+animation = &"small/move_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_46ajk"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_7nfrw")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_ktx7n")
+blend_point_1/pos = 1.0
+snap = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_808h2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qo66w"]
+advance_mode = 2
+advance_expression = "abs(_frame_input.move.x) >0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6spo5"]
+advance_mode = 2
+advance_expression = "abs(_frame_input.move.x) == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o4tv1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7mag0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_20a2l"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ipr27"]
+advance_mode = 2
+advance_expression = "is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j1qe8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j6hsn"]
+advance_mode = 2
+advance_expression = "not is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lpjv7"]
+advance_mode = 2
+advance_expression = "_gliding"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_imid6"]
+priority = 4
+advance_mode = 2
+advance_expression = "is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_akca2"]
+advance_mode = 2
+advance_expression = "not _gliding"
+
+[resource]
+states/fall/node = SubResource("AnimationNodeBlendSpace1D_8iuox")
+states/fall/position = Vector2(412, 302)
+states/glide/node = SubResource("AnimationNodeBlendSpace1D_2meyc")
+states/glide/position = Vector2(218, 325)
+states/idle/node = SubResource("AnimationNodeAnimation_8e2a5")
+states/idle/position = Vector2(375, 52)
+states/jump/node = SubResource("AnimationNodeBlendSpace1D_m0ugl")
+states/jump/position = Vector2(560, 224)
+states/land/node = SubResource("AnimationNodeBlendSpace1D_tg8ux")
+states/land/position = Vector2(306, 210)
+states/move/node = SubResource("AnimationNodeBlendSpace1D_46ajk")
+states/move/position = Vector2(578, 86)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_808h2"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_qo66w"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_6spo5"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_o4tv1"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_7mag0"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_20a2l"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ipr27"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_j1qe8"), "move", "fall", SubResource("AnimationNodeStateMachineTransition_j6hsn"), "fall", "glide", SubResource("AnimationNodeStateMachineTransition_lpjv7"), "glide", "land", SubResource("AnimationNodeStateMachineTransition_imid6"), "glide", "fall", SubResource("AnimationNodeStateMachineTransition_akca2")]
+graph_offset = Vector2(-256, 94)

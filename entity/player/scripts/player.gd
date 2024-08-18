@@ -1,7 +1,7 @@
 extends GroundedCharacterController
 class_name Player
 
-signal size_mode_changed(new_size: SizeMode)
+signal size_mode_changed(old_size:SizeMode, new_size: SizeMode)
 signal killed
 
 enum SizeMode {
@@ -30,19 +30,17 @@ var com: Vector2:
 	SizeMode.BIG: $COM/Big,
 }
 
-@onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
-func switch_size(size: SizeMode) -> void:
-	size_mode = size
-	
-	# set movement stats
-	stats = size_stats[size]
-	
-	# change colliders
-	for s in SizeMode.values():
-		var collider = colliders.get(s)
-		collider.set_deferred("disabled", s != size_mode)
+@onready var anim_player_dict := {
+	SizeMode.SMALL: $SmallAnimationPlayer,
+	SizeMode.NORMAL: $NormalAnimationPlayer,
+	SizeMode.BIG: $BigAnimationPlayer,
+}
 
-	size_mode_changed.emit(size_mode)
+@onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
+
+func _ready() -> void:
+	size_mode = SizeMode.NORMAL
+	anim_player_dict[SizeMode.NORMAL].transition_to()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("change_size_down"):
@@ -65,8 +63,31 @@ func _physics_process(delta: float) -> void:
 			var vec = -c.get_normal()
 			vec.y = 0
 			c.get_collider().apply_central_impulse(vec * stats.mass)
+			
+func switch_size(size: SizeMode) -> void:
+	var old_player = anim_player_dict[size_mode]
+	var old_size = size_mode
+	
+	size_mode = size
+	var new_player = anim_player_dict[size_mode]
+		
+	old_player.transition_tween_completed.connect(new_player.transition_to, CONNECT_ONE_SHOT)
+	old_player.transition_from(old_size, size_mode)
 
+	# set movement stats
+	stats = size_stats[size]
+	
+	# change colliders
+	for s in SizeMode.values():
+		var collider = colliders.get(s)
+		collider.set_deferred("disabled", s != size_mode)
+
+	size_mode_changed.emit(old_size, size_mode)
+	
 func kill() -> void:
+	_frame_velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
+	
 	killed.emit()
 	
 func set_camera_limits(left, top, right, bottom):
