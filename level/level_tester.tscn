@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_rejiy"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_nv8iv"]
 [ext_resource type="PackedScene" uid="uid://dn1pv1sfl065b" path="res://level/level_scenes/level1.tscn" id="3_1dpgo"]
-[ext_resource type="PackedScene" uid="uid://c6jlqamc5l531" path="res://level/level_scenes/leveltest.tscn" id="4_o7dt3"]
+[ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_hh7cu"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="5_yj6n7"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="6_5xopj"]
 [ext_resource type="PackedScene" uid="uid://bpivvhh6cmhrf" path="res://level/level_scenes/level0.tscn" id="6_fje0n"]
@@ -16,10 +16,7 @@ script = ExtResource("1_rejiy")
 
 [node name="World" type="Node2D" parent="." node_paths=PackedStringArray("level_transition_screen")]
 script = ExtResource("2_nv8iv")
-levels = {
-"level1": ExtResource("3_1dpgo"),
-"leveltest": ExtResource("4_o7dt3")
-}
+levels = ExtResource("3_hh7cu")
 level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
 
 [node name="Player" parent="World" instance=ExtResource("5_yj6n7")]

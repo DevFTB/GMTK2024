@@ -68,7 +68,6 @@ func check_collsions() -> void:
 		_ended_jump_early = false
 		_double_jump_available = true
 		_gliding  = false
-		print("set to grounded ", false)
 
 		grounded_changed.emit(true)
 	
@@ -87,7 +86,6 @@ func handle_jump() -> void:
 			_gliding = not _gliding
 			if _gliding:
 				_frame_velocity.y = 0
-			print("set to ", _gliding)
 			
 	if not _jump_queued and not has_buffered_jump:
 		return

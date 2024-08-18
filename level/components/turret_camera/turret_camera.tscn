@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bltceh3qwk1vt"]
+
+[ext_resource type="Script" path="res://level/components/turret_camera/turret_camera.gd" id="1_ca7je"]
+[ext_resource type="Script" path="res://level/components/turret_camera/ray_shooter.gd" id="2_70cdj"]
+[ext_resource type="AudioStream" uid="uid://d2fami3mqd0bm" path="res://level/components/turret_camera/turret_build.wav" id="3_bdfia"]
+[ext_resource type="AudioStream" uid="uid://dtq8jp1qnugja" path="res://level/components/turret_camera/turret_shoot.wav" id="4_6xfh2"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="5_3bwu0"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="6_kt1po"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra40d"]
+atlas = ExtResource("6_kt1po")
+region = Rect2(0, 64, 32, 32)
+
+[node name="TurretCamera" type="Node2D"]
+position = Vector2(-432, -16)
+script = ExtResource("1_ca7je")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(248, 0)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="RayShooter" type="Node2D" parent="."]
+script = ExtResource("2_70cdj")
+ray_color = Color(0.877882, 0.762108, 0.559695, 1)
+ray_length = 24.0
+default_duration = 0.2
+
+[node name="TurretBuild" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bdfia")
+
+[node name="TurretShoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6xfh2")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ra40d")
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("5_3bwu0")]
+rotation = 0.445464
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerInteractor"]
+position = Vector2(8, -8)
+polygon = PackedVector2Array(0, 0, 0, 16, 240, 80, 240, -56)
