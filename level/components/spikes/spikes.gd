@@ -14,5 +14,5 @@ func create_spike(amount):
 		add_child(new_spike)
 		new_spike.set_position(Vector2(32*current_spikes,0))
 		current_spikes+=1
-		print("created spike at", str(new_spike.position))
+		#print("created spike at", str(new_spike.position))
 		pass
