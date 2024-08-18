@@ -28,7 +28,7 @@ position = Vector2(-28, 0)
 shape = SubResource("RectangleShape2D_xvxt4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." node_paths=PackedStringArray("puzzle_control")]
-position = Vector2(0, 16)
+position = Vector2(-28, 0)
 script = ExtResource("3_jqf30")
 puzzle_control = NodePath("..")
 powered_texture = SubResource("AtlasTexture_xsgfh")
