@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b6em6tpib01x"]
+[gd_scene load_steps=10 format=4 uid="uid://b6em6tpib01x"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_whljt"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_tjccq"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="5_m57b2"]
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_f45a2"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_d4uph"]
+[ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_ctfoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
+size = Vector2(21, 64)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_whljt")
@@ -77,3 +81,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
+
+[node name="LevelTransitions" type="Node2D" parent="."]
+
+[node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_ctfoo")]
+position = Vector2(915, 146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
+position = Vector2(2.5, 14)
+shape = SubResource("RectangleShape2D_cvi8s")
+
+[editable path="LevelTransitions/LevelTransition"]
