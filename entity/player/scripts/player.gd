@@ -30,7 +30,6 @@ func switch_size(size: SizeMode) -> void:
 	# change colliders
 	for s in SizeMode.values():
 		var collider = colliders.get(s)
-		prints(collider.name, s != size_mode)
 		collider.set_deferred("disabled", s != size_mode)
 
 	size_mode_changed.emit(size_mode)

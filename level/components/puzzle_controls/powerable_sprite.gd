@@ -10,4 +10,3 @@ func _ready() -> void:
 	
 func _on_power_changed(new_value: bool) -> void:
 	texture = powered_texture if new_value else unpowered_texture
-	print(texture)

@@ -1,13 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj0swktf7h5tp"]
+[gd_scene load_steps=10 format=3 uid="uid://bj0swktf7h5tp"]
 
 [ext_resource type="Script" path="res://level/components/fan/fan.gd" id="1_gt6ov"]
 [ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="2_gs2by"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqpuj"]
-size = Vector2(128, 16)
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_ym1gb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kln5d"]
-size = Vector2(128, 418)
+size = Vector2(128, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqpuj"]
+size = Vector2(128, 21)
+
+[sub_resource type="Curve" id="Curve_2lidd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.46452, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1iskn"]
+curve = SubResource("Curve_2lidd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j1s6v"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 64, 1)
+spread = 0.0
+initial_velocity_min = 361.25
+initial_velocity_max = 442.59
+gravity = Vector3(0, 0, 0)
+scale_max = 4.78
+scale_curve = SubResource("CurveTexture_1iskn")
+color = Color(0.775063, 0.775063, 0.775063, 0.886275)
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.023
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7ww"]
+atlas = ExtResource("2_ym1gb")
+region = Rect2(0, 96, 128, 32)
 
 [node name="PowerableFan" type="Node2D"]
 script = ExtResource("1_gt6ov")
@@ -17,15 +44,27 @@ force = Vector2(0, -2000)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fan"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_fqpuj")
-
 [node name="FanArea" type="Area2D" parent="Fan"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("2_gs2by")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fan/FanArea"]
-position = Vector2(0, -207)
+position = Vector2(0, -274.5)
 shape = SubResource("RectangleShape2D_kln5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fan"]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Fan"]
+rotation = -1.5708
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
+lifetime = 3.0
+visibility_rect = Rect2(-100, -100, 800, 200)
+trail_lifetime = 0.16
+
+[node name="Sprite2D" type="Sprite2D" parent="Fan"]
+position = Vector2(0, -16)
+texture = SubResource("AtlasTexture_ko7ww")
