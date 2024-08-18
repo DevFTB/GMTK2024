@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://dheorebroev8w"]
+[gd_scene load_steps=30 format=4 uid="uid://dheorebroev8w"]
 
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="1_c5hwl"]
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
@@ -31,10 +31,17 @@ radius = 16.0
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_icrty"]
 size = Vector2(16, 16)
 
+[sub_resource type="Gradient" id="Gradient_hfr04"]
+colors = PackedColorArray(0, 0, 0, 1, 0.916996, 0.818549, 0.798141, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vgysw"]
+gradient = SubResource("Gradient_hfr04")
+
 [sub_resource type="Environment" id="Environment_yrqld"]
 background_mode = 3
 adjustment_enabled = true
 adjustment_contrast = 1.15
+adjustment_color_correction = SubResource("GradientTexture1D_vgysw")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_rs1g5")
@@ -86,6 +93,7 @@ script = ExtResource("9_g2o1s")
 listeners = [NodePath("../Fan"), NodePath("../MovingPlatform")]
 
 [node name="PressurePlate" parent="World/Level" node_paths=PackedStringArray("listeners") instance=ExtResource("10_4e23f")]
+position = Vector2(336, -80)
 listeners = [NodePath("../MovingPlatform")]
 
 [node name="MovingPlatform" parent="World/Level" instance=ExtResource("10_j8sl6")]
@@ -127,6 +135,57 @@ texture = SubResource("PlaceholderTexture2D_icrty")
 
 [node name="LevelTransitions" type="Node2D" parent="World/Level"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="World/Level"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="World/Level/ParallaxBackground"]
+motion_scale = Vector2(0.01, 0.01)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Level/ParallaxBackground/ParallaxLayer"]
+scale = Vector2(6, 6)
+texture = ExtResource("20_5u6a7")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="World/Level/ParallaxBackground"]
+motion_scale = Vector2(0.02, 0.02)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Level/ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(6, 6)
+texture = ExtResource("21_x057a")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="World/Level/ParallaxBackground"]
+motion_scale = Vector2(0.03, 0.03)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Level/ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(6, 6)
+texture = ExtResource("22_smtcp")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="World/Level/ParallaxBackground"]
+motion_scale = Vector2(0.04, 0.04)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Level/ParallaxBackground/ParallaxLayer5"]
+scale = Vector2(6, 6)
+texture = ExtResource("23_veqsw")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="World/Level/ParallaxBackground"]
+position = Vector2(0, -48)
+motion_scale = Vector2(0.05, 0.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Level/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(6, 6)
+texture = ExtResource("24_epq18")
+centered = false
+
+[node name="TextureRect" type="ColorRect" parent="World/Level/ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_yrqld")
 
@@ -157,54 +216,3 @@ layout_mode = 2
 
 [node name="FrameInputLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
 layout_mode = 2
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.01, 0.01)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
-scale = Vector2(6, 6)
-texture = ExtResource("20_5u6a7")
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.02, 0.02)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer3"]
-scale = Vector2(6, 6)
-texture = ExtResource("21_x057a")
-centered = false
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.03, 0.03)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer4"]
-scale = Vector2(6, 6)
-texture = ExtResource("22_smtcp")
-centered = false
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.04, 0.04)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer5"]
-scale = Vector2(6, 6)
-texture = ExtResource("23_veqsw")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-position = Vector2(0, -48)
-motion_scale = Vector2(0.05, 0.05)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(6, 6)
-texture = ExtResource("24_epq18")
-centered = false
-
-[node name="TextureRect" type="ColorRect" parent="CanvasLayer/ParallaxBackground"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)

@@ -8,5 +8,4 @@ var _timer = 0.0
 
 func _physics_process(delta: float) -> void:
 	_timer += delta
-	print(energy)
 	energy = amplitude * sin(_timer / period) + base_amplitude
