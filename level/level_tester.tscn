@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="8_chab2"]
 [ext_resource type="Script" path="res://level/level_transition_screen.gd" id="9_rbdml"]
 
-[node name="Main" type="Node"]
+[node name="Main2" type="Node"]
 script = ExtResource("1_rejiy")
 
 [node name="World" type="Node2D" parent="." node_paths=PackedStringArray("level_transition_screen")]
@@ -54,7 +54,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 motion_scale = Vector2(0.05, 0.05)
