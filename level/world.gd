@@ -34,16 +34,18 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	level.queue_free()
 	level = new_level.instantiate()
 	add_child(level)
-
+	print(spawn_point_name)
 	spawn_point.global_position = level.get_spawn_point(spawn_point_name)
 	player.global_position = spawn_point.global_position
-
+	print(player.global_position)
+	print(spawn_point.global_position)
 	level_transition_screen.fade_in()
 	connect_level_transitions(level)
 	
 	level.start()
-
+	
 	var camera_bounds = level.get_camera_bounds()
+	print(camera_bounds)
 	player.set_camera_limits(
 		camera_bounds["left"], camera_bounds["top"],
 		camera_bounds["right"], camera_bounds["bottom"]
