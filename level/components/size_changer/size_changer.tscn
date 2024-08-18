@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjybd10jscmqw"]
+[gd_scene load_steps=8 format=3 uid="uid://cjybd10jscmqw"]
 
 [ext_resource type="Script" path="res://level/components/size_changer/size_changer.gd" id="1_rgg0e"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_3u6aj"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_wj7qy"]
 [ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/keyboard_q.png" id="3_7a00s"]
 [ext_resource type="Texture2D" uid="uid://dyuh7ssg0aokc" path="res://gui/keyboard_e.png" id="4_lkax5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yo6b"]
+atlas = ExtResource("2_wj7qy")
+region = Rect2(64, 32, 64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqpre"]
 size = Vector2(64, 64)
@@ -13,6 +18,8 @@ script = ExtResource("1_rgg0e")
 size_flags = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = SubResource("AtlasTexture_3yo6b")
 
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_3u6aj")]
 collision_mask = 5

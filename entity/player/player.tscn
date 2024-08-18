@@ -419,7 +419,7 @@ shape = SubResource("CapsuleShape2D_eapav")
 disabled = true
 
 [node name="BigCollider" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(24, -8, 16, 0, -24, 0, -32, -8, -32, -96, -24, -112, 16, -112, 24, -96)
+polygon = PackedVector2Array(26, -9, 18, 0, -24, 0, -32, -8, -32, -96, -19, -122, 14, -122, 26, -97)
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
