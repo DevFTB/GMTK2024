@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1hm8bmiruoi"]
+[gd_scene load_steps=9 format=3 uid="uid://c1hm8bmiruoi"]
 
 [ext_resource type="Script" path="res://level/components/puzzle_controls/switch.gd" id="1_gweot"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_e4po0"]
 [ext_resource type="Script" path="res://level/components/puzzle_controls/powerable_sprite.gd" id="3_jqf30"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="4_u0ocl"]
+[ext_resource type="AudioStream" uid="uid://bu77xklbbjs4w" path="res://sounds/environment/switch.wav" id="5_vpjbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvxt4"]
 size = Vector2(40, 32)
@@ -33,3 +34,6 @@ script = ExtResource("3_jqf30")
 puzzle_control = NodePath("..")
 powered_texture = SubResource("AtlasTexture_xsgfh")
 unpowered_texture = SubResource("AtlasTexture_l712m")
+
+[node name="SoundFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vpjbh")

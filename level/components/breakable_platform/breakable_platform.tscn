@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://r14oxhoghyh7"]
+[gd_scene load_steps=10 format=3 uid="uid://r14oxhoghyh7"]
 
 [ext_resource type="Script" path="res://level/components/breakable_platform/breakable_platform.gd" id="1_l1rfn"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_62lqo"]
 [ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_nb7qm"]
+[ext_resource type="AudioStream" uid="uid://dhe5hou4y6r7c" path="res://sounds/environment/ground break.wav" id="4_dwuay"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mbeo"]
 atlas = ExtResource("2_62lqo")
@@ -42,3 +43,6 @@ position = Vector2(128, -16)
 shape = SubResource("RectangleShape2D_rxpwa")
 
 [node name="Sprites" type="Node2D" parent="."]
+
+[node name="SoundFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dwuay")

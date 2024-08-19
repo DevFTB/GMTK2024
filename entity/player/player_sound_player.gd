@@ -4,13 +4,13 @@ class_name SoundPlayer
 
 @export var footsteps : AudioStream
 @export var jump : AudioStream
-@export var glide : AudioStream
-@export var death : AudioStream
+@export var glide : AudioStream #not connected
+@export var death : AudioStream #not connected
 @export var size_up : AudioStream
-@export var size_down : AudioStream
-@export var fist_smash : AudioStream
-@export var interact : AudioStream
-@export var chatter : AudioStream
+@export var size_down : AudioStream 
+@export var fist_smash : AudioStream #not connected
+@export var interact : AudioStream #not connected
+@export var chatter : AudioStream #not connected
 
 
 @onready var sound_fx_dict = {

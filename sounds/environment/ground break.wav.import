@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhe5hou4y6r7c"
+path="res://.godot/imported/ground break.wav-6bdf63b58bc4e6facc51d813c0c4147a.sample"
+
+[deps]
+
+source_file="res://sounds/environment/ground break.wav"
+dest_files=["res://.godot/imported/ground break.wav-6bdf63b58bc4e6facc51d813c0c4147a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

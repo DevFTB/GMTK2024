@@ -12,7 +12,9 @@ func _ready() -> void:
 
 func _on_body_entered() -> void:
 	set_power(true)
+	$FXPlayer.play()
 	_body_count += 1
+	
 
 func _on_body_exited() -> void:
 	_body_count -= 1
