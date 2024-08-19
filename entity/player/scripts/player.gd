@@ -152,8 +152,8 @@ func _can_glide() -> bool:
 	return stats.can_glide and unlocked_skills & 2 ** Skill.GLIDER
 
 func set_camera_limits(left, top, right, bottom):
-	#$Camera2D.limit_top = top
-	#$Camera2D.limit_left = left
-	#$Camera2D.limit_right = right
-	#$Camera2D.limit_bottom = bottom
+	$Camera2D.limit_top = top
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right
+	$Camera2D.limit_bottom = bottom
 	print(top,left,right,bottom)
