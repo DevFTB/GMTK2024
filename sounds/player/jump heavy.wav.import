@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3tlclkgqqfu4"
+path="res://.godot/imported/jump heavy.wav-1ca40fffd0fed875c41c2b24452e756e.sample"
+
+[deps]
+
+source_file="res://sounds/player/jump heavy.wav"
+dest_files=["res://.godot/imported/jump heavy.wav-1ca40fffd0fed875c41c2b24452e756e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

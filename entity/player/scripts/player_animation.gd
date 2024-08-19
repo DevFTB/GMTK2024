@@ -3,20 +3,22 @@ extends AnimationPlayer
 signal transition_tween_completed
 
 @export var sprite_2d: Sprite2D
-@export var directional_parameters : Array[String] = ["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position"]
+@export var directional_parameters: Array[String] = ["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position"]
+@export var sound_player: PlayerSound
 
 @onready var player: Player = get_parent()
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var playback : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var size_change_particles: GPUParticles2D = $"../SizeChangeParticles"
 
 @onready var default_scale := sprite_2d.scale
 
 
-
 func _ready() -> void:
 	_bind_signal_to_state(player.jumped, "jump")
 	_bind_signal_to_state(player.punched, "punch", 1)
+	
+	player.size_mode_changed.connect(_on_player_size_changed)
 
 func _physics_process(_delta: float) -> void:
 	for param in directional_parameters:
@@ -55,7 +57,7 @@ func _tween_to_new_scale(new_scale: Vector2) -> void:
 	tween.tween_callback(transition_tween_completed.emit)
 	tween.tween_callback(disable)
 	
-func enable(show:=true) -> void:
+func enable(show := true) -> void:
 	sprite_2d.scale = default_scale
 
 	if show:
@@ -63,7 +65,6 @@ func enable(show:=true) -> void:
 		
 	animation_tree.active = true
 	active = true
-	
 	playback.travel("idle")
 	
 func disable() -> void:
@@ -71,3 +72,9 @@ func disable() -> void:
 	
 	animation_tree.active = false
 	active = false
+
+func _on_player_size_changed(old_size: Player.SizeMode, new_size: Player.SizeMode) -> void:
+	if old_size < new_size:
+		sound_player.play("size_down")
+	else:
+		sound_player.play("size_up")

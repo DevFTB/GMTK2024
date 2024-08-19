@@ -1,22 +1,32 @@
-[gd_scene load_steps=32 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=42 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
 [ext_resource type="Resource" uid="uid://cn6yin4quysjt" path="res://entity/player/assets/normal_stats.tres" id="3_8w4te"]
 [ext_resource type="Resource" uid="uid://bta17un35teqs" path="res://entity/player/assets/big_stats.tres" id="4_jwny2"]
 [ext_resource type="Texture2D" uid="uid://dxry51skjxppt" path="res://entity/player/assets/walk-1-sheet.png" id="5_jhvpg"]
+[ext_resource type="Script" path="res://entity/player/player_sound_player.gd" id="5_s2ap8"]
+[ext_resource type="AudioStream" uid="uid://bm470sw6um1fw" path="res://sounds/player/footsteps light.wav" id="6_a1evr"]
 [ext_resource type="Texture2D" uid="uid://dqfirpa5duekj" path="res://entity/player/assets/small_size_sheet.png" id="6_jjdme"]
 [ext_resource type="Script" path="res://entity/player/scripts/player_animation.gd" id="6_m02uo"]
+[ext_resource type="AudioStream" uid="uid://jfpnu4wmqpes" path="res://sounds/player/jump light.wav" id="7_63xwt"]
+[ext_resource type="AudioStream" uid="uid://chp2a544sx7l4" path="res://sounds/player/sizeup.wav" id="7_dpa12"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bnqujhkkbeg1w" path="res://entity/player/assets/normal_state_machine.tres" id="7_e483d"]
 [ext_resource type="AnimationLibrary" uid="uid://caylj8ll2xsqi" path="res://entity/player/assets/normal_anim_library.tres" id="7_jmn20"]
+[ext_resource type="AudioStream" uid="uid://doswe1501nm36" path="res://sounds/player/footsteps medium.wav" id="7_qijco"]
 [ext_resource type="Script" path="res://entity/player/scripts/player_active_environment_detector.gd" id="7_wk34v"]
 [ext_resource type="Script" path="res://entity/player/scripts/active_environment_detector.gd" id="8_fpsw3"]
+[ext_resource type="AudioStream" uid="uid://se2ubsjb86ek" path="res://sounds/player/footsteps heavy.wav" id="8_gorsm"]
 [ext_resource type="AnimationLibrary" uid="uid://bufno8qvsq2rw" path="res://entity/player/assets/small_anim_library.tres" id="8_i4i6t"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dh3h2srvegr8a" path="res://entity/player/assets/small_state_machine.tres" id="8_n58a0"]
 [ext_resource type="Script" path="res://entity/player/scripts/sinusodal_point_light_2d.gd" id="9_aa1p4"]
+[ext_resource type="AudioStream" uid="uid://bc875dd4ic8ve" path="res://sounds/player/sizedown.wav" id="9_qfaku"]
 [ext_resource type="AnimationLibrary" uid="uid://bqumykax8k2dr" path="res://entity/player/assets/big_anim_library.tres" id="11_p8l41"]
+[ext_resource type="AudioStream" uid="uid://d0qo1268wfwma" path="res://sounds/player/jump medium.wav" id="11_r3er0"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c2slo88fd2yc1" path="res://entity/player/assets/big_state_machine.tres" id="12_pdx75"]
+[ext_resource type="AudioStream" uid="uid://d3tlclkgqqfu4" path="res://sounds/player/jump heavy.wav" id="13_r8481"]
 [ext_resource type="Script" path="res://entity/player/camera_2d.gd" id="14_4bkmd"]
+[ext_resource type="Script" path="res://entity/player/player_sound.gd" id="17_eebbm"]
 [ext_resource type="Script" path="res://entity/player/breaker.gd" id="18_dec1t"]
 
 [sub_resource type="Gradient" id="Gradient_flrl2"]
@@ -237,7 +247,7 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_eapav")
 disabled = true
 
-[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -246,6 +256,7 @@ libraries = {
 }
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../NormalSprite2D")
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="NormalAnimationPlayer"]
 active = false
@@ -258,7 +269,7 @@ parameters/jump/blend_position = 0
 parameters/land/blend_position = 0
 parameters/move/blend_position = -0.99794
 
-[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -269,6 +280,7 @@ libraries = {
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../BigSprite2D")
 directional_parameters = Array[String](["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position", "parameters/punch/blend_position"])
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="BigAnimationPlayer"]
 active = false
@@ -282,7 +294,7 @@ parameters/land/blend_position = 0
 parameters/move/blend_position = -0.995122
 parameters/punch/blend_position = -0.996139
 
-[node name="SmallAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="SmallAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -292,6 +304,7 @@ libraries = {
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../SmallSprite2D")
 directional_parameters = Array[String](["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position", "parameters/glide/blend_position"])
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="SmallAnimationPlayer"]
 active = false
@@ -400,3 +413,34 @@ script = ExtResource("18_dec1t")
 [node name="BreakerShape2D" type="CollisionShape2D" parent="BreakerLeft"]
 shape = SubResource("CircleShape2D_u7gu3")
 disabled = true
+
+[node name="SoundPlayer" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("17_eebbm")
+player = NodePath("..")
+
+[node name="SmallSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("6_a1evr")
+jump = ExtResource("7_63xwt")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="NormalSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("7_qijco")
+jump = ExtResource("11_r3er0")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="BigSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("8_gorsm")
+jump = ExtResource("13_r8481")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("7_dpa12")
+
+[connection signal="is_grounded_moving" from="." to="." method="_on_is_grounded_moving"]
+[connection signal="jumped" from="." to="." method="_on_jumped"]
