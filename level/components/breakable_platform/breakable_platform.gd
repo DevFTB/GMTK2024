@@ -63,6 +63,7 @@ func _break() -> void:
 	# TODO: play animation for broken platform
 	
 	broken.emit()
+	$SoundFX.play()
 	queue_free()
 
 func _on_player_exited() -> void:
