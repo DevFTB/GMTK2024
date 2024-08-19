@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://y4wbmdicim1a"]
+
+[ext_resource type="Script" path="res://level/components/door/door.gd" id="1_mwc01"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_0du1l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhwb8"]
+atlas = ExtResource("2_0du1l")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1n0h"]
+atlas = ExtResource("2_0du1l")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74ftl"]
+atlas = ExtResource("2_0du1l")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrwsa"]
+size = Vector2(16, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5efun"]
+atlas = ExtResource("2_0du1l")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67jvv"]
+atlas = ExtResource("2_0du1l")
+region = Rect2(160, 96, 32, 32)
+
+[node name="Door" type="StaticBody2D"]
+position = Vector2(-96, -64)
+script = ExtResource("1_mwc01")
+texture_top = SubResource("AtlasTexture_mhwb8")
+texture_fill = SubResource("AtlasTexture_c1n0h")
+texture_bottom = SubResource("AtlasTexture_74ftl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 48)
+shape = SubResource("RectangleShape2D_qrwsa")
+
+[node name="MachineSprite" type="Sprite2D" parent="."]
+position = Vector2(16, -16)
+texture = SubResource("AtlasTexture_5efun")
+
+[node name="ClippingRect" type="Polygon2D" parent="."]
+clip_children = 1
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="Sprites" type="Node2D" parent="ClippingRect"]
+unique_name_in_owner = true
+
+[node name="GrassSprite" type="Sprite2D" parent="."]
+position = Vector2(16, 80)
+texture = SubResource("AtlasTexture_67jvv")
