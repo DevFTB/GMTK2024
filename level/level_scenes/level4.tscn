@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://ctjei7epw10s5"]
+[gd_scene load_steps=19 format=4 uid="uid://ctjei7epw10s5"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_isdxi"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_juosa"]
@@ -28,6 +28,12 @@ size = Vector2(128, 1026)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(21, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5na7h"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xoj83"]
+size = Vector2(32, 128)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_isdxi")
 
@@ -40,10 +46,13 @@ tile_set = ExtResource("2_juosa")
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-749, -298)
+position = Vector2(-1040, -336)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(857, 133)
+position = Vector2(1432, -400)
+
+[node name="Bottom1" type="Node2D" parent="Spawns"]
+position = Vector2(904, 560)
 
 [node name="Components" type="Node2D" parent="."]
 
@@ -114,6 +123,11 @@ shape = SubResource("RectangleShape2D_42adp")
 [node name="ClippingRect" parent="Components/PowerableFan/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1008, 64, -1008, 65, 17, -62, 16)
 
+[node name="Spikes3" parent="Components" instance=ExtResource("5_wgq73")]
+position = Vector2(544, -576)
+rotation = 3.14159
+number_of_spikes = 48
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
 
@@ -169,16 +183,24 @@ color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 [node name="LevelTransitions" type="Node2D" parent="."]
 
 [node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_01160")]
-position = Vector2(915, 146)
+position = Vector2(1480, -400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(2.5, 14)
 shape = SubResource("RectangleShape2D_cvi8s")
 
-[node name="Spikes" parent="." instance=ExtResource("5_wgq73")]
-position = Vector2(544, -576)
-rotation = 3.14159
-number_of_spikes = 48
+[node name="LevelTransition2" parent="LevelTransitions" instance=ExtResource("8_01160")]
+position = Vector2(992, 656)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition2/PlayerInteractor" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_5na7h")
+
+[node name="LevelTransition3" parent="LevelTransitions" instance=ExtResource("8_01160")]
+position = Vector2(-1120, -320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition3/PlayerInteractor" index="0"]
+shape = SubResource("RectangleShape2D_xoj83")
 
 [editable path="Components/MovingPlatform"]
 [editable path="Components/PowerableFan2"]
@@ -188,3 +210,5 @@ number_of_spikes = 48
 [editable path="Components/TurretCamera4"]
 [editable path="Components/PowerableFan"]
 [editable path="LevelTransitions/LevelTransition"]
+[editable path="LevelTransitions/LevelTransition2"]
+[editable path="LevelTransitions/LevelTransition3"]
