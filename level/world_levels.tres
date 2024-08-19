@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WorldLevels" load_steps=10 format=3 uid="uid://ca0ien87if0hp"]
+[gd_resource type="Resource" script_class="WorldLevels" load_steps=11 format=3 uid="uid://ca0ien87if0hp"]
 
 [ext_resource type="Script" path="res://level/WorldLevels.gd" id="1_6waot"]
 [ext_resource type="AudioStream" uid="uid://orevs0xniur0" path="res://sounds/music/built to scale orchestral loop.wav" id="1_8g8w3"]
