@@ -20,7 +20,7 @@ size = Vector2(712, 64)
 size = Vector2(32, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js3si"]
-size = Vector2(128, 192)
+size = Vector2(64, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(256, 96)
@@ -145,7 +145,7 @@ number_of_spikes = 2
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-848, 128)
+position = Vector2(-840, 128)
 
 [node name="Top1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(128, -512)
@@ -213,10 +213,10 @@ color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 [node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_khtmo")]
 position = Vector2(-896, 32)
 level_name = "level1"
-spawn_point_name = "Left1"
+spawn_point_name = "Right1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
-position = Vector2(-64, 0)
+position = Vector2(-96, 0)
 shape = SubResource("RectangleShape2D_js3si")
 
 [node name="LevelTransition2" parent="LevelTransitions" instance=ExtResource("8_khtmo")]
