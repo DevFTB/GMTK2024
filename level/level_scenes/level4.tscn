@@ -15,7 +15,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_ikq08"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 260, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120, 0)
 }
 point_count = 2
 
@@ -57,7 +57,7 @@ position = Vector2(896, 520)
 [node name="Components" type="Node2D" parent="."]
 
 [node name="MovingPlatform" parent="Components" instance=ExtResource("4_201lv")]
-position = Vector2(1056, -208)
+position = Vector2(1184, -208)
 powered = true
 
 [node name="Path2D" parent="Components/MovingPlatform" index="0"]
