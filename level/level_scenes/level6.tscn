@@ -26,8 +26,8 @@ size = Vector2(128, 738)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta8dh"]
 size = Vector2(128, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
-size = Vector2(21, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htsa7"]
+size = Vector2(21, 96)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_q0y81")
@@ -192,11 +192,11 @@ color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 [node name="LevelTransitions" type="Node2D" parent="."]
 
 [node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_akkgw")]
-position = Vector2(915, 146)
+position = Vector2(-1304, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
-position = Vector2(2.5, 14)
-shape = SubResource("RectangleShape2D_cvi8s")
+position = Vector2(2.5, 8)
+shape = SubResource("RectangleShape2D_htsa7")
 
 [editable path="Components/PowerableFan"]
 [editable path="Components/PowerableFan2"]
