@@ -1,4 +1,4 @@
-[gd_resource type="AnimationLibrary" load_steps=13 format=3 uid="uid://bufno8qvsq2rw"]
+[gd_resource type="AnimationLibrary" load_steps=13 format=3 uid="uid://qoqmwgss87v7"]
 
 [sub_resource type="Animation" id="Animation_4aufj"]
 resource_name = "fall_left"

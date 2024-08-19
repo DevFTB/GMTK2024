@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=29 format=3 uid="uid://dh3h2srvegr8a"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=29 format=3 uid="uid://d18yc8j6hl36p"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ev7hy"]
 animation = &"small/fall_left"
