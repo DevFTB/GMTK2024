@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://bap81ui0aassh"]
+[gd_scene load_steps=15 format=4 uid="uid://bap81ui0aassh"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f14n4"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_exgmk"]
+[ext_resource type="PackedScene" uid="uid://dj7dnbfgo3bod" path="res://level/components/skill_pickup/skill_pickup.tscn" id="3_df1ap"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="3_u7vsk"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="3_upd73"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="4_0ylp8"]
@@ -9,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_24ij2"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_m6lrp"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_xnhwd"]
+[ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="11_gpt0l"]
+[ext_resource type="Texture2D" uid="uid://cpsyj8fyxjo1y" path="res://gui/keyboard_j.png" id="12_8b45h"]
+[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/keyboard_q.png" id="13_cgpw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(21, 64)
@@ -21,6 +25,9 @@ tile_map_data = PackedByteArray("AAAcAAkAAAABAAEAAADo//X/AAACAAEAAADo//j/AAACAAE
 tile_set = ExtResource("2_exgmk")
 
 [node name="Decor" type="TileMapLayer" parent="."]
+
+[node name="SkillPickup" parent="." instance=ExtResource("3_df1ap")]
+position = Vector2(744, 160)
 
 [node name="Spawns" type="Node2D" parent="."]
 
@@ -164,5 +171,24 @@ spawn_point_name = "Right1"
 position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_cvi8s")
 
+[node name="TutorialInWorld2" parent="." instance=ExtResource("11_gpt0l")]
+position = Vector2(744, 216)
+
+[node name="TextureRect" parent="TutorialInWorld2/ControlGUI/HBoxContainer" index="0"]
+texture = ExtResource("12_8b45h")
+
+[node name="Label" parent="TutorialInWorld2/ControlGUI/HBoxContainer" index="1"]
+text = "shrink"
+
+[node name="TextureRect" parent="TutorialInWorld2/ControlGUI/HBoxContainer3" index="0"]
+texture = ExtResource("13_cgpw4")
+
+[node name="Label" parent="TutorialInWorld2/ControlGUI/HBoxContainer3" index="1"]
+text = "shrink"
+
+[node name="PlayerInteractor" parent="TutorialInWorld2" index="2"]
+position = Vector2(0, 16)
+
 [editable path="LevelTransitions/LevelTransition"]
 [editable path="LevelTransitions/LevelTransition2"]
+[editable path="TutorialInWorld2"]

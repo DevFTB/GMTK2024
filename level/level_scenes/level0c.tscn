@@ -74,7 +74,6 @@ position = Vector2(857, 133)
 [node name="Components" type="Node2D" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 scale = Vector2(2, 2)
