@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://yycecebwni2u"]
+[gd_scene load_steps=25 format=4 uid="uid://yycecebwni2u"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f8m6n"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_yb6wq"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="15_it6fj"]
 [ext_resource type="Script" path="res://level/level_scenes/door.gd" id="16_8h6bc"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="16_wqer0"]
+[ext_resource type="PackedScene" uid="uid://dj7dnbfgo3bod" path="res://level/components/skill_pickup/skill_pickup.tscn" id="17_3om12"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="17_rrcs4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5pb40"]
@@ -169,5 +170,8 @@ unique_name_in_owner = true
 [node name="GrassSprite" type="Sprite2D" parent="Door"]
 position = Vector2(16, 80)
 texture = SubResource("AtlasTexture_67jvv")
+
+[node name="SkillPickup" parent="." instance=ExtResource("17_3om12")]
+position = Vector2(-56, 24)
 
 [editable path="MovingPlatform"]

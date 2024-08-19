@@ -29,7 +29,7 @@ var _gliding := false
 var _jump_queued := false
 var _time_jump_was_pressed := 0.0
 
-var _frame_left_grounded := 0
+var _frame_left_grounded := 0.0
 
 var external_forces = {}
 
@@ -86,7 +86,7 @@ func handle_jump() -> void:
 	if not _ended_jump_early and not _grounded and not _frame_input.jump_held and velocity.y < 0:
 		_ended_jump_early = true
 		
-	if not is_on_floor() and stats.can_glide:
+	if not is_on_floor() and _can_glide():
 		if _frame_input.jump_down:
 			_gliding = not _gliding
 			if _gliding:
@@ -98,7 +98,7 @@ func handle_jump() -> void:
 	if _grounded or can_use_coyote:
 		execute_jump()
 	
-	if not _grounded and _double_jump_available and stats.can_double_jump:
+	if not _grounded and _double_jump_available and _can_double_jump():
 		execute_jump()
 		_double_jump_available = false
 	
@@ -118,7 +118,7 @@ func handle_direction(delta: float) -> void:
 		var deceleration := stats.ground_deceleration if _grounded else stats.air_deceleration
 		_frame_velocity.x = move_toward(_frame_velocity.x, 0 , deceleration * delta)
 	else:
-		var new_input_x = Vector2(signi(_frame_input.move.x), 0)
+		var new_input_x = Vector2(signi(int(_frame_input.move.x)), 0)
 		if not new_input_x.is_zero_approx():
 			last_inputted_direction = new_input_x 
 		
@@ -152,6 +152,12 @@ func gather_input() -> void:
 	if _frame_input.jump_down:
 		_jump_queued = true
 		_time_jump_was_pressed = _time
+
+func _can_double_jump() -> bool:
+	return stats.can_double_jump
+
+func _can_glide() -> bool:
+	return stats.can_glide
 
 class FrameInput:
 	var jump_down : bool

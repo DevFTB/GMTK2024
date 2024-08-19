@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj7dnbfgo3bod"]
+
+[ext_resource type="Script" path="res://level/components/skill_pickup/skill_pickup.gd" id="1_qqf6h"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_wc8ji"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vhj7w"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52esb"]
+
+[node name="SkillPickup" type="Node2D"]
+script = ExtResource("1_qqf6h")
+skill = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_vhj7w")
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("2_wc8ji")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
+shape = SubResource("CircleShape2D_52esb")
