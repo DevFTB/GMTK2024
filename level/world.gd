@@ -60,9 +60,9 @@ func _on_level_transition(level_name: String, spawn_point_name: String):
 	queue_music(levels.get_music(level_name))
 
 # TODO: seems to be an error that changle_level is already connected. not causing any grif at the moment, but could be connected to the prior issue
-func connect_level_transitions(level: Level):
-	if level.level_transitions:
-		for c in level.level_transitions:
+func connect_level_transitions(new_level: Level):
+	if new_level.level_transitions:
+		for c in new_level.level_transitions:
 			if not c.change_level.is_connected(_on_level_transition):
 				c.change_level.connect(_on_level_transition)
 
