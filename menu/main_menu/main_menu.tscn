@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://du1hue1gkto52" path="res://menu/main_menu/assets/Untitled_Artwork-5.png" id="5_vwb22"]
 [ext_resource type="Texture2D" uid="uid://b4vaaw53lo0tr" path="res://menu/main_menu/assets/Untitled_Artwork-6.png" id="6_2gpot"]
 [ext_resource type="Texture2D" uid="uid://dvps4h681531i" path="res://menu/main_menu/assets/Untitled_Artwork-7.png" id="7_5h2uv"]
-[ext_resource type="Shader" path="res://menu/main_menu/main_menu.gdshader" id="9_23k7o"]
+[ext_resource type="Shader" path="res://menu/main_menu/saturation_shader.gdshader" id="9_23k7o"]
 [ext_resource type="Texture2D" uid="uid://dvqeudyxlttoh" path="res://menu/main_menu/assets/he’s lit.png" id="11_ao8b6"]
 [ext_resource type="AudioStream" uid="uid://dl0r3efnqv7qs" path="res://sounds/music/main-menu-loop.ogg" id="11_cnil0"]
 

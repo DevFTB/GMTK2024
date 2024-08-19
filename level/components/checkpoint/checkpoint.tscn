@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://d3afcrngvlsjr"]
+
+[ext_resource type="Script" path="res://level/components/checkpoint/checkpoint.gd" id="1_njxrx"]
+[ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_iv4o1"]
+[ext_resource type="Shader" path="res://menu/main_menu/saturation_shader.gdshader" id="3_8o8n2"]
+[ext_resource type="Script" path="res://level/components/checkpoint/state_sprite.gd" id="3_ajttg"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="4_scgle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8epr"]
+size = Vector2(32, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8hpkr"]
+shader = ExtResource("3_8o8n2")
+shader_parameter/saturation = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p2g1"]
+atlas = ExtResource("4_scgle")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foawx"]
+atlas = ExtResource("4_scgle")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="Animation" id="Animation_c06ur"]
+resource_name = "pulse"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/saturation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l8bj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/saturation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6cvd"]
+_data = {
+"RESET": SubResource("Animation_l8bj6"),
+"pulse": SubResource("Animation_c06ur")
+}
+
+[sub_resource type="Gradient" id="Gradient_gsukf"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0vll2"]
+gradient = SubResource("Gradient_gsukf")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.82906, 0.153846)
+
+[node name="Checkpoint" type="Node2D" groups=["check_point", "spawn_point"]]
+script = ExtResource("1_njxrx")
+
+[node name="PlayerInteractor" parent="." instance=ExtResource("2_iv4o1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_t8epr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8hpkr")
+centered = false
+offset = Vector2(-32, -32)
+script = ExtResource("3_ajttg")
+state_to_texture = {
+"off": SubResource("AtlasTexture_0p2g1"),
+"on": SubResource("AtlasTexture_foawx")
+}
+initial_state = "off"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l6cvd")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -32)
+enabled = false
+color = Color(0.249255, 0.673411, 0.878217, 1)
+energy = 0.75
+texture = SubResource("GradientTexture2D_0vll2")
