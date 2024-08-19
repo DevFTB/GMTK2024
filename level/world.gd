@@ -21,6 +21,7 @@ func _ready() -> void:
 	player.killed.connect(_on_player_kill)
 	
 	load_level(levels.get_level(start_level_name), start_spawn_point)
+	queue_music(levels.get_music(start_level_name))
 
 func _on_player_kill() -> void:
 	player.global_position = spawn_point.global_position

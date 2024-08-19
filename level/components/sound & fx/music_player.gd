@@ -20,7 +20,7 @@ func queue_music(track):
 	else:
 		player.set_stream(track)
 		currently_playing = track
-	player.play()
+		player.play()
 
 func _on_player_finished():
 	if queued_track:
