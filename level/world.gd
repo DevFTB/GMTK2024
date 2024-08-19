@@ -21,7 +21,9 @@ func _ready() -> void:
 	player.killed.connect(_on_player_kill)
 	
 	load_level(levels.get_level(start_level_name), start_spawn_point)
-	queue_music(levels.get_music(start_level_name))
+	var level_music = levels.get_music(start_level_name)
+	if level_music:
+		queue_music(level_music)
 
 func _on_player_kill() -> void:
 	player.global_position = spawn_point.global_position
@@ -58,7 +60,9 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	
 func _on_level_transition(level_name: String, spawn_point_name: String):
 	load_level(levels.get_level(level_name), spawn_point_name)
-	queue_music(levels.get_music(level_name))
+	var level_music = levels.get_music(start_level_name)
+	if level_music:
+		queue_music(level_music)
 
 # TODO: seems to be an error that changle_level is already connected. not causing any grif at the moment, but could be connected to the prior issue
 func connect_level_transitions(new_level: Level):

@@ -9,5 +9,7 @@ func get_level(level_name: String) -> PackedScene:
 	return levels[level_name]
 	
 func get_music(level_name: String) -> AudioStream:
-	assert(level_music.has(level_name), "music %s not in musicdictionary" % level_name)
+	if not level_music.has(level_name):
+		push_warning("level %s has no music in level_music dictionary" % level_name)
+		return null
 	return level_music[level_name]
