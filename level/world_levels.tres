@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ctjei7epw10s5" path="res://level/level_scenes/level4.tscn" id="7_vw3qs"]
 [ext_resource type="PackedScene" uid="uid://c3q1u54aahrde" path="res://level/level_scenes/level5.tscn" id="8_8ur1q"]
 [ext_resource type="PackedScene" uid="uid://bg857ygj0kgel" path="res://level/level_scenes/level0c.tscn" id="11_2k4fs"]
-[ext_resource type="PackedScene" path="res://level/level_scenes/level6.tscn" id="12_1ha1y"]
+[ext_resource type="PackedScene" uid="uid://ckfp0gc5hjpo7" path="res://level/level_scenes/level6.tscn" id="12_1ha1y"]
 
 [resource]
 script = ExtResource("1_6waot")
