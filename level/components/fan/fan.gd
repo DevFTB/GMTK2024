@@ -4,6 +4,9 @@ extends Powerable
 @export var force : Vector2
 
 @onready var gpu_particles_2d: GPUParticles2D = $Fan/Sprite2D/ClippingRect/GPUParticles2D
+#var base_initial_velocity_min = 424.77
+#var base_initial_velocity_max = 506.11
+var base_force_magnitude = 2000
 
 var _added_force : bool = false
 
@@ -24,6 +27,12 @@ var should_remove: bool:
 
 func _ready() -> void:
 	super()
+	
+	var velocity_multiplier = force.length() / base_force_magnitude
+	gpu_particles_2d.process_material = gpu_particles_2d.process_material.duplicate()
+	gpu_particles_2d.process_material.initial_velocity_min *= velocity_multiplier
+	gpu_particles_2d.process_material.initial_velocity_max *= velocity_multiplier
+	gpu_particles_2d.lifetime /= velocity_multiplier
 	
 	fan_area.player_entered.connect(_add_player)
 	fan_area.player_exited.connect(_remove_player)
