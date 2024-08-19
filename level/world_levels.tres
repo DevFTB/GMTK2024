@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WorldLevels" load_steps=12 format=3 uid="uid://ca0ien87if0hp"]
+[gd_resource type="Resource" script_class="WorldLevels" load_steps=13 format=3 uid="uid://ca0ien87if0hp"]
 
 [ext_resource type="Script" path="res://level/WorldLevels.gd" id="1_6waot"]
 [ext_resource type="AudioStream" uid="uid://orevs0xniur0" path="res://sounds/music/built to scale orchestral loop.wav" id="1_8g8w3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bap81ui0aassh" path="res://level/level_scenes/level0b.tscn" id="6_ssn02"]
 [ext_resource type="PackedScene" uid="uid://ctjei7epw10s5" path="res://level/level_scenes/level4.tscn" id="7_vw3qs"]
 [ext_resource type="PackedScene" uid="uid://c3q1u54aahrde" path="res://level/level_scenes/level5.tscn" id="8_8ur1q"]
+[ext_resource type="PackedScene" uid="uid://b1t5b0mbfj2c4" path="res://level/level_scenes/level6.tscn" id="11_1ha1y"]
 
 [resource]
 script = ExtResource("1_6waot")
@@ -21,6 +22,7 @@ levels = {
 "level2": ExtResource("4_llo1m"),
 "level4": ExtResource("7_vw3qs"),
 "level5": ExtResource("8_8ur1q"),
+"level6": ExtResource("11_1ha1y"),
 "leveltest": ExtResource("2_n0mpx"),
 "old_main": ExtResource("3_o6kvr")
 }
