@@ -47,7 +47,7 @@ tile_set = ExtResource("2_6g2je")
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-888, -104)
+position = Vector2(-892, -71)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(214, 16)
