@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b52bapkgpv2l7"]
+[gd_scene load_steps=11 format=3 uid="uid://b52bapkgpv2l7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rejiy"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_nv8iv"]
 [ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_hh7cu"]
+[ext_resource type="PackedScene" uid="uid://dgq0imk2hl3xo" path="res://level/components/sound & fx/music_player.tscn" id="5_p7j2c"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="5_yj6n7"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="6_5xopj"]
 [ext_resource type="PackedScene" uid="uid://bpivvhh6cmhrf" path="res://level/level_scenes/level0.tscn" id="6_fje0n"]
@@ -19,6 +20,8 @@ levels = ExtResource("3_hh7cu")
 level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
 
 [node name="Player" parent="World" instance=ExtResource("5_yj6n7")]
+
+[node name="MusicPlayer" parent="World" instance=ExtResource("5_p7j2c")]
 
 [node name="Level" parent="World" instance=ExtResource("6_fje0n")]
 
