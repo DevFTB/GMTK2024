@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://r14oxhoghyh7"]
+
+[ext_resource type="Script" path="res://level/components/breakable_platform/breakable_platform.gd" id="1_l1rfn"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_62lqo"]
+[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_nb7qm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mbeo"]
+atlas = ExtResource("2_62lqo")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp8j1"]
+atlas = ExtResource("2_62lqo")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yanh"]
+atlas = ExtResource("2_62lqo")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l587h"]
+size = Vector2(256, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxpwa"]
+size = Vector2(256, 32)
+
+[node name="BreakablePlatform" type="StaticBody2D"]
+position = Vector2(-256, 320)
+script = ExtResource("1_l1rfn")
+texture_left = SubResource("AtlasTexture_3mbeo")
+texture_fill = SubResource("AtlasTexture_cp8j1")
+texture_right = SubResource("AtlasTexture_8yanh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(128, 16)
+shape = SubResource("RectangleShape2D_l587h")
+
+[node name="PlayerInteractor" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("3_nb7qm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
+position = Vector2(128, -16)
+shape = SubResource("RectangleShape2D_rxpwa")
+
+[node name="Sprites" type="Node2D" parent="."]
