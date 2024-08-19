@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://c3q1u54aahrde"]
+[gd_scene load_steps=20 format=4 uid="uid://c3q1u54aahrde"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f7jaj"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_6g2je"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="7_wt22h"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_gs8wn"]
 [ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="10_t2rre"]
-[ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="14_mb2ks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iufvu"]
 size = Vector2(128, 514)
@@ -51,7 +50,7 @@ tile_set = ExtResource("2_6g2je")
 position = Vector2(-888, -104)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(184, 16)
+position = Vector2(214, 16)
 
 [node name="Top1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(-528, -696)
@@ -104,9 +103,6 @@ scale = Vector2(2.5, 1)
 [node name="CollisionShape2D" parent="Components/MovingPlatform/StaticBody2D" index="1"]
 position = Vector2(-48, 8)
 shape = SubResource("RectangleShape2D_yxxrt")
-
-[node name="SizeChanger" parent="Components" instance=ExtResource("14_mb2ks")]
-position = Vector2(-496, -416)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -162,7 +158,7 @@ color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 [node name="LevelTransitions" type="Node2D" parent="."]
 
 [node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_gs8wn")]
-position = Vector2(296, 16)
+position = Vector2(325, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(2.5, 31)
@@ -176,7 +172,7 @@ position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_sv8kp")
 
 [node name="LevelTransition3" parent="LevelTransitions" instance=ExtResource("8_gs8wn")]
-position = Vector2(-944, -120)
+position = Vector2(-1064, -120)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition3/PlayerInteractor" index="0"]
 position = Vector2(8, 24)
