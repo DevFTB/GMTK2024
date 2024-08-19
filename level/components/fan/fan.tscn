@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bj0swktf7h5tp"]
+[gd_scene load_steps=11 format=3 uid="uid://bj0swktf7h5tp"]
 
 [ext_resource type="Script" path="res://level/components/fan/fan.gd" id="1_gt6ov"]
 [ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="2_gs2by"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_ym1gb"]
+[ext_resource type="AudioStream" uid="uid://d2mpwo5jpnt5c" path="res://sounds/environment/fan.wav" id="4_dugc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kln5d"]
 size = Vector2(128, 553)
@@ -73,3 +74,9 @@ process_material = SubResource("ParticleProcessMaterial_j1s6v")
 lifetime = 3.0
 visibility_rect = Rect2(-100, -100, 800, 200)
 trail_lifetime = 0.16
+
+[node name="SoundFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dugc2")
+autoplay = true
+max_distance = 1000.0
+attenuation = 3.0
