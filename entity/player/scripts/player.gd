@@ -18,7 +18,9 @@ const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BI
 
 @export var size_stats: Dictionary
 
-var size_mode := SizeMode.NORMAL
+var size_mode := SizeMode.NORMAL:
+	set(value):
+		size_mode = value
 
 var com: Vector2:
 	get:
@@ -53,6 +55,8 @@ func _input(event: InputEvent) -> void:
 		var index = order.find(size_mode)
 		var new_index = index - 1
 		if new_index >= 0:
+			print("huh", new_index)
+
 			switch_size(order[new_index])
 
 	if event.is_action_pressed("change_size_up"):
@@ -60,6 +64,7 @@ func _input(event: InputEvent) -> void:
 		var new_index = index + 1
 		if new_index < order.size():
 			if _check_size(order[new_index]):
+				print("hah", new_index)
 				switch_size(order[new_index])
 			
 func _physics_process(delta: float) -> void:

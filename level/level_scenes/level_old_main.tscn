@@ -1,13 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://yycecebwni2u"]
+[gd_scene load_steps=24 format=4 uid="uid://yycecebwni2u"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f8m6n"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_yb6wq"]
 [ext_resource type="Texture2D" uid="uid://pgy5hs6anvdn" path="res://level/components/spikes/boulder.png" id="3_67cpm"]
-[ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="4_2rx3c"]
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="5_xuefr"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="6_4tk8t"]
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="7_dkc1h"]
-[ext_resource type="Script" path="res://level/components/puzzle_controls/switch.gd" id="8_d4c33"]
 [ext_resource type="PackedScene" uid="uid://cb2vyfq2h3prd" path="res://level/components/puzzle_controls/pressure_plate.tscn" id="9_h10dk"]
 [ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="10_d2dar"]
 [ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="11_wctv0"]
@@ -15,10 +13,35 @@
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="13_avrd0"]
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="14_rxxuk"]
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="15_it6fj"]
+[ext_resource type="Script" path="res://level/level_scenes/door.gd" id="16_8h6bc"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="16_wqer0"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="17_rrcs4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5pb40"]
 radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhwb8"]
+atlas = ExtResource("17_rrcs4")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1n0h"]
+atlas = ExtResource("17_rrcs4")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74ftl"]
+atlas = ExtResource("17_rrcs4")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrwsa"]
+size = Vector2(16, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5efun"]
+atlas = ExtResource("17_rrcs4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67jvv"]
+atlas = ExtResource("17_rrcs4")
+region = Rect2(160, 96, 32, 32)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_f8m6n")
@@ -44,9 +67,6 @@ texture = ExtResource("3_67cpm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushableObject"]
 shape = SubResource("CircleShape2D_5pb40")
 
-[node name="SizeChanger" parent="." instance=ExtResource("4_2rx3c")]
-z_index = -1
-
 [node name="Fan" parent="." instance=ExtResource("5_xuefr")]
 position = Vector2(448, 224)
 force = Vector2(0, -100)
@@ -58,8 +78,7 @@ number_of_spikes = 6
 
 [node name="Switch" parent="." node_paths=PackedStringArray("listeners") instance=ExtResource("7_dkc1h")]
 position = Vector2(64, -32)
-script = ExtResource("8_d4c33")
-listeners = [NodePath("../Fan"), NodePath("../MovingPlatform")]
+listeners = [NodePath("../Fan"), NodePath("../MovingPlatform"), NodePath("../Door")]
 
 [node name="PressurePlate" parent="." node_paths=PackedStringArray("listeners") instance=ExtResource("9_h10dk")]
 position = Vector2(336, -80)
@@ -124,5 +143,31 @@ grow_vertical = 2
 color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 
 [node name="SpawnPoint1" type="Node2D" parent="." groups=["spawn_point"]]
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2(-96, -64)
+script = ExtResource("16_8h6bc")
+texture_top = SubResource("AtlasTexture_mhwb8")
+texture_fill = SubResource("AtlasTexture_c1n0h")
+texture_bottom = SubResource("AtlasTexture_74ftl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(16, 48)
+shape = SubResource("RectangleShape2D_qrwsa")
+
+[node name="MachineSprite" type="Sprite2D" parent="Door"]
+position = Vector2(16, -16)
+texture = SubResource("AtlasTexture_5efun")
+
+[node name="ClippingRect" type="Polygon2D" parent="Door"]
+clip_children = 1
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="Sprites" type="Node2D" parent="Door/ClippingRect"]
+unique_name_in_owner = true
+
+[node name="GrassSprite" type="Sprite2D" parent="Door"]
+position = Vector2(16, 80)
+texture = SubResource("AtlasTexture_67jvv")
 
 [editable path="MovingPlatform"]

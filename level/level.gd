@@ -5,7 +5,6 @@ class_name Level
 @export var camera_max_x: int
 @export var camera_min_y: int
 @export var camera_max_y: int
-@onready var collision_shape_2d: CollisionShape2D = $Platforms/BreakablePlatform/CollisionShape2D
 
 var level_transitions:
 	get:
