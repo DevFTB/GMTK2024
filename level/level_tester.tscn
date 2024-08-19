@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_hh7cu"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="5_yj6n7"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="6_5xopj"]
-[ext_resource type="PackedScene" path="res://level/level_scenes/level0.tscn" id="6_fje0n"]
+[ext_resource type="PackedScene" uid="uid://bpivvhh6cmhrf" path="res://level/level_scenes/level0.tscn" id="6_fje0n"]
 [ext_resource type="Texture2D" uid="uid://bb6pd6cyjs4wa" path="res://level/parallax-mountain-bg.png" id="7_qchw3"]
 [ext_resource type="Texture2D" uid="uid://dalxtjntu5g23" path="res://level/parallax-mountain-mountains.png" id="8_chab2"]
 [ext_resource type="Script" path="res://level/level_transition_screen.gd" id="9_rbdml"]
