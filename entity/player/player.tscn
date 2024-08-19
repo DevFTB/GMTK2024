@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=42 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
@@ -25,6 +25,9 @@
 [ext_resource type="AudioStream" uid="uid://d0qo1268wfwma" path="res://sounds/player/jump medium.wav" id="11_r3er0"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c2slo88fd2yc1" path="res://entity/player/assets/big_state_machine.tres" id="12_pdx75"]
 [ext_resource type="AudioStream" uid="uid://d3tlclkgqqfu4" path="res://sounds/player/jump heavy.wav" id="13_r8481"]
+[ext_resource type="Script" path="res://entity/player/camera_2d.gd" id="14_4bkmd"]
+[ext_resource type="Script" path="res://entity/player/player_sound.gd" id="17_eebbm"]
+[ext_resource type="Script" path="res://entity/player/breaker.gd" id="18_dec1t"]
 
 [sub_resource type="Gradient" id="Gradient_flrl2"]
 colors = PackedColorArray(0, 0.439216, 0.686275, 1, 0.207558, 0.000121289, 0.672063, 1)
@@ -117,6 +120,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BigSprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BigSprite2D:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BreakerRight/BreakerShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BreakerLeft/BreakerShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yq77u"]
 _data = {
@@ -132,6 +183,9 @@ fill = 1
 fill_from = Vector2(0.478632, 0.478632)
 fill_to = Vector2(0.517094, 0.337607)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7gu3"]
+radius = 31.4006
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 25
@@ -143,30 +197,6 @@ size_stats = {
 2: ExtResource("4_jwny2")
 }
 stats = ExtResource("3_8w4te")
-
-[node name="SmallSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
-script = ExtResource("5_s2ap8")
-footsteps = ExtResource("6_a1evr")
-jump = ExtResource("7_63xwt")
-size_up = ExtResource("7_dpa12")
-size_down = ExtResource("9_qfaku")
-
-[node name="NormalSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
-script = ExtResource("5_s2ap8")
-footsteps = ExtResource("7_qijco")
-jump = ExtResource("11_r3er0")
-size_up = ExtResource("7_dpa12")
-size_down = ExtResource("9_qfaku")
-
-[node name="BigSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
-script = ExtResource("5_s2ap8")
-footsteps = ExtResource("8_gorsm")
-jump = ExtResource("13_r8481")
-size_up = ExtResource("7_dpa12")
-size_down = ExtResource("7_dpa12")
 
 [node name="SizeChangeParticles" type="GPUParticles2D" parent="."]
 position = Vector2(0, -18)
@@ -184,8 +214,8 @@ centered = false
 offset = Vector2(-32, -64)
 flip_h = true
 hframes = 9
-vframes = 4
-frame = 8
+vframes = 5
+frame = 36
 
 [node name="NormalSprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -193,7 +223,7 @@ texture = ExtResource("5_jhvpg")
 centered = false
 offset = Vector2(-32, -64)
 hframes = 9
-vframes = 4
+vframes = 5
 
 [node name="SmallSprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -217,7 +247,7 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_eapav")
 disabled = true
 
-[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -226,6 +256,7 @@ libraries = {
 }
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../NormalSprite2D")
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="NormalAnimationPlayer"]
 active = false
@@ -238,7 +269,7 @@ parameters/jump/blend_position = 0
 parameters/land/blend_position = 0
 parameters/move/blend_position = -0.99794
 
-[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -248,6 +279,8 @@ libraries = {
 }
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../BigSprite2D")
+directional_parameters = Array[String](["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position", "parameters/punch/blend_position"])
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="BigAnimationPlayer"]
 active = false
@@ -259,8 +292,9 @@ parameters/fall/blend_position = 0
 parameters/jump/blend_position = 0
 parameters/land/blend_position = 0
 parameters/move/blend_position = -0.995122
+parameters/punch/blend_position = -0.996139
 
-[node name="SmallAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="SmallAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -270,6 +304,7 @@ libraries = {
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../SmallSprite2D")
 directional_parameters = Array[String](["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position", "parameters/glide/blend_position"])
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="SmallAnimationPlayer"]
 active = false
@@ -286,6 +321,9 @@ parameters/move/blend_position = -1.0
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_speed = 10.0
+script = ExtResource("14_4bkmd")
+noise_speed = 100.0
+shake_magnitude = 25.0
 
 [node name="ActiveEnvironmentDetector" type="Node2D" parent="."]
 position = Vector2(0, -29)
@@ -355,6 +393,54 @@ texture_scale = 4.27
 script = ExtResource("9_aa1p4")
 period = 3.0
 amplitude = 0.5
+
+[node name="BreakerRight" type="Area2D" parent="."]
+position = Vector2(80, -96)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("18_dec1t")
+
+[node name="BreakerShape2D" type="CollisionShape2D" parent="BreakerRight"]
+shape = SubResource("CircleShape2D_u7gu3")
+disabled = true
+
+[node name="BreakerLeft" type="Area2D" parent="."]
+position = Vector2(-80, -96)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("18_dec1t")
+
+[node name="BreakerShape2D" type="CollisionShape2D" parent="BreakerLeft"]
+shape = SubResource("CircleShape2D_u7gu3")
+disabled = true
+
+[node name="SoundPlayer" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("17_eebbm")
+player = NodePath("..")
+
+[node name="SmallSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("6_a1evr")
+jump = ExtResource("7_63xwt")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="NormalSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("7_qijco")
+jump = ExtResource("11_r3er0")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="BigSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("8_gorsm")
+jump = ExtResource("13_r8481")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("7_dpa12")
 
 [connection signal="is_grounded_moving" from="." to="." method="_on_is_grounded_moving"]
 [connection signal="jumped" from="." to="." method="_on_jumped"]
