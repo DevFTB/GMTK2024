@@ -42,6 +42,7 @@ number_of_spikes = 17
 
 [node name="Spikes3" parent="Components" instance=ExtResource("3_u7vsk")]
 position = Vector2(96, -160)
+number_of_spikes = 1
 
 [node name="Spikes4" parent="Components" instance=ExtResource("3_u7vsk")]
 position = Vector2(-480, -256)
@@ -74,6 +75,7 @@ number_of_spikes = 2
 [node name="Spikes11" parent="Components" instance=ExtResource("3_u7vsk")]
 position = Vector2(288, -512)
 rotation = -3.14159
+number_of_spikes = 1
 
 [node name="Spikes12" parent="Components" instance=ExtResource("3_u7vsk")]
 position = Vector2(672, -384)
