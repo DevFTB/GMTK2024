@@ -23,7 +23,7 @@ listeners = [null]
 
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_brlfd")]
 collision_mask = 20
-script = null
+size_flags = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
 shape = SubResource("RectangleShape2D_1gn30")
@@ -36,3 +36,10 @@ unpowered_texture = SubResource("AtlasTexture_yhhdf")
 
 [node name="FXPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_abi0a")
+
+[node name="PushableInteractor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushableInteractor"]
+shape = SubResource("RectangleShape2D_1gn30")
