@@ -3,6 +3,7 @@ class_name Player
 
 signal size_mode_changed(old_size:SizeMode, new_size: SizeMode)
 signal killed
+signal punched(direction: Vector2)
 
 enum SizeMode {
 	SMALL, NORMAL, BIG
@@ -75,7 +76,11 @@ func _input(event: InputEvent) -> void:
 			if _check_size(order[new_index]):
 				print("hah", new_index)
 				switch_size(order[new_index])
-			
+	
+	if event.is_action_pressed("punch"):
+		if size_mode == SizeMode.BIG:
+			punched.emit(last_inputted_direction)
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	for i in get_slide_collision_count():
@@ -147,8 +152,8 @@ func _can_glide() -> bool:
 	return stats.can_glide and unlocked_skills & 2 ** Skill.GLIDER
 
 func set_camera_limits(left, top, right, bottom):
-	$Camera2D.limit_top = top
-	$Camera2D.limit_left = left
-	$Camera2D.limit_right = right
-	$Camera2D.limit_bottom = bottom
+	#$Camera2D.limit_top = top
+	#$Camera2D.limit_left = left
+	#$Camera2D.limit_right = right
+	#$Camera2D.limit_bottom = bottom
 	print(top,left,right,bottom)

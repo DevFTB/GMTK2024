@@ -16,14 +16,18 @@ signal transition_tween_completed
 
 func _ready() -> void:
 	_bind_signal_to_state(player.jumped, "jump")
+	_bind_signal_to_state(player.punched, "punch", 1)
 
 func _physics_process(_delta: float) -> void:
 	for param in directional_parameters:
 		animation_tree.set(param, player.last_inputted_direction.x)
 
-func _bind_signal_to_state(player_signal: Signal, state: StringName) -> void:
-	player_signal.connect(playback.travel.bind(state))
-
+func _bind_signal_to_state(player_signal: Signal, state: StringName, unbind: int = 0) -> void:
+	if unbind > 0:
+		player_signal.connect(playback.travel.bind(state).unbind(unbind))
+	else:
+		player_signal.connect(playback.travel.bind(state))
+		
 func transition_to() -> void:
 	enable()
 
