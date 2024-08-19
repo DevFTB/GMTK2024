@@ -1,19 +1,16 @@
 extends Node2D
+class_name PlayerSound
 
 @export var player: Player
 @export var max_queue_size: int = 1
 
-var active_player: SoundPlayer:
+var active_player: SizeSoundPlayer:
 	get:
 		return sound_players[player.size_mode]
 
 var currently_playing: String 
 var is_looping : bool = false
 var queue : Array[AudioQueueItem] = []
-
-@onready var small_sound_player: SoundPlayer = $SmallSoundPlayer
-@onready var normal_sound_player: SoundPlayer = $NormalSoundPlayer
-@onready var big_sound_player: SoundPlayer = $BigSoundPlayer
 
 @onready var sound_players = {
 	Player.SizeMode.SMALL: $SmallSoundPlayer,
@@ -47,6 +44,7 @@ func play(key: String, force:=false, is_loop:=false) -> void:
 	else:
 		print("play nothing")
 		_pop_queue()
+
 func _pop_queue() -> void:
 	if queue.size() > 0:
 		var next : AudioQueueItem = queue.pop_front()

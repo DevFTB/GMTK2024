@@ -195,7 +195,7 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_eapav")
 disabled = true
 
-[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -204,6 +204,7 @@ libraries = {
 }
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../NormalSprite2D")
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="NormalAnimationPlayer"]
 active = false
@@ -216,7 +217,7 @@ parameters/jump/blend_position = 0
 parameters/land/blend_position = 0
 parameters/move/blend_position = -0.99794
 
-[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -226,6 +227,7 @@ libraries = {
 }
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../BigSprite2D")
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="BigAnimationPlayer"]
 active = false
@@ -238,7 +240,7 @@ parameters/jump/blend_position = 0
 parameters/land/blend_position = 0
 parameters/move/blend_position = -0.995122
 
-[node name="SmallAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d")]
+[node name="SmallAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
 "": SubResource("AnimationLibrary_yq77u"),
@@ -248,6 +250,7 @@ libraries = {
 script = ExtResource("6_m02uo")
 sprite_2d = NodePath("../SmallSprite2D")
 directional_parameters = Array[String](["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position", "parameters/glide/blend_position"])
+sound_player = NodePath("../SoundPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="SmallAnimationPlayer"]
 active = false

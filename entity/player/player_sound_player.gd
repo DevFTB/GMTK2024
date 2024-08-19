@@ -1,5 +1,5 @@
 extends AudioStreamPlayer2D
-class_name SoundPlayer
+class_name SizeSoundPlayer
 
 @export var footsteps : AudioStream
 @export var jump : AudioStream

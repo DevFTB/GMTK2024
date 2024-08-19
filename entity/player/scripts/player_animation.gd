@@ -4,12 +4,12 @@ signal transition_tween_completed
 
 @export var sprite_2d: Sprite2D
 @export var directional_parameters : Array[String] = ["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position"]
+@export var sound_player: PlayerSound
 
 @onready var player: Player = get_parent()
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var size_change_particles: GPUParticles2D = $"../SizeChangeParticles"
-@onready var sound_player: Node2D = $"../SoundPlayer"
 
 @onready var default_scale := sprite_2d.scale
 
