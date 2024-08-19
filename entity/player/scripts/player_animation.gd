@@ -9,6 +9,7 @@ signal transition_tween_completed
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var playback : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var size_change_particles: GPUParticles2D = $"../SizeChangeParticles"
+@onready var sound_player: Node2D = $"../SoundPlayer"
 
 @onready var default_scale := sprite_2d.scale
 
@@ -16,6 +17,8 @@ signal transition_tween_completed
 
 func _ready() -> void:
 	_bind_signal_to_state(player.jumped, "jump")
+	
+	player.size_mode_changed.connect(_on_player_size_changed)
 
 func _physics_process(_delta: float) -> void:
 	for param in directional_parameters:
@@ -59,7 +62,6 @@ func enable(show:=true) -> void:
 		
 	animation_tree.active = true
 	active = true
-	
 	playback.travel("idle")
 	
 func disable() -> void:
@@ -67,3 +69,9 @@ func disable() -> void:
 	
 	animation_tree.active = false
 	active = false
+
+func _on_player_size_changed(old_size: Player.SizeMode, new_size: Player.SizeMode) -> void:
+	if old_size < new_size:
+		sound_player.play("size_down")
+	else:
+		sound_player.play("size_up")

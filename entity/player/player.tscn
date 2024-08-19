@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=39 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://d0qo1268wfwma" path="res://sounds/player/jump medium.wav" id="11_r3er0"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c2slo88fd2yc1" path="res://entity/player/assets/big_state_machine.tres" id="12_pdx75"]
 [ext_resource type="AudioStream" uid="uid://d3tlclkgqqfu4" path="res://sounds/player/jump heavy.wav" id="13_r8481"]
+[ext_resource type="Script" path="res://entity/player/player_sound.gd" id="17_eebbm"]
 
 [sub_resource type="Gradient" id="Gradient_flrl2"]
 colors = PackedColorArray(0, 0.439216, 0.686275, 1, 0.207558, 0.000121289, 0.672063, 1)
@@ -144,30 +145,6 @@ size_stats = {
 }
 stats = ExtResource("3_8w4te")
 
-[node name="SmallSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
-script = ExtResource("5_s2ap8")
-footsteps = ExtResource("6_a1evr")
-jump = ExtResource("7_63xwt")
-size_up = ExtResource("7_dpa12")
-size_down = ExtResource("9_qfaku")
-
-[node name="NormalSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
-script = ExtResource("5_s2ap8")
-footsteps = ExtResource("7_qijco")
-jump = ExtResource("11_r3er0")
-size_up = ExtResource("7_dpa12")
-size_down = ExtResource("9_qfaku")
-
-[node name="BigSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
-script = ExtResource("5_s2ap8")
-footsteps = ExtResource("8_gorsm")
-jump = ExtResource("13_r8481")
-size_up = ExtResource("7_dpa12")
-size_down = ExtResource("7_dpa12")
-
 [node name="SizeChangeParticles" type="GPUParticles2D" parent="."]
 position = Vector2(0, -18)
 emitting = false
@@ -194,6 +171,7 @@ centered = false
 offset = Vector2(-32, -64)
 hframes = 9
 vframes = 4
+frame = 8
 
 [node name="SmallSprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -355,6 +333,34 @@ texture_scale = 4.27
 script = ExtResource("9_aa1p4")
 period = 3.0
 amplitude = 0.5
+
+[node name="SoundPlayer" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("17_eebbm")
+player = NodePath("..")
+
+[node name="SmallSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("6_a1evr")
+jump = ExtResource("7_63xwt")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="NormalSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("7_qijco")
+jump = ExtResource("11_r3er0")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="BigSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("8_gorsm")
+jump = ExtResource("13_r8481")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("7_dpa12")
 
 [connection signal="is_grounded_moving" from="." to="." method="_on_is_grounded_moving"]
 [connection signal="jumped" from="." to="." method="_on_jumped"]
