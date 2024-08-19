@@ -17,5 +17,5 @@ coyote_time = 0.15
 jump_buffer = 0.2
 can_double_jump = false
 can_glide = true
-glide_modifier = 0.05
+glide_modifier = 0.15
 mass = 0.01

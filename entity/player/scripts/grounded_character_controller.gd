@@ -133,11 +133,7 @@ func handle_gravity(delta: float) -> void:
 	if _grounded and _frame_velocity.y >= 0.0:
 		_frame_velocity.y = stats.grounding_force
 	else:
-		var _anti_upwards_modifier := 1
-		if _gliding and _frame_velocity.y < 0:
-			_anti_upwards_modifier = 10
-		
-		var in_air_gravity := ((_anti_upwards_modifier * stats.glide_modifier) if _gliding else 1.0) * stats.fall_acceleration
+		var in_air_gravity := ((stats.glide_modifier) if _gliding else 1.0) * stats.fall_acceleration
 		
 		if _ended_jump_early and _frame_velocity.y < 0:
 			in_air_gravity *= stats.jump_end_early_gravity_modifier
