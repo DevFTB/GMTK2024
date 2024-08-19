@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b58gwei0d8fc3"]
+[gd_scene load_steps=19 format=4 uid="uid://b58gwei0d8fc3"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_c2lqa"]
 [ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="2_ruyfp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_1umpc"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_7fufv"]
 [ext_resource type="PackedScene" uid="uid://d3kqi21bsji6q" path="res://level/components/breakable_wall/breakable_wall.tscn" id="7_h4ucl"]
+[ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="7_sfbnr"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_khtmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jjka"]
@@ -62,7 +63,7 @@ lifetime = 4.0
 
 [node name="PowerableFan2" parent="Platforms" instance=ExtResource("3_je1ol")]
 position = Vector2(-640, -448)
-force = Vector2(300, 0)
+force = Vector2(45, 0)
 powered = true
 
 [node name="CollisionShape2D" parent="Platforms/PowerableFan2/Fan/FanArea" index="0"]
@@ -141,6 +142,9 @@ number_of_spikes = 2
 [node name="BreakableWall" parent="Platforms" instance=ExtResource("7_h4ucl")]
 position = Vector2(128, 128)
 
+[node name="Checkpoint" parent="Platforms" instance=ExtResource("7_sfbnr")]
+position = Vector2(624, -256)
+
 [node name="Decor" type="TileMapLayer" parent="."]
 
 [node name="Spawns" type="Node2D" parent="."]
@@ -203,8 +207,6 @@ centered = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -96.0
-offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)

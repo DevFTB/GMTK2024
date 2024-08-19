@@ -14,6 +14,10 @@ var spawn_points:
 	get:
 		return get_tree().get_nodes_in_group("spawn_point")
 
+var check_points:
+	get:
+		return get_tree().get_nodes_in_group("check_point")
+		
 func start():
 	# TODO: renable if double level transitions still occuring
 	await get_tree().create_timer(0.1).timeout

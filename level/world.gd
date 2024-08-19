@@ -45,6 +45,9 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 
 	spawn_point.global_position = level.get_spawn_point(spawn_point_name)
 	player.global_position = spawn_point.global_position
+	
+	for cp in level.check_points:
+		cp.checkpoint_reached.connect(_on_checkpoint_reached)
 
 	level_transition_screen.fade_in()
 	connect_level_transitions(level)
@@ -57,6 +60,9 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 		camera_bounds["left"], camera_bounds["top"],
 		camera_bounds["right"], camera_bounds["bottom"]
 	)
+	
+func _on_checkpoint_reached(location: Vector2) -> void:
+	spawn_point.global_position = location
 	
 func _on_level_transition(level_name: String, spawn_point_name: String):
 	load_level(levels.get_level(level_name), spawn_point_name)
