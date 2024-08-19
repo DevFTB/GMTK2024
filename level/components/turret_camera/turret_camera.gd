@@ -44,7 +44,7 @@ func _on_player_exited() -> void:
 	_in_area = false
 	_stop_shooting()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if _in_area:
 		ray_cast_2d.target_position = player_position
 		ray_cast_2d.force_raycast_update()

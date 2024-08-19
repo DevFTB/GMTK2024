@@ -5,7 +5,6 @@ extends Powerable
 
 var curve : Curve2D
 
-var _moving := false
 var _progress : float = 0.0
 var _reversed : bool = false
 

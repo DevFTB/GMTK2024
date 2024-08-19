@@ -14,11 +14,14 @@ extends Node2D
 @onready var spawn_point: Node2D = $SpawnPoint
 @onready var player: Player = $Player
 
+@onready var music_player : MusicPlayer = $MusicPlayer
+
 func _ready() -> void:
 	player.global_position = spawn_point.global_position
 	player.killed.connect(_on_player_kill)
 	
 	load_level(levels.get_level(start_level_name), start_spawn_point)
+	queue_music(levels.get_music(start_level_name))
 
 func _on_player_kill() -> void:
 	player.global_position = spawn_point.global_position
@@ -55,11 +58,12 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	
 func _on_level_transition(level_name: String, spawn_point_name: String):
 	load_level(levels.get_level(level_name), spawn_point_name)
+	queue_music(levels.get_music(level_name))
 
 # TODO: seems to be an error that changle_level is already connected. not causing any grif at the moment, but could be connected to the prior issue
-func connect_level_transitions(level: Level):
-	if level.level_transitions:
-		for c in level.level_transitions:
+func connect_level_transitions(new_level: Level):
+	if new_level.level_transitions:
+		for c in new_level.level_transitions:
 			if not c.change_level.is_connected(_on_level_transition):
 				c.change_level.connect(_on_level_transition)
 
@@ -71,3 +75,9 @@ func pause():
 func resume():
 	player.set_process(true)
 	player.set_physics_process(true)
+	
+func queue_music(track):
+	music_player.clear_queue()
+	music_player.queue_music(track)
+	
+	
