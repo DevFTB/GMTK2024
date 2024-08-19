@@ -8,6 +8,10 @@ enum SizeMode {
 	SMALL, NORMAL, BIG
 }
 
+enum Skill {
+	GAUNTLET, GLIDER, DOUBLE_JUMP
+}
+
 const SCALES = {
 	Player.SizeMode.SMALL: Vector2(16,16),
 	Player.SizeMode.NORMAL: Vector2(32, 48),
@@ -16,6 +20,7 @@ const SCALES = {
 
 const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BIG]
 
+@export_flags("Gauntlet", "Glider", "Double Jump") var starting_skills
 @export var size_stats: Dictionary
 
 var size_mode := SizeMode.NORMAL:
@@ -46,9 +51,13 @@ var com: Vector2:
 
 @onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
 
+# bit 0:gauntlet, bit 1:glider, bit 2: double_jump
+var unlocked_skills : int = 0
+
 func _ready() -> void:
 	size_mode = SizeMode.NORMAL
 	anim_player_dict[SizeMode.NORMAL].transition_to()
+	unlocked_skills = starting_skills
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("change_size_down"):
@@ -76,32 +85,15 @@ func _physics_process(delta: float) -> void:
 			vec.y = 0
 			c.get_collider().apply_central_impulse(vec * stats.mass)
 
-func _check_size(size: SizeMode) -> bool:
-	var collision_shape = colliders[size].shape
-	var dss := get_world_2d().direct_space_state
-	
-	var params : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
-	params.collide_with_areas = true
-	params.collision_mask = 0b1
-	
-	var circle := CircleShape2D.new()
-	circle.radius = SCALES[size].x / 1.7
-	params.shape = circle
-		
-	#params.shape = collision_shape
-	#params.transform = transform
-	params.transform = transform.translated(com_dict[size].position)
-	
-	var result_array = dss.intersect_shape(params, 32)
-	#print(result_array)
-	var vertical_clearance = active_environment_detector.up.get_clearance().length()
-	#print("vert: ", vertical_clearance)
-	var has_vertical_clearance = active_environment_detector.up.get_clearance().length() > SCALES[size].y / 2
+func unlock_skill(skill: Skill) -> void:
+	unlocked_skills = unlocked_skills ^ 2 ** skill
+	print(unlocked_skills)
 
-	#prints("Size check since %d is greater than 3" % result_array.size(), has_vertical_clearance)
+func kill() -> void:
+	_frame_velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	
-	# adjust this as necessary
-	return result_array.size() < 4 and has_vertical_clearance
+	killed.emit()
 
 func switch_size(size: SizeMode) -> void:
 	var old_player = anim_player_dict[size_mode]
@@ -123,13 +115,37 @@ func switch_size(size: SizeMode) -> void:
 
 	active_environment_detector.position = com_dict[size].position
 	size_mode_changed.emit(old_size, size_mode)
+
+func _check_size(size: SizeMode) -> bool:
+	var dss := get_world_2d().direct_space_state
 	
-func kill() -> void:
-	_frame_velocity = Vector2.ZERO
-	velocity = Vector2.ZERO
+	var params : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
+	params.collide_with_areas = true
+	params.collision_mask = 0b1
 	
-	killed.emit()
+	var circle := CircleShape2D.new()
+	circle.radius = SCALES[size].x / 1.7
+	params.shape = circle
+		
+	#params.shape = collision_shape
+	#params.transform = transform
+	params.transform = transform.translated(com_dict[size].position)
 	
+	var result_array = dss.intersect_shape(params, 32)
+	#print(result_array)
+	var has_vertical_clearance = active_environment_detector.up.get_clearance().length() > SCALES[size].y / 2
+
+	#prints("Size check since %d is greater than 3" % result_array.size(), has_vertical_clearance)
+	
+	# adjust this as necessary
+	return result_array.size() < 4 and has_vertical_clearance
+
+func _can_double_jump() -> bool:
+	return stats.can_double_jump and unlocked_skills & 2 ** Skill.DOUBLE_JUMP
+
+func _can_glide() -> bool:
+	return stats.can_glide and unlocked_skills & 2 ** Skill.GLIDER
+
 func set_camera_limits(left, top, right, bottom):
 	$Camera2D.limit_top = top
 	$Camera2D.limit_left = left

@@ -17,7 +17,7 @@ signal transition_tween_completed
 func _ready() -> void:
 	_bind_signal_to_state(player.jumped, "jump")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for param in directional_parameters:
 		animation_tree.set(param, player.last_inputted_direction.x)
 

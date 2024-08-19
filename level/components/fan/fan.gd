@@ -30,7 +30,7 @@ func _ready() -> void:
 	power_changed.connect(_on_power_changed)
 	_on_power_changed(powered)
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if _player:
 		if should_apply:
 			_apply_force(_player)

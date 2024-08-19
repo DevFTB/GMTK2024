@@ -23,7 +23,7 @@ var _timer := 0.0
 
 func _ready() -> void:
 	_generate_sprite()
-	player_interactor.player_exited.connect(_on_player_exited)
+	player_interactor.player_exited.connect(_on_player_exited.unbind(1))
 	broken.connect(print.bind("i am mcbroken"))
 
 func _generate_sprite() -> void:
@@ -65,5 +65,5 @@ func _break() -> void:
 	broken.emit()
 	queue_free()
 
-func _on_player_exited(player: Player) -> void:
+func _on_player_exited() -> void:
 	_durability = durability
