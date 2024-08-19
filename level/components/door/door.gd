@@ -12,6 +12,7 @@ func _ready() -> void:
 	super()
 	_generate_sprite() 
 	power_changed.connect(_on_power_changed)
+	_on_power_changed(powered)
 	
 func _on_power_changed(new_value: bool) -> void:
 	collision_shape_2d.set_deferred("disabled", not new_value)
