@@ -27,7 +27,8 @@ script = ExtResource("1_rs1g5")
 script = ExtResource("2_lml2l")
 levels = ExtResource("3_s4mag")
 level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
-start_level_name = "level2"
+start_level_name = "level5"
+start_spawn_point = "Top1"
 
 [node name="Player" parent="World" instance=ExtResource("3_yqlic")]
 collision_mask = 27
