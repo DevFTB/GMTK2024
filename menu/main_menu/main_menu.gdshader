@@ -4,15 +4,15 @@ uniform float saturation = 1.0;
 mat4 saturationMatrix(float sat)
 {
     vec3 luminance = vec3( 0.3086, 0.6094, 0.0820 );
-    
+
     float oneMinusSat = 1.0 - sat;
-    
+
     vec3 red = vec3( luminance.x * oneMinusSat );
     red+= vec3( sat, 0, 0 );
-    
+
     vec3 green = vec3( luminance.y * oneMinusSat );
     green += vec3( 0, sat, 0 );
-    
+
     vec3 blue = vec3( luminance.z * oneMinusSat );
     blue += vec3( 0, 0, sat );
     return mat4(vec4(red,0),
