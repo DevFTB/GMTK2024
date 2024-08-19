@@ -23,6 +23,7 @@ const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BI
 @export_flags("Gauntlet", "Glider", "Double Jump") var starting_skills
 @export var size_stats: Dictionary
 
+
 var size_mode := SizeMode.NORMAL:
 	set(value):
 		size_mode = value
@@ -49,10 +50,19 @@ var com: Vector2:
 	SizeMode.BIG: $BigAnimationPlayer,
 }
 
+@onready var sound_player_dict := {
+	SizeMode.SMALL: $SmallSoundPlayer,
+	SizeMode.NORMAL: $NormalSoundPlayer,
+	SizeMode.BIG: $BigSoundPlayer,
+}
+
 @onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
 
 # bit 0:gauntlet, bit 1:glider, bit 2: double_jump
 var unlocked_skills : int = 0
+
+var is_walking = false
+var currently_playing : String
 
 func _ready() -> void:
 	size_mode = SizeMode.NORMAL
@@ -67,6 +77,13 @@ func _input(event: InputEvent) -> void:
 			print("huh", new_index)
 
 			switch_size(order[new_index])
+			
+			stop_playback()
+			var sound_player = sound_player_dict[size_mode]
+			sound_player.fx_play("size_down")
+			currently_playing = "size_down"
+
+			
 
 	if event.is_action_pressed("change_size_up"):
 		var index = order.find(size_mode)
@@ -75,7 +92,26 @@ func _input(event: InputEvent) -> void:
 			if _check_size(order[new_index]):
 				print("hah", new_index)
 				switch_size(order[new_index])
+				
+				var sound_player = sound_player_dict[size_mode]
+				stop_playback()
+				sound_player.fx_play("size_up")
+				currently_playing = "size_up"
 			
+	
+	if event.is_action("move_left") or event.is_action("move_right"):
+		if _grounded == true and currently_playing != "footsteps":
+			var sound_player = sound_player_dict[size_mode]
+			stop_playback()
+			sound_player.fx_play("footsteps")
+			currently_playing = "footsteps"
+			
+	if event.is_action_released("move_left") or event.is_action_released("move_right") or _grounded == false:
+		if currently_playing == "footsteps":
+			stop_playback()
+			currently_playing = "none"
+	
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	for i in get_slide_collision_count():
@@ -84,6 +120,8 @@ func _physics_process(delta: float) -> void:
 			var vec = -c.get_normal()
 			vec.y = 0
 			c.get_collider().apply_central_impulse(vec * stats.mass)
+			
+
 
 func unlock_skill(skill: Skill) -> void:
 	unlocked_skills = unlocked_skills ^ 2 ** skill
@@ -152,3 +190,18 @@ func set_camera_limits(left, top, right, bottom):
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
 	print(top,left,right,bottom)
+
+
+
+
+func _on_jumped():
+	is_walking = false
+	var sound_player = sound_player_dict[size_mode]
+	stop_playback()
+	sound_player.fx_play("jump")
+	currently_playing = "jump"
+
+func stop_playback():
+	$SmallSoundPlayer.stop()
+	$NormalSoundPlayer.stop()
+	$BigSoundPlayer.stop()

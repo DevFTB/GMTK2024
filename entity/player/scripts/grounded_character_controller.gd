@@ -3,6 +3,7 @@ class_name GroundedCharacterController
 
 signal grounded_changed(grounded: bool)
 signal jumped
+signal is_grounded_moving
 
 @export var stats : PlayerStats
 
@@ -35,6 +36,7 @@ var external_forces = {}
 
 func _process(delta: float) -> void:
 	_time += delta
+		
 	
 	
 func _physics_process(delta: float) -> void:
@@ -49,6 +51,8 @@ func _physics_process(delta: float) -> void:
 	handle_external_forces(delta)
 	
 	apply_movement()
+	
+
 
 func handle_external_forces(delta) -> void:
 	var sum_forces := Vector2()
@@ -112,6 +116,7 @@ func execute_jump() -> void:
 	_frame_velocity.y = -stats.jump_power
 	
 	jumped.emit()
+	#play jump sound
 	
 func handle_direction(delta: float) -> void:
 	if is_zero_approx(_frame_input.move.x):
@@ -142,6 +147,7 @@ func handle_gravity(delta: float) -> void:
 func apply_movement() -> void:
 	velocity = _frame_velocity
 	move_and_slide()
+	
 
 func gather_input() -> void:
 	_frame_input = FrameInput.new()

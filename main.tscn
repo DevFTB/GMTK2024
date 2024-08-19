@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmo01t4laheco"]
+[gd_scene load_steps=11 format=3 uid="uid://cmo01t4laheco"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_lml2l"]
 [ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_s4mag"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_yqlic"]
+[ext_resource type="PackedScene" uid="uid://dgq0imk2hl3xo" path="res://level/components/sound & fx/music_player.tscn" id="5_r12wm"]
 [ext_resource type="Script" path="res://level/level_transition_screen.gd" id="7_s8hre"]
 [ext_resource type="Script" path="res://gui/debug_gui.gd" id="13_26jet"]
 
@@ -31,6 +32,8 @@ start_spawn_point = "SpawnPoint1"
 
 [node name="Player" parent="World" instance=ExtResource("3_yqlic")]
 collision_mask = 27
+
+[node name="MusicPlayer" parent="World" instance=ExtResource("5_r12wm")]
 
 [node name="SpawnPoint" type="Node2D" parent="World"]
 

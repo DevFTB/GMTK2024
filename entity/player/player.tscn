@@ -1,19 +1,25 @@
-[gd_scene load_steps=29 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=35 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
 [ext_resource type="Resource" uid="uid://cn6yin4quysjt" path="res://entity/player/assets/normal_stats.tres" id="3_8w4te"]
 [ext_resource type="Resource" uid="uid://bta17un35teqs" path="res://entity/player/assets/big_stats.tres" id="4_jwny2"]
 [ext_resource type="Texture2D" uid="uid://dxry51skjxppt" path="res://entity/player/assets/walk-1-sheet.png" id="5_jhvpg"]
+[ext_resource type="Script" path="res://entity/player/player_sound_player.gd" id="5_s2ap8"]
+[ext_resource type="AudioStream" uid="uid://bm470sw6um1fw" path="res://sounds/player/footsteps light.wav" id="6_a1evr"]
 [ext_resource type="Texture2D" uid="uid://dqfirpa5duekj" path="res://entity/player/assets/small_size_sheet.png" id="6_jjdme"]
 [ext_resource type="Script" path="res://entity/player/scripts/player_animation.gd" id="6_m02uo"]
+[ext_resource type="AudioStream" uid="uid://chp2a544sx7l4" path="res://sounds/player/sizeup.wav" id="7_dpa12"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bnqujhkkbeg1w" path="res://entity/player/assets/normal_state_machine.tres" id="7_e483d"]
 [ext_resource type="AnimationLibrary" uid="uid://caylj8ll2xsqi" path="res://entity/player/assets/normal_anim_library.tres" id="7_jmn20"]
+[ext_resource type="AudioStream" uid="uid://doswe1501nm36" path="res://sounds/player/footsteps medium.wav" id="7_qijco"]
 [ext_resource type="Script" path="res://entity/player/scripts/player_active_environment_detector.gd" id="7_wk34v"]
 [ext_resource type="Script" path="res://entity/player/scripts/active_environment_detector.gd" id="8_fpsw3"]
+[ext_resource type="AudioStream" uid="uid://se2ubsjb86ek" path="res://sounds/player/footsteps heavy.wav" id="8_gorsm"]
 [ext_resource type="AnimationLibrary" uid="uid://bufno8qvsq2rw" path="res://entity/player/assets/small_anim_library.tres" id="8_i4i6t"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dh3h2srvegr8a" path="res://entity/player/assets/small_state_machine.tres" id="8_n58a0"]
 [ext_resource type="Script" path="res://entity/player/scripts/sinusodal_point_light_2d.gd" id="9_aa1p4"]
+[ext_resource type="AudioStream" uid="uid://bc875dd4ic8ve" path="res://sounds/player/sizedown.wav" id="9_qfaku"]
 [ext_resource type="AnimationLibrary" uid="uid://bqumykax8k2dr" path="res://entity/player/assets/big_anim_library.tres" id="11_p8l41"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c2slo88fd2yc1" path="res://entity/player/assets/big_state_machine.tres" id="12_pdx75"]
 
@@ -134,6 +140,27 @@ size_stats = {
 2: ExtResource("4_jwny2")
 }
 stats = ExtResource("3_8w4te")
+
+[node name="SmallSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("6_a1evr")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="NormalSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("7_qijco")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("9_qfaku")
+
+[node name="BigSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+script = ExtResource("5_s2ap8")
+footsteps = ExtResource("8_gorsm")
+size_up = ExtResource("7_dpa12")
+size_down = ExtResource("7_dpa12")
 
 [node name="SizeChangeParticles" type="GPUParticles2D" parent="."]
 position = Vector2(0, -18)
@@ -322,3 +349,6 @@ texture_scale = 4.27
 script = ExtResource("9_aa1p4")
 period = 3.0
 amplitude = 0.5
+
+[connection signal="is_grounded_moving" from="." to="." method="_on_is_grounded_moving"]
+[connection signal="jumped" from="." to="." method="_on_jumped"]
