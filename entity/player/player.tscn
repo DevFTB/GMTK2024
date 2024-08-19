@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=38 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bm470sw6um1fw" path="res://sounds/player/footsteps light.wav" id="6_a1evr"]
 [ext_resource type="Texture2D" uid="uid://dqfirpa5duekj" path="res://entity/player/assets/small_size_sheet.png" id="6_jjdme"]
 [ext_resource type="Script" path="res://entity/player/scripts/player_animation.gd" id="6_m02uo"]
+[ext_resource type="AudioStream" uid="uid://jfpnu4wmqpes" path="res://sounds/player/jump light.wav" id="7_63xwt"]
 [ext_resource type="AudioStream" uid="uid://chp2a544sx7l4" path="res://sounds/player/sizeup.wav" id="7_dpa12"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bnqujhkkbeg1w" path="res://entity/player/assets/normal_state_machine.tres" id="7_e483d"]
 [ext_resource type="AnimationLibrary" uid="uid://caylj8ll2xsqi" path="res://entity/player/assets/normal_anim_library.tres" id="7_jmn20"]
@@ -21,7 +22,9 @@
 [ext_resource type="Script" path="res://entity/player/scripts/sinusodal_point_light_2d.gd" id="9_aa1p4"]
 [ext_resource type="AudioStream" uid="uid://bc875dd4ic8ve" path="res://sounds/player/sizedown.wav" id="9_qfaku"]
 [ext_resource type="AnimationLibrary" uid="uid://bqumykax8k2dr" path="res://entity/player/assets/big_anim_library.tres" id="11_p8l41"]
+[ext_resource type="AudioStream" uid="uid://d0qo1268wfwma" path="res://sounds/player/jump medium.wav" id="11_r3er0"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c2slo88fd2yc1" path="res://entity/player/assets/big_state_machine.tres" id="12_pdx75"]
+[ext_resource type="AudioStream" uid="uid://d3tlclkgqqfu4" path="res://sounds/player/jump heavy.wav" id="13_r8481"]
 
 [sub_resource type="Gradient" id="Gradient_flrl2"]
 colors = PackedColorArray(0, 0.439216, 0.686275, 1, 0.207558, 0.000121289, 0.672063, 1)
@@ -145,6 +148,7 @@ stats = ExtResource("3_8w4te")
 bus = &"SFX"
 script = ExtResource("5_s2ap8")
 footsteps = ExtResource("6_a1evr")
+jump = ExtResource("7_63xwt")
 size_up = ExtResource("7_dpa12")
 size_down = ExtResource("9_qfaku")
 
@@ -152,6 +156,7 @@ size_down = ExtResource("9_qfaku")
 bus = &"SFX"
 script = ExtResource("5_s2ap8")
 footsteps = ExtResource("7_qijco")
+jump = ExtResource("11_r3er0")
 size_up = ExtResource("7_dpa12")
 size_down = ExtResource("9_qfaku")
 
@@ -159,6 +164,7 @@ size_down = ExtResource("9_qfaku")
 bus = &"SFX"
 script = ExtResource("5_s2ap8")
 footsteps = ExtResource("8_gorsm")
+jump = ExtResource("13_r8481")
 size_up = ExtResource("7_dpa12")
 size_down = ExtResource("7_dpa12")
 

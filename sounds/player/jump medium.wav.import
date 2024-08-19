@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0qo1268wfwma"
+path="res://.godot/imported/jump medium.wav-200708a21849d2e000af926a20cf6392.sample"
+
+[deps]
+
+source_file="res://sounds/player/jump medium.wav"
+dest_files=["res://.godot/imported/jump medium.wav-200708a21849d2e000af926a20cf6392.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
