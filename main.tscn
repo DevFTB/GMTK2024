@@ -31,6 +31,8 @@ level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
 [node name="Player" parent="World" instance=ExtResource("3_yqlic")]
 collision_mask = 27
 
+[node name="MusicPlayer" parent="World" instance=ExtResource("5_r12wm")]
+
 [node name="SpawnPoint" type="Node2D" parent="World"]
 
 [node name="MusicPlayer" parent="World" instance=ExtResource("5_8hhnd")]
