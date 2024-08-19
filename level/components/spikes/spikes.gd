@@ -17,13 +17,3 @@ func _ready() -> void:
 	
 func _kill(player: Player) -> void:
 	player.kill()
-
-#func create_spike(amount):
-	#var current_spikes = 1
-	#while current_spikes < number_of_spikes:
-		#var new_spike = spike_packed_scene.instantiate()
-		#add_child(new_spike)
-		#new_spike.set_position(Vector2(32*current_spikes,0))
-		#current_spikes+=1
-		##print("created spike at", str(new_spike.position))
-		#pass

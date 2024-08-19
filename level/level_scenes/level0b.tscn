@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bap81ui0aassh"]
+[gd_scene load_steps=11 format=4 uid="uid://bap81ui0aassh"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f14n4"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_exgmk"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_24ij2"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_m6lrp"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_xnhwd"]
-[ext_resource type="PackedScene" uid="uid://cjybd10jscmqw" path="res://level/components/size_changer/size_changer.tscn" id="10_bj8a3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(21, 64)
@@ -150,8 +149,5 @@ position = Vector2(915, 146)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(2.5, 14)
 shape = SubResource("RectangleShape2D_cvi8s")
-
-[node name="SizeChanger" parent="." instance=ExtResource("10_bj8a3")]
-position = Vector2(736, 192)
 
 [editable path="LevelTransitions/LevelTransition"]
