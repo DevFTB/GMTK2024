@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_lml2l"]
-[ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_s4mag"]
+[ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_b3uhf"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="3_yqlic"]
 [ext_resource type="PackedScene" uid="uid://dgq0imk2hl3xo" path="res://level/components/sound & fx/music_player.tscn" id="5_8hhnd"]
 [ext_resource type="Script" path="res://level/level_transition_screen.gd" id="7_s8hre"]
@@ -25,7 +25,7 @@ script = ExtResource("1_rs1g5")
 
 [node name="World" type="Node2D" parent="." node_paths=PackedStringArray("level_transition_screen")]
 script = ExtResource("2_lml2l")
-levels = ExtResource("3_s4mag")
+levels = ExtResource("3_b3uhf")
 level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
 start_level_name = "old_main"
 start_spawn_point = "SpawnPoint"
