@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_j67nw"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="10_txo1x"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="10_xm8gv"]
-[ext_resource type="Texture2D" uid="uid://d24h3psduk58b" path="res://gui/keyboard_l.png" id="11_i141u"]
+[ext_resource type="Texture2D" uid="uid://bur01ay1d2sah" path="res://gui/keyboard_y.png" id="12_cgh6s"]
 [ext_resource type="PackedScene" uid="uid://y4wbmdicim1a" path="res://level/components/door/door.tscn" id="12_vokb1"]
 [ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="18_n2i32"]
 
@@ -135,7 +135,7 @@ texture = null
 text = ""
 
 [node name="TextureRect" parent="Components/TutorialInWorld/ControlGUI/HBoxContainer3" index="0"]
-texture = ExtResource("11_i141u")
+texture = ExtResource("12_cgh6s")
 
 [node name="Label" parent="Components/TutorialInWorld/ControlGUI/HBoxContainer3" index="1"]
 text = "reload level

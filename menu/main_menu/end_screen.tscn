@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://btl3gf78lpark"]
+[gd_scene load_steps=9 format=3 uid="uid://btl3gf78lpark"]
 
 [ext_resource type="FontFile" uid="uid://cx7u1dn3lokjj" path="res://gui/assets/PixelifySans-VariableFont_wght.ttf" id="1_lxv11"]
 [ext_resource type="Script" path="res://menu/main_menu/end_screen.gd" id="2_e8o5i"]
-[ext_resource type="PackedScene" uid="uid://cugmjjrwe6mfd" path="res://menu/main_menu/main_menu.tscn" id="3_dap6v"]
 [ext_resource type="Texture2D" uid="uid://bbyoi0tjgh7ua" path="res://gui/cutscene_-1.png" id="4_emwv7"]
 
 [sub_resource type="Theme" id="Theme_7wpd1"]
@@ -154,7 +153,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_7wpd1")
 script = ExtResource("2_e8o5i")
-main_menu_scene = ExtResource("3_dap6v")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -181,8 +179,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Factory   reset ?"
+text = "Null Memory"
 label_settings = SubResource("LabelSettings_5vaun")
+horizontal_alignment = 1
 
 [node name="ConfirmButton" type="Button" parent="VBoxContainer"]
 visible = false

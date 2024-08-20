@@ -229,7 +229,6 @@ texture = ExtResource("11_e8r2v")
 
 [node name="LevelTransitionScreen" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
