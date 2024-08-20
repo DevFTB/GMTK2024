@@ -31,7 +31,7 @@ size = Vector2(256, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4br"]
 size = Vector2(160, 256)
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
 script = ExtResource("1_c2lqa")
 level_name = &"level2"
 
@@ -41,7 +41,7 @@ tile_set = ExtResource("2_ty3ci")
 
 [node name="PowerableFan" parent="Platforms" instance=ExtResource("3_je1ol")]
 position = Vector2(864, 0)
-force = Vector2(-50, 0)
+force = Vector2(-250, 0)
 powered = true
 
 [node name="CollisionShape2D" parent="Platforms/PowerableFan/Fan/FanArea" index="0"]
@@ -66,7 +66,7 @@ lifetime = 4.0
 
 [node name="PowerableFan2" parent="Platforms" instance=ExtResource("3_je1ol")]
 position = Vector2(-640, -448)
-force = Vector2(45, 0)
+force = Vector2(350, 0)
 powered = true
 
 [node name="CollisionShape2D" parent="Platforms/PowerableFan2/Fan/FanArea" index="0"]

@@ -68,6 +68,7 @@ position = Vector2(-848, -616)
 
 [node name="BreakablePlatform" parent="Components" instance=ExtResource("3_tly4q")]
 position = Vector2(664, -432)
+durability = 4.0
 
 [node name="Spikes" parent="Components" instance=ExtResource("10_a8obw")]
 position = Vector2(-960, 352)
@@ -95,6 +96,7 @@ powered = true
 
 [node name="BreakablePlatform2" parent="Components" instance=ExtResource("3_tly4q")]
 position = Vector2(1008, -376)
+durability = 4.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
