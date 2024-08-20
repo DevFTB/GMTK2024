@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bap81ui0aassh"]
+[gd_scene load_steps=16 format=4 uid="uid://bap81ui0aassh"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f14n4"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_exgmk"]
@@ -16,6 +16,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(21, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6ci3"]
+size = Vector2(154, 90)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_f14n4")
@@ -189,6 +192,10 @@ text = "shrink"
 
 [node name="PlayerInteractor" parent="TutorialInWorld2" index="2"]
 position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialInWorld2/PlayerInteractor" index="0"]
+position = Vector2(11, -85)
+shape = SubResource("RectangleShape2D_o6ci3")
 
 [editable path="LevelTransitions/LevelTransition"]
 [editable path="LevelTransitions/LevelTransition2"]
