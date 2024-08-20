@@ -34,7 +34,7 @@ func _on_finished() -> void:
 func fx_play(track_name: String) -> void:
 	if sound_fx_dict.has(track_name):
 		var track = sound_fx_dict[track_name]
-		print("playing",track_name, track)
+		#print("playing",track_name, track)
 		stop()
 		
 		set_stream(track)
