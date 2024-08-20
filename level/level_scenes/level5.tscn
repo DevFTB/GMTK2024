@@ -48,10 +48,10 @@ tile_set = ExtResource("2_6g2je")
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-892, -71)
+position = Vector2(-992, -64)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(214, 16)
+position = Vector2(248, 64)
 
 [node name="Top1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(-528, -712)
@@ -160,6 +160,8 @@ color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 
 [node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_gs8wn")]
 position = Vector2(325, 16)
+level_name = "level6"
+spawn_point_name = "Left1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(2.5, 31)
@@ -167,6 +169,8 @@ shape = SubResource("RectangleShape2D_cvi8s")
 
 [node name="LevelTransition2" parent="LevelTransitions" instance=ExtResource("8_gs8wn")]
 position = Vector2(-536, -781)
+level_name = "level4"
+spawn_point_name = "Bottom1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition2/PlayerInteractor" index="0"]
 position = Vector2(8, -91)
@@ -174,6 +178,8 @@ shape = SubResource("RectangleShape2D_sv8kp")
 
 [node name="LevelTransition3" parent="LevelTransitions" instance=ExtResource("8_gs8wn")]
 position = Vector2(-1064, -120)
+level_name = "level1"
+spawn_point_name = "Right1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition3/PlayerInteractor" index="0"]
 position = Vector2(8, 24)
