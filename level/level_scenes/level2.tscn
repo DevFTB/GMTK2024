@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b58gwei0d8fc3"]
+[gd_scene load_steps=21 format=4 uid="uid://b58gwei0d8fc3"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_c2lqa"]
 [ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="2_ruyfp"]
@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://d3kqi21bsji6q" path="res://level/components/breakable_wall/breakable_wall.tscn" id="7_h4ucl"]
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="7_sfbnr"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_khtmo"]
-[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="14_6q6dr"]
 [ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="8_ufgnu"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="14_6q6dr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jjka"]
 size = Vector2(712, 64)
