@@ -35,7 +35,7 @@ size = Vector2(21, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(21, 102)
 
-[node name="Level2" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_srw54")
 level_name = &"level7"
 
