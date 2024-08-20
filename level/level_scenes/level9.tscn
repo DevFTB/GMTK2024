@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=4 uid="uid://mq1ccudt5wl0"]
+[gd_scene load_steps=39 format=4 uid="uid://mq1ccudt5wl0"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_i66ry"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_1blf7"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="3_6estj"]
+[ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="3_fe0jl"]
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="3_jt154"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="4_0inq7"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="4_137db"]
@@ -98,6 +99,8 @@ tile_map_data = PackedByteArray("AAAcAA8AAAACAAIAAAAcAA4AAAACAAEAAAAcAA0AAAACAAE
 tile_set = ExtResource("2_1blf7")
 
 [node name="Decor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAARAO7/AQADAAUAAAD4//7/AQAAAAQAAAD3//7/AQAAAAQAAADh/+v/AQAAAAUAAADX/00AAQADAAUAAADU/00AAQADAAUAAADR/00AAQADAAUAAADQ/00AAQADAAUAAADN/04AAQADAAUAAADM/04AAQADAAUAAADM/00AAQAAAAUAAADL/00AAQADAAUAAADK/00AAQADAAUAAADI/00AAQADAAUAAADP/00AAQADAAUAAADV/00AAQAAAAUAAADS/00AAQADAAQAAADS/0wAAQAAAAQAAADP/0wAAQAAAAQAAADJ/00AAQAAAAcAAAA=")
+tile_set = ExtResource("3_fe0jl")
 
 [node name="Spawns" type="Node2D" parent="."]
 
