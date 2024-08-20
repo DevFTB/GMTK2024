@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cupco6h7gl2r3"]
 
-[ext_resource type="Script" path="res://minimap.gd" id="1_tb3dh"]
-[ext_resource type="Texture2D" uid="uid://cnsof6icpmbhq" path="res://gui/assets/minimap.png" id="2_go1qq"]
-[ext_resource type="Texture2D" uid="uid://b2fvp4dylstf0" path="res://gui/assets/minimap_player_marker.png" id="3_35yn4"]
+[ext_resource type="Script" path="res://gui/minimap.gd" id="1_tb3dh"]
+[ext_resource type="Texture2D" uid="uid://bymdss5fes5u3" path="res://gui/minimap.png" id="2_go1qq"]
+[ext_resource type="Texture2D" uid="uid://dn60pab7ehj63" path="res://gui/minimap_player_marker.png" id="3_35yn4"]
 
-[node name="Minimap" type="Control" node_paths=PackedStringArray("world")]
+[node name="Minimap" type="Control"]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tb3dh")
-world = NodePath("")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
