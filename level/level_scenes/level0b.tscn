@@ -32,6 +32,7 @@ tile_set = ExtResource("2_exgmk")
 
 [node name="SkillPickup" parent="." instance=ExtResource("3_df1ap")]
 position = Vector2(744, 160)
+skill = 3
 
 [node name="Spawns" type="Node2D" parent="."]
 

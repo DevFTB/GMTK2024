@@ -80,10 +80,12 @@ position = Vector2(0, -16)
 
 [node name="Switch" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_xfu21")]
 position = Vector2(-48, -656)
+_powering = false
 listeners = [NodePath("../PowerableFan")]
 
 [node name="Switch2" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_xfu21")]
 position = Vector2(144, 48)
+_powering = false
 listeners = [NodePath("../PowerableFan")]
 
 [node name="Spikes" parent="Components" instance=ExtResource("7_wt22h")]
@@ -179,7 +181,7 @@ shape = SubResource("RectangleShape2D_sv8kp")
 [node name="LevelTransition3" parent="LevelTransitions" instance=ExtResource("8_gs8wn")]
 position = Vector2(-1064, -120)
 level_name = "level1"
-spawn_point_name = "Right1"
+spawn_point_name = "Right2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition3/PlayerInteractor" index="0"]
 position = Vector2(8, 24)
