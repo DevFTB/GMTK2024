@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4wn5jpxh2t21"]
+
+[ext_resource type="Script" path="res://level/components/story_item/story_item.gd" id="1_ji8g8"]
+[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="2_uhjoi"]
+[ext_resource type="Script" path="res://level/components/tutorial/tutorial_in_world.gd" id="3_3uldr"]
+[ext_resource type="Texture2D" uid="uid://cpedhg404t87s" path="res://gui/assets/keyboard_f.png" id="4_l1jgj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ssvaq"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sno1y"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_i3dua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1oefq"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0xi0a"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_htkvc"]
+_data = {
+"RESET": SubResource("Animation_i3dua"),
+"fade_in": SubResource("Animation_1oefq"),
+"fade_out": SubResource("Animation_0xi0a")
+}
+
+[node name="StoryItem" type="Node2D"]
+script = ExtResource("1_ji8g8")
+story_text = "the quick brown fox jumped over the lazy dog. it was so damn lazy, it was so damn fat. very sad story :((("
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = SubResource("PlaceholderTexture2D_ssvaq")
+
+[node name="PlayerInteractor" type="Area2D" parent="."]
+position = Vector2(-224, 64)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_uhjoi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractor"]
+position = Vector2(224, -96)
+shape = SubResource("RectangleShape2D_sno1y")
+
+[node name="TutorialInWorld" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("3_3uldr")
+
+[node name="ControlGUI" type="VBoxContainer" parent="TutorialInWorld"]
+offset_left = -19.0
+offset_top = -128.0
+offset_right = 20.0
+offset_bottom = -69.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="TutorialInWorld/ControlGUI"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_l1jgj")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="TutorialInWorld/ControlGUI"]
+layout_mode = 2
+text = "Read"
+horizontal_alignment = 1
+
+[node name="Transition" type="AnimationPlayer" parent="TutorialInWorld"]
+libraries = {
+"": SubResource("AnimationLibrary_htkvc")
+}
+
+[node name="Control" type="Control" parent="TutorialInWorld"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://7k8kb8abds7w"]
+[gd_scene load_steps=19 format=4 uid="uid://7k8kb8abds7w"]
 
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="1_01x3t"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_86eyn"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_p6p72"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_nt515"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="10_a8obw"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="12_kioff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(21, 94)
@@ -203,6 +204,10 @@ shape = SubResource("RectangleShape2D_47fmk")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-658, 330)
+
+[node name="StoryItem" parent="." instance=ExtResource("12_kioff")]
+position = Vector2(384, -416)
+story_text = "[p][RECORDING] \"Just like that B-103, and ease off the platforms\"[/p][p][INFO] Final fan successfully cleared[/p]"
 
 [editable path="LevelTransitions/LevelTransition"]
 [editable path="LevelTransitions/LevelTransition2"]

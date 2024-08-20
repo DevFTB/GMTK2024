@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://ckfp0gc5hjpo7"]
+[gd_scene load_steps=24 format=4 uid="uid://ckfp0gc5hjpo7"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_q0y81"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_wi6ds"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="8_visfm"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="9_40ox5"]
 [ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/assets/keyboard_space_icon.svg" id="10_kabt1"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="17_2ygll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrkir"]
 size = Vector2(800, 128)
@@ -236,6 +237,10 @@ spawn_point_name = "Right1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(2.5, 8)
 shape = SubResource("RectangleShape2D_htsa7")
+
+[node name="StoryItem" parent="." instance=ExtResource("17_2ygll")]
+position = Vector2(-320, -192)
+story_text = "[Recording] \"Slowly, slowly, B-103! Careful there!\" *CRASH*"
 
 [editable path="Components/PowerableFan"]
 [editable path="Components/PowerableFan2"]

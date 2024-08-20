@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c3q1u54aahrde"]
+[gd_scene load_steps=21 format=4 uid="uid://c3q1u54aahrde"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f7jaj"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_6g2je"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="7_wt22h"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_gs8wn"]
 [ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="10_t2rre"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="14_8gkvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iufvu"]
 size = Vector2(128, 514)
@@ -186,6 +187,10 @@ spawn_point_name = "Right2"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition3/PlayerInteractor" index="0"]
 position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_hutjp")
+
+[node name="StoryItem" parent="." instance=ExtResource("14_8gkvp")]
+position = Vector2(-480, -384)
+story_text = "[p][RECORDING] \"And that, B-103, is how you make an oil muffin!\"[/p][p][INFO] Algorithm added to catalog[/p]"
 
 [editable path="Components/PowerableFan"]
 [editable path="Components/MovingPlatform"]

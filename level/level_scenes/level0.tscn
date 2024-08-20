@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bpivvhh6cmhrf"]
+[gd_scene load_steps=18 format=4 uid="uid://bpivvhh6cmhrf"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_6p7og"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_68aqp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/assets/keyboard_space_icon.svg" id="7_3kwym"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_xnkqy"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_unigl"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="14_328hb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3ie8"]
 size = Vector2(324, 137)
@@ -161,6 +162,22 @@ spawn_point_name = "Top1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition2/PlayerInteractor" index="0"]
 position = Vector2(-12, 22)
 shape = SubResource("RectangleShape2D_cvi8s")
+
+[node name="StoryItem" parent="." instance=ExtResource("14_328hb")]
+position = Vector2(512, -32)
+story_text = "[Recording] \"Crouch... then release. Try it again B-103!\""
+
+[node name="StoryItem2" parent="." instance=ExtResource("14_328hb")]
+position = Vector2(-448, -512)
+story_text = "[p][RECORDING] \"Now try throwing the ball towards that wall\" [/p] [p][INFO] Increased x and y velocity of ball using motor functions[/p]"
+
+[node name="StoryItem3" parent="." instance=ExtResource("14_328hb")]
+position = Vector2(-288, -480)
+story_text = "[p][RECORDING] \"Did you see the way the ball changed?\"[/p][p][INFO] Observed change in dimensions of ball when collided with wall[/p]"
+
+[node name="StoryItem4" parent="." instance=ExtResource("14_328hb")]
+position = Vector2(-192, -512)
+story_text = "[RECORDING] \"You see, B-013, the world is much more than just numbers, it's ever changing.... it's alive.... I can only hope that you will see the world that my son did.\""
 
 [editable path="Components/LeftRight"]
 [editable path="Components/Space"]
