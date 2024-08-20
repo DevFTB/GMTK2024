@@ -1,5 +1,6 @@
 extends Node2D
- 
+class_name World
+
 signal level_loaded
 # TODO: note, this way we can stil potentailly make a minimap by putting all levels in the same scene after
 
