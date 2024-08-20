@@ -201,6 +201,8 @@ color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 
 [node name="LevelTransition" parent="LevelTransitions" instance=ExtResource("8_j67nw")]
 position = Vector2(432, -80)
+level_name = "level1"
+spawn_point_name = "Left2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(2.5, -16)
@@ -208,6 +210,8 @@ shape = SubResource("RectangleShape2D_6wumc")
 
 [node name="LevelTransition2" parent="LevelTransitions" instance=ExtResource("8_j67nw")]
 position = Vector2(-981, 120)
+level_name = "level8"
+spawn_point_name = "Bottom1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition2/PlayerInteractor" index="0"]
 position = Vector2(2.5, -5)
