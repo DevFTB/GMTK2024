@@ -23,6 +23,7 @@ const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BI
 
 @export_flags("Gauntlet", "Glider", "Double Jump", "Small", "Big") var starting_skills
 @export var size_stats: Dictionary
+@export var size_changed_cooldown = 0.5
 
 
 var size_mode := SizeMode.NORMAL:
@@ -59,7 +60,7 @@ var is_walking = false
 var currently_playing: String 
 
 var is_dead := false
-
+var size_change_cooling := false
 func _ready() -> void:
 	size_mode = SizeMode.NORMAL
 	anim_player_dict[SizeMode.NORMAL].transition_to()
@@ -83,13 +84,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("change_size_up"):
 		var index = order.find(size_mode)
 		var new_index = index + 1
-		if new_index < order.size():
+		if new_index < order.size() and not size_change_cooling:
 			var new_size = order[new_index]
 			# only go small if unlocked
 			if new_size == SizeMode.BIG and not unlocked_skills & 2 ** Skill.BIG:
 				return
 				
-			if _check_size(order[new_index]):
+			if _check_size(order[new_index]) and not size_change_cooling:
 				print("hah", new_index)
 				switch_size(order[new_index])
 	
@@ -146,6 +147,8 @@ func switch_size(size: SizeMode) -> void:
 
 
 	_gliding = false
+	size_change_cooling = true
+	get_tree().create_timer(size_changed_cooldown).timeout.connect(_allow_size_change)
 
 	active_environment_detector.position = com_dict[size].position
 	size_mode_changed.emit(old_size, size_mode)
@@ -179,6 +182,9 @@ func _can_double_jump() -> bool:
 
 func _can_glide() -> bool:
 	return stats.can_glide and unlocked_skills & 2 ** Skill.GLIDER
+
+func _allow_size_change() -> void:
+	size_change_cooling = false
 
 func set_camera_limits(left, top, right, bottom):
 	$Camera2D.limit_top = top
