@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ctjei7epw10s5"]
+[gd_scene load_steps=20 format=4 uid="uid://ctjei7epw10s5"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_isdxi"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_juosa"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_akwyr"]
 [ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="6_coye1"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_7adlx"]
+[ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="7_tnf1a"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_01160"]
 
 [sub_resource type="Curve2D" id="Curve2D_ikq08"]
@@ -295,6 +296,12 @@ shape = SubResource("RectangleShape2D_at3us")
 [node name="ClippingRect" parent="Components/PowerableFan13/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
 
+[node name="Checkpoint" parent="Components" instance=ExtResource("7_tnf1a")]
+position = Vector2(624, 32)
+
+[node name="CollisionShape2D" parent="Components/Checkpoint/PlayerInteractor" index="0"]
+position = Vector2(0, -80)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -397,6 +404,7 @@ shape = SubResource("RectangleShape2D_xoj83")
 [editable path="Components/PowerableFan11"]
 [editable path="Components/PowerableFan12"]
 [editable path="Components/PowerableFan13"]
+[editable path="Components/Checkpoint"]
 [editable path="LevelTransitions/LevelTransition"]
 [editable path="LevelTransitions/LevelTransition2"]
 [editable path="LevelTransitions/LevelTransition3"]

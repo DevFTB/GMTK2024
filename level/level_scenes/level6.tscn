@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ckfp0gc5hjpo7"]
+[gd_scene load_steps=20 format=4 uid="uid://ckfp0gc5hjpo7"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_q0y81"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_wi6ds"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dj7dnbfgo3bod" path="res://level/components/skill_pickup/skill_pickup.tscn" id="7_4p252"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_n75kr"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_akkgw"]
+[ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="8_visfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrkir"]
 size = Vector2(800, 128)
@@ -130,6 +131,9 @@ position = Vector2(-536, 512)
 position = Vector2(-696, 592)
 _powering = false
 listeners = [NodePath("../Door4")]
+
+[node name="Checkpoint" parent="Components" instance=ExtResource("8_visfm")]
+position = Vector2(-144, 592)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
