@@ -13,9 +13,9 @@ func display(new_text: String = "") -> void:
 	visible_characters = 0
 
 	_tween = create_tween()
-	_tween.tween_property(self, "modulate", Color.WHITE, 1.0).from(Color(Color.WHITE, 0.0))
+	_tween.tween_property(self, "modulate", Color.WHITE, 0.5).from(Color(Color.WHITE, 0.0))
 	_tween.tween_property(self, "visible_characters", text.length(), text.length() / character_speed).from(0)
-	_tween.tween_callback(_on_display_completed)
+	_tween.tween_callback(_on_display_completed).set_delay(1.0)
 
 func _on_display_completed() -> void:
 	display_completed.emit()
