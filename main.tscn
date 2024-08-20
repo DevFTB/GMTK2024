@@ -115,6 +115,7 @@ character_speed = 15.0
 
 [node name="Minimap" type="Control" parent="CanvasLayer/GUI" node_paths=PackedStringArray("world")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,93 +152,93 @@ texture = ExtResource("10_cmbx4")
 [node name="level0" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
 offset_left = 240.0
-offset_top = 288.0
-offset_right = 427.0
-offset_bottom = 395.0
+offset_top = 362.0
+offset_right = 303.0
+offset_bottom = 439.0
 
 [node name="level0b" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 154.0
-offset_top = 289.0
-offset_right = 194.0
-offset_bottom = 335.0
+offset_left = 310.0
+offset_top = 361.0
+offset_right = 374.0
+offset_bottom = 440.0
 
 [node name="level0c" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 203.0
-offset_top = 289.0
-offset_right = 239.0
-offset_bottom = 335.0
+offset_left = 381.0
+offset_top = 361.0
+offset_right = 447.0
+offset_bottom = 438.0
 
 [node name="level1" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 240.0
-offset_top = 287.0
-offset_right = 428.0
-offset_bottom = 395.0
+offset_left = 452.0
+offset_top = 362.0
+offset_right = 758.0
+offset_bottom = 534.0
 
 [node name="level2" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 441.0
-offset_top = 281.0
-offset_right = 552.0
-offset_bottom = 345.0
-
-[node name="level3b" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
-anchors_preset = 0
-offset_left = 344.0
-offset_top = 200.0
-offset_right = 423.0
-offset_bottom = 280.0
+offset_left = 782.0
+offset_top = 349.0
+offset_right = 964.0
+offset_bottom = 457.0
 
 [node name="level3a" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 454.0
-offset_top = 200.0
-offset_right = 542.0
-offset_bottom = 227.0
+offset_left = 800.0
+offset_top = 218.0
+offset_right = 945.0
+offset_bottom = 265.0
+
+[node name="level3b" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 620.0
+offset_top = 219.0
+offset_right = 753.0
+offset_bottom = 356.0
 
 [node name="level4" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 563.0
-offset_top = 293.0
-offset_right = 768.0
-offset_bottom = 402.0
+offset_left = 980.0
+offset_top = 367.0
+offset_right = 1314.0
+offset_bottom = 549.0
 
 [node name="level5" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 529.0
-offset_top = 420.0
-offset_right = 643.0
-offset_bottom = 523.0
+offset_left = 925.0
+offset_top = 574.0
+offset_right = 1110.0
+offset_bottom = 748.0
 
 [node name="level6" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 663.0
-offset_top = 427.0
-offset_right = 767.0
-offset_bottom = 503.0
+offset_left = 1139.0
+offset_top = 589.0
+offset_right = 1317.0
+offset_bottom = 717.0
 
 [node name="level7" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 112.0
-offset_top = 350.0
-offset_right = 222.0
-offset_bottom = 432.0
+offset_left = 243.0
+offset_top = 468.0
+offset_right = 424.0
+offset_bottom = 604.0
 
 [node name="level8" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 46.0
-offset_top = 242.0
-offset_right = 101.0
-offset_bottom = 432.0
+offset_left = 133.0
+offset_top = 289.0
+offset_right = 227.0
+offset_bottom = 602.0
 
 [node name="level9" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 anchors_preset = 0
-offset_left = 789.0
-offset_top = 320.0
-offset_right = 949.0
-offset_bottom = 535.0
+offset_left = 1342.0
+offset_top = 412.0
+offset_right = 1613.0
+offset_bottom = 767.0
 
 [node name="PlayerIcon" type="TextureRect" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
 layout_mode = 0
