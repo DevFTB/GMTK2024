@@ -29,6 +29,7 @@ levels = {
 "level6": ExtResource("12_1ha1y"),
 "level7": ExtResource("13_yhbqm"),
 "level8": ExtResource("11_8wwfm"),
+"level9": ExtResource("13_e1c8c"),
 "leveltest": ExtResource("2_n0mpx"),
 "old_main": ExtResource("3_o6kvr")
 }

@@ -30,6 +30,7 @@ tile_map_data = PackedByteArray("AAASAAYAAAAAAAYAAAASAAUAAAAAAAUAAAATAAUAAAABAAU
 tile_set = ExtResource("2_yb6wq")
 
 [node name="PushableObject" parent="." instance=ExtResource("3_h4t38")]
+position = Vector2(40, -16)
 
 [node name="Fan" parent="." instance=ExtResource("5_xuefr")]
 position = Vector2(448, 224)
@@ -42,7 +43,7 @@ number_of_spikes = 6
 
 [node name="Switch" parent="." node_paths=PackedStringArray("listeners") instance=ExtResource("7_dkc1h")]
 position = Vector2(64, -32)
-listeners = [NodePath("../Fan"), NodePath("../MovingPlatform"), null]
+listeners = [NodePath("../Fan"), NodePath("../MovingPlatform")]
 
 [node name="PressurePlate" parent="." node_paths=PackedStringArray("listeners") instance=ExtResource("9_h10dk")]
 position = Vector2(336, -80)

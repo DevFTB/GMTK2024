@@ -29,7 +29,7 @@ func _on_player_size_changed(old_size: Player.SizeMode, _new_size: Player.SizeMo
 	old_player.stop()
 
 func play(key: String, force := false, is_loop := false) -> void:
-	prints(key, force, is_loop, " currently : ", currently_playing)
+	#prints(key, force, is_loop, " currently : ", currently_playing)
 	if currently_playing != key:
 		if active_player.playing:
 			if force or is_looping:
