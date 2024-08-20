@@ -14,10 +14,10 @@ var _timer := 0.0
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var extents := collision_shape_2d.shape.get_rect()
 @onready var sprites: Node2D = $Sprites
+@onready var break_sound: AudioStreamPlayer2D = $BreakSound
 
 func _ready() -> void:
 	_generate_sprite()
-	
 
 func _generate_sprite() -> void:
 	var tiles := extents.size.y / 32
@@ -42,5 +42,12 @@ func _break() -> void:
 	collision_shape_2d.set_deferred("disabled", true)
 	# TODO: play animation for broken platform
 	
+	hide()
+	break_sound.play()
 	broken.emit()
-	queue_free()
+	break_sound.finished.connect(queue_free, CONNECT_ONE_SHOT)
+
+
+func _on_break_sound_finished() -> void:
+	print("bruh")
+	pass # Replace with function body.
