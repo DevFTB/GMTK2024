@@ -351,6 +351,8 @@ shape = SubResource("RectangleShape2D_cvi8s")
 
 [node name="LevelTransition2" parent="LevelTransitions" instance=ExtResource("8_djucs")]
 position = Vector2(-1200, 2448)
+level_name = "END"
+spawn_point_name = "END"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition2/PlayerInteractor" index="0"]
 position = Vector2(2.5, 14)

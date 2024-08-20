@@ -90,12 +90,16 @@ func display_story_text(text: String) -> void:
 func _on_checkpoint_reached(location: Vector2, checkpoint: Checkpoint) -> void:
 	spawn_point.global_position = location
 	spawn_point_name = checkpoint.name
-	
+
+const END_SCREEN = preload("res://menu/main_menu/end_screen.tscn")
 func _on_level_transition(level_name: String, spawn_point_name: String):
-	load_level(levels.get_level(level_name), spawn_point_name)
-	var level_music = levels.get_music(start_level_name)
-	if level_music:
-		queue_music(level_music)
+	if level_name != "END":
+		load_level(levels.get_level(level_name), spawn_point_name)
+		var level_music = levels.get_music(start_level_name)
+		if level_music:
+			queue_music(level_music)
+	else:
+		get_tree().change_scene_to_packed(END_SCREEN)
 
 # TODO: seems to be an error that changle_level is already connected. not causing any grif at the moment, but could be connected to the prior issue
 func connect_level_transitions(new_level: Level):
