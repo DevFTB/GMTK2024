@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cgnmn7p3m4lln"]
+[gd_scene load_steps=31 format=4 uid="uid://cgnmn7p3m4lln"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_flelm"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_6w7o1"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="10_gts8t"]
 [ext_resource type="PackedScene" uid="uid://y4wbmdicim1a" path="res://level/components/door/door.tscn" id="17_fjari"]
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="18_03evb"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="20_2buv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhixb"]
 size = Vector2(256, 32)
@@ -364,6 +365,10 @@ position = Vector2(32, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition3/PlayerInteractor" index="0"]
 position = Vector2(120, 56)
 shape = SubResource("RectangleShape2D_xb4br")
+
+[node name="StoryItem" parent="." instance=ExtResource("20_2buv1")]
+position = Vector2(0, 960)
+story_text = "[Recording] \"Come, try this on, B-103. Give it a hit!\""
 
 [connection signal="player_entered" from="Components/TutorialInWorld/PlayerInteractor" to="Components/TutorialInWorld" method="_on_player_detector_body_entered"]
 [connection signal="player_exited" from="Components/TutorialInWorld/PlayerInteractor" to="Components/TutorialInWorld" method="_on_player_detector_body_exited"]
