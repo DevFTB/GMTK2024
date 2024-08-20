@@ -19,6 +19,7 @@ region = Rect2(0, 0, 32, 32)
 
 [node name="PressurePlate" type="Node2D" node_paths=PackedStringArray("listeners")]
 script = ExtResource("1_a53yt")
+_powering = false
 listeners = [null]
 
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_brlfd")]

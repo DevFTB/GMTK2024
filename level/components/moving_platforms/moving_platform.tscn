@@ -26,6 +26,7 @@ curve = SubResource("Curve2D_ojvna")
 [node name="StaticBody2D" type="AnimatableBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, 2)
 texture = SubResource("AtlasTexture_qew7u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

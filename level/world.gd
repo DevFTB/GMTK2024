@@ -59,6 +59,8 @@ func load_level(new_level: PackedScene, new_spawn_point_name: String) -> void:
 	spawn_point_name = new_spawn_point_name
 	
 	player.global_position = spawn_point.global_position
+	player.velocity = Vector2.ZERO
+	player._frame_velocity = Vector2.ZERO
 	
 	for cp in level.check_points:
 		cp.checkpoint_reached.connect(_on_checkpoint_reached.bind(cp))

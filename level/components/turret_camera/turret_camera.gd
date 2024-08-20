@@ -2,7 +2,11 @@ extends Powerable
 class_name TurretCamera
 
 @export var auto_polygon_2d : bool = true
-@export var tracking_duration: float = 1.5
+@export var tracking_duration: float = 1.5:
+	set(value):
+		tracking_duration = value
+		if shoot_timer:
+			shoot_timer.wait_time = tracking_duration
 
 var _in_area := false
 var _is_shooting = false
