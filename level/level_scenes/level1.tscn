@@ -43,22 +43,22 @@ tile_set = ExtResource("1_01x3t")
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-960, -584)
+position = Vector2(-960, -512)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(1616, -512)
+position = Vector2(1600, -416)
 
 [node name="Left2" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-976, 64)
+position = Vector2(-984, 128)
 
 [node name="Right2" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(1640, 0)
+position = Vector2(1664, 64)
 
 [node name="Top1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(896, -728)
+position = Vector2(957, -616)
 
 [node name="Top2" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-856, -704)
+position = Vector2(-848, -616)
 
 [node name="Components" type="Node2D" parent="."]
 

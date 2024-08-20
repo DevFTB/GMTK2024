@@ -154,10 +154,10 @@ position = Vector2(624, -256)
 position = Vector2(-840, 128)
 
 [node name="Top1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(128, -512)
+position = Vector2(96, -448)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(832, 256)
+position = Vector2(32, 384)
 
 [node name="Components" type="Node2D" parent="."]
 
