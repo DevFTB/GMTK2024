@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cgnmn7p3m4lln"]
+[gd_scene load_steps=32 format=4 uid="uid://cgnmn7p3m4lln"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_flelm"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_6w7o1"]
@@ -17,8 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="8_ct1v3"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="9_v4iu7"]
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="10_gts8t"]
+[ext_resource type="Texture2D" uid="uid://cpedhg404t87s" path="res://gui/assets/keyboard_f.png" id="14_0a0sh"]
 [ext_resource type="PackedScene" uid="uid://y4wbmdicim1a" path="res://level/components/door/door.tscn" id="17_fjari"]
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="18_03evb"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="20_2buv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhixb"]
 size = Vector2(256, 32)
@@ -286,7 +288,86 @@ libraries = {
 position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_x6kdx")
 
+[node name="TutorialInWorld2" type="Node2D" parent="Components"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-392, 880)
+script = ExtResource("6_qvdtk")
+
+[node name="ControlGUI" type="HBoxContainer" parent="Components/TutorialInWorld2"]
+offset_left = -96.0
+offset_top = 8.0
+offset_right = 112.0
+offset_bottom = 67.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Components/TutorialInWorld2/ControlGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Components/TutorialInWorld2/ControlGUI/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("14_0a0sh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Components/TutorialInWorld2/ControlGUI/HBoxContainer"]
+layout_mode = 2
+text = "Press F to interact
+"
+horizontal_alignment = 1
+
+[node name="Transition" type="AnimationPlayer" parent="Components/TutorialInWorld2"]
+libraries = {
+"": SubResource("AnimationLibrary_htkvc")
+}
+
+[node name="PlayerInteractor" parent="Components/TutorialInWorld2" instance=ExtResource("8_ct1v3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/TutorialInWorld2/PlayerInteractor"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_x6kdx")
+
+[node name="TutorialInWorld3" type="Node2D" parent="Components"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(908, 888)
+script = ExtResource("6_qvdtk")
+
+[node name="ControlGUI" type="HBoxContainer" parent="Components/TutorialInWorld3"]
+offset_left = -96.0
+offset_top = 8.0
+offset_right = 112.0
+offset_bottom = 67.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Components/TutorialInWorld3/ControlGUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Components/TutorialInWorld3/ControlGUI/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("14_0a0sh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Components/TutorialInWorld3/ControlGUI/HBoxContainer"]
+layout_mode = 2
+text = "Press F to interact
+"
+horizontal_alignment = 1
+
+[node name="Transition" type="AnimationPlayer" parent="Components/TutorialInWorld3"]
+libraries = {
+"": SubResource("AnimationLibrary_htkvc")
+}
+
+[node name="PlayerInteractor" parent="Components/TutorialInWorld3" instance=ExtResource("8_ct1v3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/TutorialInWorld3/PlayerInteractor"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_x6kdx")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.01, 0.01)
@@ -365,8 +446,16 @@ position = Vector2(32, 0)
 position = Vector2(120, 56)
 shape = SubResource("RectangleShape2D_xb4br")
 
+[node name="StoryItem" parent="." instance=ExtResource("20_2buv1")]
+position = Vector2(0, 960)
+story_text = "[Recording] \"Come, try this on, B-103. Give it a hit!\""
+
 [connection signal="player_entered" from="Components/TutorialInWorld/PlayerInteractor" to="Components/TutorialInWorld" method="_on_player_detector_body_entered"]
 [connection signal="player_exited" from="Components/TutorialInWorld/PlayerInteractor" to="Components/TutorialInWorld" method="_on_player_detector_body_exited"]
+[connection signal="player_entered" from="Components/TutorialInWorld2/PlayerInteractor" to="Components/TutorialInWorld2" method="_on_player_detector_body_entered"]
+[connection signal="player_exited" from="Components/TutorialInWorld2/PlayerInteractor" to="Components/TutorialInWorld2" method="_on_player_detector_body_exited"]
+[connection signal="player_entered" from="Components/TutorialInWorld3/PlayerInteractor" to="Components/TutorialInWorld3" method="_on_player_detector_body_entered"]
+[connection signal="player_exited" from="Components/TutorialInWorld3/PlayerInteractor" to="Components/TutorialInWorld3" method="_on_player_detector_body_exited"]
 
 [editable path="Components/BreakablePlatform"]
 [editable path="Components/BreakablePlatform2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ckfp0gc5hjpo7"]
+[gd_scene load_steps=30 format=4 uid="uid://ckfp0gc5hjpo7"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_q0y81"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_wi6ds"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="8_visfm"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="9_40ox5"]
 [ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/assets/keyboard_space_icon.svg" id="10_kabt1"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="17_2ygll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrkir"]
 size = Vector2(800, 128)
@@ -152,7 +153,8 @@ position = Vector2(-408, 512)
 inverted_self = true
 
 [node name="Switch2" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
-position = Vector2(-896, 592)
+position = Vector2(-896, 624)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../Door3"), NodePath("../Door5")]
 
@@ -161,7 +163,8 @@ position = Vector2(112, -264)
 skill = 1
 
 [node name="Switch" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
-position = Vector2(-672, 432)
+position = Vector2(-672, 464)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../Door"), NodePath("../Door2")]
 
@@ -173,7 +176,8 @@ inverted_self = true
 position = Vector2(-536, 512)
 
 [node name="Switch3" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
-position = Vector2(-696, 592)
+position = Vector2(-696, 624)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../Door4")]
 
@@ -276,6 +280,10 @@ spawn_point_name = "Right1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition/PlayerInteractor" index="0"]
 position = Vector2(2.5, 8)
 shape = SubResource("RectangleShape2D_htsa7")
+
+[node name="StoryItem" parent="." instance=ExtResource("17_2ygll")]
+position = Vector2(-320, -192)
+story_text = "[Recording] \"Slowly, slowly, B-103! Careful there!\" *CRASH*"
 
 [editable path="Components/PowerableFan"]
 [editable path="Components/PowerableFan2"]

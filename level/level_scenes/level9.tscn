@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://mq1ccudt5wl0"]
+[gd_scene load_steps=40 format=4 uid="uid://mq1ccudt5wl0"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_i66ry"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_1blf7"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cb2vyfq2h3prd" path="res://level/components/puzzle_controls/pressure_plate.tscn" id="20_r38fy"]
 [ext_resource type="Script" path="res://level/components/moving_platforms/moving_platform.gd" id="21_pn4kk"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="22_gsg5b"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="23_gqsej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh8ae"]
 size = Vector2(128, 994)
@@ -440,6 +441,34 @@ position = Vector2(608, -640)
 [node name="Switch3" parent="." node_paths=PackedStringArray("listeners") instance=ExtResource("18_wsfwa")]
 position = Vector2(536, -360)
 listeners = [NodePath("../Door3")]
+
+[node name="StoryItem" parent="." instance=ExtResource("23_gqsej")]
+position = Vector2(-912, -640)
+story_text = "[CRITICAL] Entity Creator has stopped working"
+
+[node name="StoryItem2" parent="." instance=ExtResource("23_gqsej")]
+position = Vector2(-112, -704)
+story_text = "[ERROR] Creator reboot unsuccessful"
+
+[node name="StoryItem3" parent="." instance=ExtResource("23_gqsej")]
+position = Vector2(416, -544)
+story_text = "[DEBUG] Running"
+
+[node name="StoryItem4" parent="." instance=ExtResource("23_gqsej")]
+position = Vector2(768, -320)
+story_text = "[DEBUG] Running"
+
+[node name="StoryItem5" parent="." instance=ExtResource("23_gqsej")]
+position = Vector2(384, -160)
+story_text = "[DEBUG] Running"
+
+[node name="StoryItem6" parent="." instance=ExtResource("23_gqsej")]
+position = Vector2(112, -32)
+story_text = "[DEBUG] Running"
+
+[node name="StoryItem7" parent="." instance=ExtResource("23_gqsej")]
+position = Vector2(-1504, 2496)
+story_text = "[INFO] Initiating factory reset"
 
 [editable path="Components/PowerableFan"]
 [editable path="Components/PowerableFan2"]

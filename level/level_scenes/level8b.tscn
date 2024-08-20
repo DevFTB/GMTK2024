@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c3qgf7urkm4cj"]
+[gd_scene load_steps=26 format=4 uid="uid://c3qgf7urkm4cj"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_exfm6"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_25cnl"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="11_fifsd"]
 [ext_resource type="AudioStream" uid="uid://d2mpwo5jpnt5c" path="res://sounds/environment/fan.wav" id="12_qer2a"]
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="13_t4fti"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="16_feku8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6t4l"]
 size = Vector2(7224, 610)
@@ -208,6 +209,10 @@ z_as_relative = false
 scale = Vector2(12, 12)
 texture = ExtResource("7_intkx")
 centered = false
+
+[node name="StoryItem" parent="." instance=ExtResource("16_feku8")]
+position = Vector2(-624, 96)
+story_text = "[Recording] *cough* *cough* \"Thanks B-013... I want you to know that... nevermind...\""
 
 [editable path="LevelTransitions/LevelTransition"]
 [editable path="LevelTransitions/LevelTransition2"]

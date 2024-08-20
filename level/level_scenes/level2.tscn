@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b58gwei0d8fc3"]
+[gd_scene load_steps=21 format=4 uid="uid://b58gwei0d8fc3"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_c2lqa"]
 [ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="2_ruyfp"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="7_sfbnr"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_khtmo"]
 [ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="8_ufgnu"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="14_6q6dr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jjka"]
 size = Vector2(712, 64)
@@ -246,6 +247,10 @@ position = Vector2(32, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition3/PlayerInteractor" index="0"]
 position = Vector2(-16, 0)
 shape = SubResource("RectangleShape2D_xb4br")
+
+[node name="StoryItem" parent="." instance=ExtResource("14_6q6dr")]
+position = Vector2(-640, 256)
+story_text = "[p][WARNING] Minor damage to arm casing[/p][p][RECORDING] \"NO B-103, how many times do I have to tell you to stay away from the turrets\"[/p]"
 
 [editable path="Platforms/PowerableFan"]
 [editable path="Platforms/PowerableFan2"]

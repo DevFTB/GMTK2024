@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bwftuiuvhsvv"]
+[gd_scene load_steps=37 format=4 uid="uid://bwftuiuvhsvv"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_yhf7k"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_lho0l"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="10_csec2"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="11_3wmtk"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="12_yd2nh"]
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="15_lotce"]
 
 [sub_resource type="Curve2D" id="Curve2D_1hrtt"]
 _data = {
@@ -374,6 +375,14 @@ spawn_point_name = "Left1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition2/PlayerInteractor" index="0"]
 position = Vector2(128, 4)
 shape = SubResource("RectangleShape2D_aedy3")
+
+[node name="StoryItem" parent="." instance=ExtResource("15_lotce")]
+position = Vector2(392, 672)
+story_text = "[INFO] Creator reboot successful"
+
+[node name="StoryItem2" parent="." instance=ExtResource("15_lotce")]
+position = Vector2(448, -64)
+story_text = "[INFO] Initiating daily maintenance of Creator"
 
 [editable path="Components/MovingPlatform"]
 [editable path="Components/MovingPlatform2"]

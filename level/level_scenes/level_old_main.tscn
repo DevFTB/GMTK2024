@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://yycecebwni2u"]
+[gd_scene load_steps=18 format=4 uid="uid://yycecebwni2u"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_f8m6n"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_yb6wq"]
@@ -16,70 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="15_it6fj"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="16_wqer0"]
 [ext_resource type="PackedScene" uid="uid://dj7dnbfgo3bod" path="res://level/components/skill_pickup/skill_pickup.tscn" id="17_3om12"]
-[ext_resource type="Script" path="res://level/level_scenes/story_item.gd" id="17_dg1d3"]
-[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="18_4xb1c"]
-[ext_resource type="Script" path="res://level/components/tutorial/tutorial_in_world.gd" id="19_i4buy"]
-[ext_resource type="Texture2D" uid="uid://cpedhg404t87s" path="res://gui/assets/keyboard_f.png" id="20_p6xrv"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ssvaq"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sno1y"]
-size = Vector2(64, 64)
-
-[sub_resource type="Animation" id="Animation_i3dua"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_1oefq"]
-resource_name = "fade_in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_0xi0a"]
-resource_name = "fade_out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_htkvc"]
-_data = {
-"RESET": SubResource("Animation_i3dua"),
-"fade_in": SubResource("Animation_1oefq"),
-"fade_out": SubResource("Animation_0xi0a")
-}
+[ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="17_wseug"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_f8m6n")
@@ -178,59 +115,6 @@ color = Color(0.0570034, 0.0590513, 0.0266374, 0.541176)
 [node name="SkillPickup" parent="." instance=ExtResource("17_3om12")]
 position = Vector2(-56, 24)
 
-[node name="StoryItem" type="Node2D" parent="."]
-position = Vector2(224, -64)
-script = ExtResource("17_dg1d3")
-story_text = "the quick brown fox jumped over the lazy dog. it was so damn lazy, it was so damn fat. very sad story :((("
-
-[node name="Sprite2D" type="Sprite2D" parent="StoryItem"]
-position = Vector2(0, -8)
-texture = SubResource("PlaceholderTexture2D_ssvaq")
-
-[node name="PlayerInteractor" type="Area2D" parent="StoryItem"]
-position = Vector2(-224, 64)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("18_4xb1c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryItem/PlayerInteractor"]
-position = Vector2(224, -96)
-shape = SubResource("RectangleShape2D_sno1y")
-
-[node name="TutorialInWorld" type="Node2D" parent="StoryItem"]
-modulate = Color(1, 1, 1, 0)
-script = ExtResource("19_i4buy")
-
-[node name="ControlGUI" type="VBoxContainer" parent="StoryItem/TutorialInWorld"]
-offset_left = -19.0
-offset_top = -128.0
-offset_right = 20.0
-offset_bottom = -69.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="StoryItem/TutorialInWorld/ControlGUI"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("20_p6xrv")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="StoryItem/TutorialInWorld/ControlGUI"]
-layout_mode = 2
-text = "Read"
-horizontal_alignment = 1
-
-[node name="Transition" type="AnimationPlayer" parent="StoryItem/TutorialInWorld"]
-libraries = {
-"": SubResource("AnimationLibrary_htkvc")
-}
-
-[node name="Control" type="Control" parent="StoryItem/TutorialInWorld"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="StoryItem" parent="." instance=ExtResource("17_wseug")]
 
 [editable path="MovingPlatform"]
