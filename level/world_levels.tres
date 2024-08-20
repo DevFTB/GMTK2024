@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cord1brcsk3di" path="res://level/level_scenes/level4.tscn" id="7_vw3qs"]
 [ext_resource type="PackedScene" uid="uid://35baj8ac63o0" path="res://level/level_scenes/level5.tscn" id="8_8ur1q"]
 [ext_resource type="PackedScene" path="res://level/level_scenes/level0c.tscn" id="11_2k4fs"]
-[ext_resource type="PackedScene" uid="uid://b68mgmqyl8ntx" path="res://level/level_scenes/level3a.tscn" id="12_bbnn0"]
-[ext_resource type="PackedScene" uid="uid://ptbpdvh3ik5n" path="res://level/level_scenes/level3b.tscn" id="13_fu5cx"]
+[ext_resource type="PackedScene" path="res://level/level_scenes/level3a.tscn" id="12_bbnn0"]
+[ext_resource type="PackedScene" uid="uid://cjkk032nfgiy2" path="res://level/level_scenes/level3b.tscn" id="13_fu5cx"]
 
 [resource]
 script = ExtResource("1_6waot")
