@@ -189,7 +189,6 @@ powered = true
 curve = SubResource("Curve2D_jsmq0")
 
 [node name="PowerableFan" parent="Components" instance=ExtResource("6_pbter")]
-visible = false
 position = Vector2(-432, -592)
 force = Vector2(200, 0)
 powered = true
@@ -203,11 +202,9 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_l3n8q")
 
 [node name="Sprite2D" parent="Components/PowerableFan/Fan" index="2"]
-visible = false
 rotation = 1.5708
 
 [node name="ClippingRect" parent="Components/PowerableFan/Fan/Sprite2D" index="0"]
-visible = false
 polygon = PackedVector2Array(-64.0033, -912, 63.9967, -912, 65, 17, -62, 16)
 
 [node name="MovingPlatform11" parent="Components" instance=ExtResource("5_qn5ov")]
@@ -263,7 +260,6 @@ position = Vector2(64, -8)
 shape = SubResource("RectangleShape2D_kf6ct")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 scale = Vector2(2, 2)
