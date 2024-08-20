@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=4 uid="uid://baqal36vepia0"]
+[gd_scene load_steps=29 format=4 uid="uid://baag05okdkinh"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_jq1ub"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_d0v8e"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="4_0ydo0"]
+[ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="4_n1v7n"]
 [ext_resource type="PackedScene" uid="uid://r14oxhoghyh7" path="res://level/components/breakable_platform/breakable_platform.tscn" id="6_0f2mp"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="7_j8oas"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="8_ukfdw"]
@@ -136,6 +137,8 @@ position = Vector2(80, -16)
 shape = SubResource("RectangleShape2D_2lhy0")
 
 [node name="Decor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAFAAsAAQAAAAQAAAAHAAsAAQAAAAQAAAAGAAsAAQADAAUAAAAEAAsAAQAAAAQAAAADAAsAAQAAAAQAAAAMAAsAAQAAAAQAAAALAAsAAQAAAAQAAADu/woAAQAAAAQAAADv/woAAQAAAAQAAAA=")
+tile_set = ExtResource("4_n1v7n")
 
 [node name="Spawns" type="Node2D" parent="."]
 

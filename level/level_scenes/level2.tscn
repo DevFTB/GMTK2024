@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b58gwei0d8fc3"]
+[gd_scene load_steps=20 format=4 uid="uid://b58gwei0d8fc3"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_c2lqa"]
 [ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="2_ruyfp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d3kqi21bsji6q" path="res://level/components/breakable_wall/breakable_wall.tscn" id="7_h4ucl"]
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="7_sfbnr"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_khtmo"]
+[ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="8_ufgnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jjka"]
 size = Vector2(712, 64)
@@ -147,6 +148,8 @@ position = Vector2(128, 128)
 position = Vector2(624, -256)
 
 [node name="Decor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAPX/AAAJAAkAAAD4/wsAAAAJAAkAAQD6/wQAAAAAAAcAAAD7/wQAAAABAAcAAAD8/wQAAAABAAcAAAD9/wQAAAABAAcAAAD+/wQAAAABAAcAAAD//wQAAAACAAcAAAD+/wsAAAAAAAUAAAD//wsAAAABAAUAAAAAAAsAAAABAAUAAAABAAsAAAACAAUAAAABAAwAAAACAAcAAAAAAAwAAAABAAcAAAD//wwAAAABAAcAAAD+/wwAAAAAAAYAAAD+/w0AAAACAAcAAAAIAAoAAAAAAAUAAAAIAAwAAAACAAYAAAAIAA0AAAACAAcAAAALAAoAAAACAAcAAAAIAAsAAAAAAAYAAAAJAAwAAAACAAcAAAAJAAoAAAABAAUAAAAKAAoAAAABAAUAAAAGAAsAAQAAAAUAAADr/wcAAQADAAUAAAANAP3/AQADAAQAAAD4//L/AQADAAQAAAD+//L/AQAAAAQAAAAGAPP/AQADAAQAAAA=")
+tile_set = ExtResource("8_ufgnu")
 
 [node name="Spawns" type="Node2D" parent="."]
 
