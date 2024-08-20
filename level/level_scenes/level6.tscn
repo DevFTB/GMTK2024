@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_akkgw"]
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="8_visfm"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="9_40ox5"]
-[ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/keyboard_space_icon.svg" id="10_kabt1"]
+[ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/assets/keyboard_space_icon.svg" id="10_kabt1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrkir"]
 size = Vector2(800, 128)
@@ -54,7 +54,7 @@ position = Vector2(-1256, 96)
 
 [node name="PowerableFan" parent="Components" instance=ExtResource("3_uqvrs")]
 position = Vector2(-1200, 240)
-force = Vector2(30, 0)
+force = Vector2(110, 0)
 powered = true
 
 [node name="CollisionShape2D" parent="Components/PowerableFan/Fan/FanArea" index="0"]
@@ -86,7 +86,7 @@ number_of_spikes = 17
 
 [node name="PowerableFan2" parent="Components" instance=ExtResource("3_uqvrs")]
 position = Vector2(0, 640)
-force = Vector2(0, -100)
+force = Vector2(0, -125)
 powered = true
 
 [node name="CollisionShape2D" parent="Components/PowerableFan2/Fan/FanArea" index="0"]
