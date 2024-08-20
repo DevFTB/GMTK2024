@@ -18,7 +18,6 @@ var _timer := 0.0
 func _ready() -> void:
 	_generate_sprite()
 	
-	broken.connect(print.bind("i am mcbroken"))
 
 func _generate_sprite() -> void:
 	var tiles := extents.size.y / 32

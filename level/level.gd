@@ -1,6 +1,7 @@
 extends Node2D
 class_name Level
 
+@export var level_name: StringName
 @export var camera_min_x: int
 @export var camera_max_x: int
 @export var camera_min_y: int
@@ -19,10 +20,10 @@ var check_points:
 		return get_tree().get_nodes_in_group("check_point")
 		
 func start():
-	# TODO: renable if double level transitions still occuring
-	await get_tree().create_timer(0.1).timeout
-	for lt in level_transitions:
-		lt.enable()
+	
+	await get_tree().create_timer(0.5).timeout
+	get_tree().call_group("manual", "initialise")
+
 
 func get_spawn_point(spawn_point_name: String) -> Vector2:
 	for sp in spawn_points:

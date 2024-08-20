@@ -15,9 +15,7 @@ func _ready() -> void:
 	pushable_interactor.body_entered.connect(_on_body_entered)
 	pushable_interactor.body_exited.connect(_on_body_exited)
 	
-func _on_body_entered(body: Node2D) -> void:
-	print(body)
-	
+func _on_body_entered(body: Node2D) -> void:	
 	if has_bodies:
 		set_power(true)
 		$FXPlayer.play()

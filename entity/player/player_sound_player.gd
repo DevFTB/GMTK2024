@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 class_name SizeSoundPlayer
 
 @export var footsteps : AudioStream

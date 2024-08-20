@@ -68,7 +68,6 @@ func _fire() -> void:
 	ray_cast_2d.force_raycast_update()
 	turret_shoot.play()
 	ray_shooter.shoot_ray(Vector2(), target_position)
-	print(ray_cast_2d.is_colliding())
 	if _is_tracking_player:
 		get_tree().create_timer(ray_shooter.default_duration).timeout.connect(player.kill)
 		_stop_shooting()

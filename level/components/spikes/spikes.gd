@@ -11,9 +11,14 @@ func _ready() -> void:
 	for i in number_of_spikes:
 		var new_polygon = triangle_collision_polygon.duplicate()
 		new_polygon.position = Vector2(i * 32, 0)
+		new_polygon.disabled = true
 		death_area.add_child(new_polygon)
 		
 	death_area.player_entered.connect(_kill)
-	
+
+func initialise() -> void:
+	for poly in death_area.get_children():
+		poly.set_deferred("disabled", false)
+
 func _kill(player: Player) -> void:
 	player.kill()
