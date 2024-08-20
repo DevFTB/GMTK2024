@@ -19,8 +19,6 @@ var _timer := 0.0
 @onready var extents := collision_shape_2d.shape.get_rect()
 @onready var sprites: Node2D = $Sprites
 
-
-
 func _ready() -> void:
 	_generate_sprite()
 	player_interactor.player_exited.connect(_on_player_exited.unbind(1))
@@ -60,10 +58,10 @@ func _break() -> void:
 	collision_shape_2d.set_deferred("disabled", true)
 	
 	# TODO: play animation for broken platform
-	
 	broken.emit()
+	hide()
 	$SoundFX.play()
-	queue_free()
+	$SoundFX.finished.connect(queue_free)
 
 func _on_player_exited() -> void:
 	_durability = durability

@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_jhgsb"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_52c74"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="9_elffi"]
-[ext_resource type="Texture2D" uid="uid://6ggvlr8vl3gs" path="res://gui/keyboard_k.png" id="10_ovj51"]
-[ext_resource type="Texture2D" uid="uid://cpsyj8fyxjo1y" path="res://gui/keyboard_j.png" id="12_gdruh"]
-[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/keyboard_q.png" id="13_u6ie0"]
+[ext_resource type="Texture2D" uid="uid://6ggvlr8vl3gs" path="res://gui/assets/keyboard_k.png" id="10_ovj51"]
+[ext_resource type="Texture2D" uid="uid://cpsyj8fyxjo1y" path="res://gui/assets/keyboard_j.png" id="12_gdruh"]
+[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/assets/keyboard_q.png" id="13_u6ie0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi8s"]
 size = Vector2(21, 64)

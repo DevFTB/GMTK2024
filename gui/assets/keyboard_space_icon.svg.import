@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lxev1743asxf"
-path="res://.godot/imported/keyboard_q.png-fb7fea7cf7d42395accfd092068a28c7.ctex"
+uid="uid://wc7n1sg6yxmw"
+path="res://.godot/imported/keyboard_space_icon.svg-e001b75063c7bf183938fb10b7f860c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gui/keyboard_q.png"
-dest_files=["res://.godot/imported/keyboard_q.png-fb7fea7cf7d42395accfd092068a28c7.ctex"]
+source_file="res://gui/assets/keyboard_space_icon.svg"
+dest_files=["res://.godot/imported/keyboard_space_icon.svg-e001b75063c7bf183938fb10b7f860c2.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

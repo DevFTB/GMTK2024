@@ -86,6 +86,6 @@ func disable() -> void:
 func _on_player_size_changed(old_size: Player.SizeMode, new_size: Player.SizeMode) -> void:
 	if size_mode == new_size:
 		if old_size < new_size:
-			sound_player.play("size_down")
+			sound_player.play("size_down", true, false)
 		else:
-			sound_player.play("size_up")
+			sound_player.play("size_up", true, false)

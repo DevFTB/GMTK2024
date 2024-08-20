@@ -33,7 +33,7 @@ var size_mode := SizeMode.NORMAL:
 var com: Vector2:
 	get:
 		return com_dict[size_mode].global_position
-
+		
 @onready var colliders := {
 	SizeMode.SMALL: $SmallCollider,
 	SizeMode.NORMAL: $NormalCollider,
@@ -61,45 +61,49 @@ var currently_playing: String
 
 var is_dead := false
 var size_change_cooling := false
+
+var paused = false
+
 func _ready() -> void:
 	size_mode = SizeMode.NORMAL
 	anim_player_dict[SizeMode.NORMAL].transition_to()
 	unlocked_skills = starting_skills
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("change_size_down"):
-		var index = order.find(size_mode)
-		var new_index = index - 1
-		if new_index >= 0:
-			var new_size = order[new_index]
-			# only go small if unlocked
-			if new_size == SizeMode.SMALL and not unlocked_skills & 2 ** Skill.SMALL:
-				return
+	if not paused:
+		if event.is_action_pressed("change_size_down"):
+			var index = order.find(size_mode)
+			var new_index = index - 1
+			if new_index >= 0:
+				var new_size = order[new_index]
+				# only go small if unlocked
+				if new_size == SizeMode.SMALL and not unlocked_skills & 2 ** Skill.SMALL:
+					return
 
-			print("huh", new_index)
+				print("huh", new_index)
 
-			switch_size(order[new_index])
-			
-
-	if event.is_action_pressed("change_size_up"):
-		var index = order.find(size_mode)
-		var new_index = index + 1
-		if new_index < order.size() and not size_change_cooling:
-			var new_size = order[new_index]
-			# only go small if unlocked
-			if new_size == SizeMode.BIG and not unlocked_skills & 2 ** Skill.BIG:
-				return
-				
-			if _check_size(order[new_index]) and not size_change_cooling:
-				print("hah", new_index)
 				switch_size(order[new_index])
-	
-	if event.is_action_pressed("punch"):
-		if size_mode == SizeMode.BIG:
-			punched.emit(last_inputted_direction)
+				
+
+		if event.is_action_pressed("change_size_up"):
+			var index = order.find(size_mode)
+			var new_index = index + 1
+			if new_index < order.size() and not size_change_cooling:
+				var new_size = order[new_index]
+				# only go small if unlocked
+				if new_size == SizeMode.BIG and not unlocked_skills & 2 ** Skill.BIG:
+					return
+					
+				if _check_size(order[new_index]) and not size_change_cooling:
+					print("hah", new_index)
+					switch_size(order[new_index])
+		
+		if event.is_action_pressed("punch"):
+			if size_mode == SizeMode.BIG:
+				punched.emit(last_inputted_direction)
 
 func _physics_process(delta: float) -> void:
-	if not is_dead:
+	if not is_dead and not paused:
 		super(delta)
 		if size_mode == SizeMode.BIG:
 			for i in get_slide_collision_count():

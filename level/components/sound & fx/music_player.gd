@@ -14,6 +14,12 @@ func _ready():
 func clear_queue():
 	queued_track = null
 	
+func pause() -> void:
+	player.stream_paused = true
+	
+func resume() -> void:
+	player.stream_paused = false
+
 func queue_music(track):
 	if currently_playing:
 		queued_track = track
