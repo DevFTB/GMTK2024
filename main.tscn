@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmo01t4laheco"]
+[gd_scene load_steps=18 format=3 uid="uid://cmo01t4laheco"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_lml2l"]
@@ -8,6 +8,9 @@
 [ext_resource type="FontFile" uid="uid://cx7u1dn3lokjj" path="res://gui/assets/PixelifySans-VariableFont_wght.ttf" id="6_nsjig"]
 [ext_resource type="Script" path="res://gui/scripts/story_text_label.gd" id="7_7bhqx"]
 [ext_resource type="Script" path="res://level/level_transition_screen.gd" id="7_s8hre"]
+[ext_resource type="Script" path="res://minimap.gd" id="9_5ymm7"]
+[ext_resource type="Texture2D" uid="uid://cnsof6icpmbhq" path="res://gui/assets/minimap.png" id="10_cmbx4"]
+[ext_resource type="Texture2D" uid="uid://b2fvp4dylstf0" path="res://gui/assets/minimap_player_marker.png" id="10_i0or1"]
 [ext_resource type="Script" path="res://gui/scripts/debug_gui.gd" id="13_26jet"]
 
 [sub_resource type="Gradient" id="Gradient_hfr04"]
@@ -43,7 +46,7 @@ script = ExtResource("1_rs1g5")
 script = ExtResource("2_lml2l")
 levels = ExtResource("3_b3uhf")
 level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
-start_level_name = "level9"
+start_level_name = "level1"
 
 [node name="Player" parent="World" groups=["manual"] instance=ExtResource("3_yqlic")]
 collision_mask = 27
@@ -109,6 +112,140 @@ scroll_active = false
 scroll_following = true
 script = ExtResource("7_7bhqx")
 character_speed = 15.0
+
+[node name="Minimap" type="Control" parent="CanvasLayer/GUI" node_paths=PackedStringArray("world")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_5ymm7")
+world = NodePath("../../../World")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/Minimap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00356623, 0.0428837, 0.0527218, 1)
+
+[node name="MinimapTexture" type="TextureRect" parent="CanvasLayer/GUI/Minimap"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -527.5
+offset_top = -328.0
+offset_right = 527.5
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_cmbx4")
+
+[node name="level0" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 288.0
+offset_right = 427.0
+offset_bottom = 395.0
+
+[node name="level0b" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 154.0
+offset_top = 289.0
+offset_right = 194.0
+offset_bottom = 335.0
+
+[node name="level0c" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 203.0
+offset_top = 289.0
+offset_right = 239.0
+offset_bottom = 335.0
+
+[node name="level1" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 287.0
+offset_right = 428.0
+offset_bottom = 395.0
+
+[node name="level2" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 441.0
+offset_top = 281.0
+offset_right = 552.0
+offset_bottom = 345.0
+
+[node name="level3b" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 344.0
+offset_top = 200.0
+offset_right = 423.0
+offset_bottom = 280.0
+
+[node name="level3a" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 454.0
+offset_top = 200.0
+offset_right = 542.0
+offset_bottom = 227.0
+
+[node name="level4" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 563.0
+offset_top = 293.0
+offset_right = 768.0
+offset_bottom = 402.0
+
+[node name="level5" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 529.0
+offset_top = 420.0
+offset_right = 643.0
+offset_bottom = 523.0
+
+[node name="level6" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 663.0
+offset_top = 427.0
+offset_right = 767.0
+offset_bottom = 503.0
+
+[node name="level7" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 112.0
+offset_top = 350.0
+offset_right = 222.0
+offset_bottom = 432.0
+
+[node name="level8" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 46.0
+offset_top = 242.0
+offset_right = 101.0
+offset_bottom = 432.0
+
+[node name="level9" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 789.0
+offset_top = 320.0
+offset_right = 949.0
+offset_bottom = 535.0
+
+[node name="PlayerIcon" type="TextureRect" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+layout_mode = 0
+offset_left = 84.5
+offset_top = 159.0
+offset_right = 124.5
+offset_bottom = 199.0
+texture = ExtResource("10_i0or1")
 
 [node name="LevelTransitionScreen" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true

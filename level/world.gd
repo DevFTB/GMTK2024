@@ -1,5 +1,6 @@
 extends Node2D
- 
+class_name World
+
 signal level_loaded
 # TODO: note, this way we can stil potentailly make a minimap by putting all levels in the same scene after
 
@@ -37,8 +38,7 @@ func reload_level() -> void:
 	if not _reloading:
 		await load_level(levels.get_level(level.level_name), spawn_point_name)
 		player.reset()
-
-
+		
 func load_level(new_level: PackedScene, new_spawn_point_name: String) -> void:
 	_reloading = true
 	level_transition_screen.fade_out()
