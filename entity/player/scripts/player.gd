@@ -57,7 +57,7 @@ var com: Vector2:
 var unlocked_skills: int = 0
 
 var is_walking = false
-var currently_playing: String 
+var currently_playing: String
 
 var is_dead := false
 var size_change_cooling := false
@@ -128,7 +128,7 @@ func kill() -> void:
 	if not is_dead:
 		is_dead = true
 		_frame_velocity = Vector2.ZERO
-		velocity = Vector2.ZERO	
+		velocity = Vector2.ZERO
 		killed.emit()
 
 func switch_size(size: SizeMode) -> void:
@@ -157,6 +157,23 @@ func switch_size(size: SizeMode) -> void:
 	active_environment_detector.position = com_dict[size].position
 	size_mode_changed.emit(old_size, size_mode)
 
+var _zooming = false
+func zoom_whoa(duration: float, destination: Vector2) -> void:
+	_frame_velocity = Vector2.ZERO
+	if not _zooming:
+		var camera: Camera2D = $Camera2D
+		var speed = global_position.distance_to(destination) / duration
+		var tween = create_tween()
+		tween.tween_property(camera, "zoom", Vector2(1, 1), duration / 2).from(Vector2(2, 2))
+		tween.tween_property(camera, "zoom", Vector2(2, 2), duration / 2).from(Vector2(1, 1))
+		tween.tween_callback(func():
+								_zooming = false
+								_frame_velocity = Vector2(speed, 0)
+								)
+		var tween2 = create_tween()
+		tween2.tween_property(self, "global_position", destination, duration)
+
+		
 func _check_size(size: SizeMode) -> bool:
 	var dss := get_world_2d().direct_space_state
 	

@@ -17,6 +17,7 @@ var has_player: bool:
 var right_player_size: bool = false
 
 func _ready() -> void:
+	interacting_player = null
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	

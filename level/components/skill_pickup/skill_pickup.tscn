@@ -1,7 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj7dnbfgo3bod"]
+[gd_scene load_steps=11 format=3 uid="uid://dj7dnbfgo3bod"]
 
 [ext_resource type="Script" path="res://level/components/skill_pickup/skill_pickup.gd" id="1_qqf6h"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_6e8iv"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_wc8ji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8bxa"]
+atlas = ExtResource("2_6e8iv")
+region = Rect2(256, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf23w"]
+atlas = ExtResource("2_6e8iv")
+region = Rect2(256, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e40y1"]
+atlas = ExtResource("2_6e8iv")
+region = Rect2(256, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgixn"]
+atlas = ExtResource("2_6e8iv")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf3h8"]
+atlas = ExtResource("2_6e8iv")
+region = Rect2(256, 32, 32, 32)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vhj7w"]
 size = Vector2(16, 16)
@@ -11,6 +32,7 @@ size = Vector2(16, 16)
 [node name="SkillPickup" type="Node2D"]
 script = ExtResource("1_qqf6h")
 skill = 2
+textures = Array[Texture2D]([SubResource("AtlasTexture_r8bxa"), SubResource("AtlasTexture_xf23w"), SubResource("AtlasTexture_e40y1"), SubResource("AtlasTexture_pgixn"), SubResource("AtlasTexture_xf3h8")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_vhj7w")

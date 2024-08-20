@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://bg857ygj0kgel"]
+[gd_scene load_steps=18 format=4 uid="uid://bg857ygj0kgel"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_21qdb"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_k711q"]
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="3_1oqgu"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="3_fl0i1"]
+[ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="3_mupbo"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="3_vvjoi"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="4_gaxq8"]
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="5_um104"]
@@ -30,6 +31,8 @@ tile_map_data = PackedByteArray("AAAcAAkAAAABAAEAAADo//j/AAABAAEAAADo//n/AAABAAE
 tile_set = ExtResource("2_k711q")
 
 [node name="Decor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAIAPr/AQADAAQAAAAVAPb/AQAAAAcAAAAXAPX/AQAAAAQAAAASAPX/AQAAAAQAAAD4/wMAAQAAAAQAAAA=")
+tile_set = ExtResource("3_mupbo")
 
 [node name="Checkpoint" parent="." instance=ExtResource("3_1oqgu")]
 position = Vector2(-352, -256)
