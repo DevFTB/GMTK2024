@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ddwfgepcoitce"]
+[gd_scene load_steps=43 format=3 uid="uid://ddwfgepcoitce"]
 
 [ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://entity/player/camera_2d.gd" id="14_4bkmd"]
 [ext_resource type="Script" path="res://entity/player/player_sound.gd" id="17_eebbm"]
 [ext_resource type="Script" path="res://entity/player/breaker.gd" id="18_dec1t"]
+[ext_resource type="AudioStream" uid="uid://clqp7y57b73q1" path="res://sounds/player/death.wav" id="23_vvr1e"]
 
 [sub_resource type="Gradient" id="Gradient_flrl2"]
 colors = PackedColorArray(0, 0.439216, 0.686275, 1, 0.207558, 0.000121289, 0.672063, 1)
@@ -247,53 +248,6 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_eapav")
 disabled = true
 
-[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
-active = false
-libraries = {
-"": SubResource("AnimationLibrary_yq77u"),
-"normal": ExtResource("7_jmn20"),
-"small": ExtResource("8_i4i6t")
-}
-script = ExtResource("6_m02uo")
-sprite_2d = NodePath("../NormalSprite2D")
-sound_player = NodePath("../SoundPlayer")
-
-[node name="AnimationTree" type="AnimationTree" parent="NormalAnimationPlayer"]
-active = false
-root_node = NodePath("../..")
-tree_root = ExtResource("7_e483d")
-advance_expression_base_node = NodePath("../..")
-anim_player = NodePath("..")
-parameters/fall/blend_position = 0
-parameters/jump/blend_position = 0
-parameters/land/blend_position = 0
-parameters/move/blend_position = -0.99794
-
-[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
-active = false
-libraries = {
-"": SubResource("AnimationLibrary_yq77u"),
-"big": ExtResource("11_p8l41"),
-"normal": ExtResource("7_jmn20"),
-"small": ExtResource("8_i4i6t")
-}
-script = ExtResource("6_m02uo")
-sprite_2d = NodePath("../BigSprite2D")
-directional_parameters = Array[String](["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position", "parameters/punch/blend_position"])
-sound_player = NodePath("../SoundPlayer")
-
-[node name="AnimationTree" type="AnimationTree" parent="BigAnimationPlayer"]
-active = false
-root_node = NodePath("../..")
-tree_root = ExtResource("12_pdx75")
-advance_expression_base_node = NodePath("../..")
-anim_player = NodePath("..")
-parameters/fall/blend_position = 0
-parameters/jump/blend_position = 0
-parameters/land/blend_position = 0
-parameters/move/blend_position = -0.995122
-parameters/punch/blend_position = -0.996139
-
 [node name="SmallAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
 active = false
 libraries = {
@@ -317,6 +271,55 @@ parameters/glide/blend_position = 0
 parameters/jump/blend_position = 0
 parameters/land/blend_position = 0
 parameters/move/blend_position = -1.0
+
+[node name="NormalAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_yq77u"),
+"normal": ExtResource("7_jmn20"),
+"small": ExtResource("8_i4i6t")
+}
+script = ExtResource("6_m02uo")
+size_mode = 1
+sprite_2d = NodePath("../NormalSprite2D")
+sound_player = NodePath("../SoundPlayer")
+
+[node name="AnimationTree" type="AnimationTree" parent="NormalAnimationPlayer"]
+active = false
+root_node = NodePath("../..")
+tree_root = ExtResource("7_e483d")
+advance_expression_base_node = NodePath("../..")
+anim_player = NodePath("..")
+parameters/fall/blend_position = 0
+parameters/jump/blend_position = 0
+parameters/land/blend_position = 0
+parameters/move/blend_position = -0.99794
+
+[node name="BigAnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("sprite_2d", "sound_player")]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_yq77u"),
+"big": ExtResource("11_p8l41"),
+"normal": ExtResource("7_jmn20"),
+"small": ExtResource("8_i4i6t")
+}
+script = ExtResource("6_m02uo")
+size_mode = 2
+sprite_2d = NodePath("../BigSprite2D")
+directional_parameters = Array[String](["parameters/move/blend_position", "parameters/jump/blend_position", "parameters/land/blend_position", "parameters/fall/blend_position", "parameters/punch/blend_position"])
+sound_player = NodePath("../SoundPlayer")
+
+[node name="AnimationTree" type="AnimationTree" parent="BigAnimationPlayer"]
+active = false
+root_node = NodePath("../..")
+tree_root = ExtResource("12_pdx75")
+advance_expression_base_node = NodePath("../..")
+anim_player = NodePath("..")
+parameters/fall/blend_position = 0
+parameters/jump/blend_position = 0
+parameters/land/blend_position = 0
+parameters/move/blend_position = -0.995122
+parameters/punch/blend_position = -0.996139
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -418,27 +421,30 @@ disabled = true
 script = ExtResource("17_eebbm")
 player = NodePath("..")
 
-[node name="SmallSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+[node name="SmallSoundPlayer" type="AudioStreamPlayer" parent="SoundPlayer"]
 bus = &"SFX"
 script = ExtResource("5_s2ap8")
 footsteps = ExtResource("6_a1evr")
 jump = ExtResource("7_63xwt")
+death = ExtResource("23_vvr1e")
 size_up = ExtResource("7_dpa12")
 size_down = ExtResource("9_qfaku")
 
-[node name="NormalSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+[node name="NormalSoundPlayer" type="AudioStreamPlayer" parent="SoundPlayer"]
 bus = &"SFX"
 script = ExtResource("5_s2ap8")
 footsteps = ExtResource("7_qijco")
 jump = ExtResource("11_r3er0")
+death = ExtResource("23_vvr1e")
 size_up = ExtResource("7_dpa12")
 size_down = ExtResource("9_qfaku")
 
-[node name="BigSoundPlayer" type="AudioStreamPlayer2D" parent="SoundPlayer"]
+[node name="BigSoundPlayer" type="AudioStreamPlayer" parent="SoundPlayer"]
 bus = &"SFX"
 script = ExtResource("5_s2ap8")
 footsteps = ExtResource("8_gorsm")
 jump = ExtResource("13_r8481")
+death = ExtResource("23_vvr1e")
 size_up = ExtResource("7_dpa12")
 size_down = ExtResource("7_dpa12")
 

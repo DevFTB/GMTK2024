@@ -56,7 +56,9 @@ var com: Vector2:
 var unlocked_skills: int = 0
 
 var is_walking = false
-var currently_playing: String
+var currently_playing: String 
+
+var is_dead := false
 
 func _ready() -> void:
 	size_mode = SizeMode.NORMAL
@@ -96,24 +98,29 @@ func _input(event: InputEvent) -> void:
 			punched.emit(last_inputted_direction)
 
 func _physics_process(delta: float) -> void:
-	super(delta)
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			var vec = -c.get_normal()
-			vec.y = 0
-			c.get_collider().apply_central_impulse(vec * stats.mass)
+	if not is_dead:
+		super(delta)
+		for i in get_slide_collision_count():
+			var c = get_slide_collision(i)
+			if c.get_collider() is RigidBody2D:
+				var vec = -c.get_normal()
+				vec.y = 0
+				c.get_collider().apply_central_impulse(vec * stats.mass)
 			
 
 func unlock_skill(skill: Skill) -> void:
 	unlocked_skills = unlocked_skills ^ 2 ** skill
 	print(unlocked_skills)
 
+func reset() -> void:
+	is_dead = false
+
 func kill() -> void:
-	_frame_velocity = Vector2.ZERO
-	velocity = Vector2.ZERO
-	
-	killed.emit()
+	if not is_dead:
+		is_dead = true
+		_frame_velocity = Vector2.ZERO
+		velocity = Vector2.ZERO	
+		killed.emit()
 
 func switch_size(size: SizeMode) -> void:
 	var old_player = anim_player_dict[size_mode]
@@ -171,4 +178,3 @@ func set_camera_limits(left, top, right, bottom):
 	$Camera2D.limit_left = left
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
-	print(top, left, right, bottom)

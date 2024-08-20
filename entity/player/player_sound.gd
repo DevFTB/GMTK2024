@@ -33,22 +33,18 @@ func play(key: String, force := false, is_loop := false) -> void:
 	if currently_playing != key:
 		if active_player.playing:
 			if force or is_looping:
-				print("played it on top")
 				active_player.fx_play(key)
 				is_looping = is_loop
 			else:
 				if queue.size() < max_queue_size:
-					print("queued it")
 
 					queue.push_back(AudioQueueItem.new(key, is_loop))
 
 		else:
-			print("played it")
 
 			active_player.fx_play(key)
 			is_looping = is_loop
 	else:
-		print("play nothing")
 		_pop_queue()
 
 func _pop_queue() -> void:

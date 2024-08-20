@@ -5,7 +5,6 @@ extends Node2D
 
 
 func _on_player_detector_body_entered(_area):
-	print("enter text area")
 	transition.play("fade_in")
 
 

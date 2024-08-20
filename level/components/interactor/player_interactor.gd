@@ -21,12 +21,12 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 	
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player and not _disabled:
+	if body is Player and not body.is_dead and not _disabled:
 		right_player_size = size_flags & 2 ** body.size_mode
 		if right_player_size:
 			interacting_player = body
 			player_entered.emit(body)
-	
+			
 func _on_body_exited(body: Node2D) -> void:		
 	if body is Player and not _disabled:
 		interacting_player = null

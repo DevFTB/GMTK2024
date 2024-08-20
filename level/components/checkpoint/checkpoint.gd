@@ -1,4 +1,5 @@
 extends Node2D
+class_name Checkpoint
 
 signal checkpoint_reached
 

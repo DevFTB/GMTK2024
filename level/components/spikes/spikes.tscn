@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://wbir48vj5ioi" path="res://level/components/spikes/spike_texture.png" id="2_nmoqx"]
 [ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_6437b"]
 
-[node name="Spikes" type="Node2D"]
+[node name="Spikes" type="Node2D" groups=["manual"]]
 script = ExtResource("1_2pncc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,3 +22,4 @@ script = ExtResource("3_6437b")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathArea"]
 polygon = PackedVector2Array(0, 0, 16, -32, 32, 0)
+disabled = true
