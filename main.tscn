@@ -43,12 +43,10 @@ script = ExtResource("1_rs1g5")
 script = ExtResource("2_lml2l")
 levels = ExtResource("3_b3uhf")
 level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
-start_level_name = "level8"
 start_spawn_point = "Top1"
 
 [node name="Player" parent="World" groups=["manual"] instance=ExtResource("3_yqlic")]
 collision_mask = 27
-starting_skills = 31
 size_changed_cooldown = 0.4
 
 [node name="SpawnPoint" type="Node2D" parent="World"]
