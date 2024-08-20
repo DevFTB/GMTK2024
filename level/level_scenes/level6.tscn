@@ -110,7 +110,7 @@ inverted_self = true
 
 [node name="Switch2" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
 position = Vector2(-896, 592)
-powering = false
+_powering = false
 listeners = [NodePath("../Door3"), NodePath("../Door5")]
 
 [node name="SkillPickup" parent="Components" instance=ExtResource("7_4p252")]
@@ -119,7 +119,7 @@ skill = 1
 
 [node name="Switch" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
 position = Vector2(-672, 432)
-powering = false
+_powering = false
 listeners = [NodePath("../Door"), NodePath("../Door2")]
 
 [node name="Door4" parent="Components" instance=ExtResource("5_1owhu")]
@@ -131,7 +131,7 @@ position = Vector2(-536, 512)
 
 [node name="Switch3" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
 position = Vector2(-696, 592)
-powering = false
+_powering = false
 listeners = [NodePath("../Door4")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
