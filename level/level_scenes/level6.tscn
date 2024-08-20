@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_akkgw"]
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="8_visfm"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="9_40ox5"]
-[ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/keyboard_space_icon.svg" id="10_kabt1"]
+[ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/assets/keyboard_space_icon.svg" id="10_kabt1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jrkir"]
 size = Vector2(800, 128)
