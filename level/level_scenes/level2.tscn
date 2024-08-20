@@ -157,7 +157,7 @@ position = Vector2(-840, 128)
 position = Vector2(96, -448)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(32, 384)
+position = Vector2(864, 318)
 
 [node name="Components" type="Node2D" parent="."]
 
