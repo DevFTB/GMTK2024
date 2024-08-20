@@ -6,7 +6,7 @@
 friction = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_orijr"]
-radius = 16.0
+radius = 24.0
 
 [node name="PushableObject" type="RigidBody2D" groups=["activator"]]
 position = Vector2(272, -96)
@@ -16,6 +16,7 @@ physics_material_override = SubResource("PhysicsMaterial_wnsqy")
 linear_damp = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_bv0dh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://nqq71oxvmmll"]
 
 [ext_resource type="Script" path="res://level/components/tutorial/tutorial_in_world.gd" id="1_g1u87"]
-[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/keyboard_q.png" id="2_hsql6"]
-[ext_resource type="Texture2D" uid="uid://dyuh7ssg0aokc" path="res://gui/keyboard_e.png" id="3_sxbv3"]
+[ext_resource type="Texture2D" uid="uid://lxev1743asxf" path="res://gui/assets/keyboard_q.png" id="2_hsql6"]
+[ext_resource type="Texture2D" uid="uid://dyuh7ssg0aokc" path="res://gui/assets/keyboard_e.png" id="3_sxbv3"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="4_eg6qx"]
 
 [sub_resource type="Animation" id="Animation_i3dua"]
