@@ -10,7 +10,7 @@ enum SizeMode {
 }
 
 enum Skill {
-	GAUNTLET, GLIDER, DOUBLE_JUMP
+	GAUNTLET, GLIDER, DOUBLE_JUMP, SMALL, BIG
 }
 
 const SCALES = {
@@ -21,7 +21,7 @@ const SCALES = {
 
 const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BIG]
 
-@export_flags("Gauntlet", "Glider", "Double Jump") var starting_skills
+@export_flags("Gauntlet", "Glider", "Double Jump", "Small", "Big") var starting_skills
 @export var size_stats: Dictionary
 
 
@@ -56,7 +56,9 @@ var com: Vector2:
 var unlocked_skills: int = 0
 
 var is_walking = false
-var currently_playing: String
+var currently_playing: String 
+
+var is_dead := false
 
 func _ready() -> void:
 	size_mode = SizeMode.NORMAL
@@ -68,6 +70,11 @@ func _input(event: InputEvent) -> void:
 		var index = order.find(size_mode)
 		var new_index = index - 1
 		if new_index >= 0:
+			var new_size = order[new_index]
+			# only go small if unlocked
+			if new_size == SizeMode.SMALL and not unlocked_skills & 2 ** Skill.SMALL:
+				return
+
 			print("huh", new_index)
 
 			switch_size(order[new_index])
@@ -77,6 +84,11 @@ func _input(event: InputEvent) -> void:
 		var index = order.find(size_mode)
 		var new_index = index + 1
 		if new_index < order.size():
+			var new_size = order[new_index]
+			# only go small if unlocked
+			if new_size == SizeMode.BIG and not unlocked_skills & 2 ** Skill.BIG:
+				return
+				
 			if _check_size(order[new_index]):
 				print("hah", new_index)
 				switch_size(order[new_index])
@@ -86,24 +98,29 @@ func _input(event: InputEvent) -> void:
 			punched.emit(last_inputted_direction)
 
 func _physics_process(delta: float) -> void:
-	super(delta)
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			var vec = -c.get_normal()
-			vec.y = 0
-			c.get_collider().apply_central_impulse(vec * stats.mass)
+	if not is_dead:
+		super(delta)
+		for i in get_slide_collision_count():
+			var c = get_slide_collision(i)
+			if c.get_collider() is RigidBody2D:
+				var vec = -c.get_normal()
+				vec.y = 0
+				c.get_collider().apply_central_impulse(vec * stats.mass)
 			
 
 func unlock_skill(skill: Skill) -> void:
 	unlocked_skills = unlocked_skills | 2 ** skill
 	print(unlocked_skills)
 
+func reset() -> void:
+	is_dead = false
+
 func kill() -> void:
-	_frame_velocity = Vector2.ZERO
-	velocity = Vector2.ZERO
-	
-	killed.emit()
+	if not is_dead:
+		is_dead = true
+		_frame_velocity = Vector2.ZERO
+		velocity = Vector2.ZERO	
+		killed.emit()
 
 func switch_size(size: SizeMode) -> void:
 	var old_player = anim_player_dict[size_mode]
@@ -161,4 +178,3 @@ func set_camera_limits(left, top, right, bottom):
 	$Camera2D.limit_left = left
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
-	print(top, left, right, bottom)

@@ -25,6 +25,8 @@ window/stretch/mode="viewport"
 
 transition=""
 spawn_point=""
+check_point=""
+manual=""
 
 [input]
 
