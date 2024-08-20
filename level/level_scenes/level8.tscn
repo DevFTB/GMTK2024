@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bwftuiuvhsvv"]
+[gd_scene load_steps=29 format=4 uid="uid://bwftuiuvhsvv"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_yhf7k"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_lho0l"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://casf0qfuf7r6f" path="res://level/components/moving_platforms/moving_platform.tscn" id="5_qn5ov"]
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="6_pbter"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="7_6xb87"]
+[ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="7_it521"]
+[ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/keyboard_space_icon.svg" id="8_2u36s"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="8_fcca8"]
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="9_d81sk"]
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="10_csec2"]
@@ -69,6 +71,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128)
 }
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf6ct"]
+size = Vector2(208, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehw3w"]
 size = Vector2(21, 94)
@@ -232,7 +237,30 @@ scale = Vector2(3, 1)
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_xcy0e")
 
+[node name="TutorialInWorld" parent="Components" instance=ExtResource("7_it521")]
+position = Vector2(232, 600)
+
+[node name="TextureRect" parent="Components/TutorialInWorld/ControlGUI/HBoxContainer" index="0"]
+texture = null
+
+[node name="Label" parent="Components/TutorialInWorld/ControlGUI/HBoxContainer" index="1"]
+text = ""
+
+[node name="TextureRect" parent="Components/TutorialInWorld/ControlGUI/HBoxContainer3" index="0"]
+texture = ExtResource("8_2u36s")
+
+[node name="Label" parent="Components/TutorialInWorld/ControlGUI/HBoxContainer3" index="1"]
+text = "Press space again
+after jumping
+when normal size
+to double jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/TutorialInWorld/PlayerInteractor" index="0"]
+position = Vector2(64, -8)
+shape = SubResource("RectangleShape2D_kf6ct")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 scale = Vector2(2, 2)
@@ -321,5 +349,6 @@ shape = SubResource("RectangleShape2D_aedy3")
 [editable path="Components/PowerableFan"]
 [editable path="Components/MovingPlatform11"]
 [editable path="Components/MovingPlatform12"]
+[editable path="Components/TutorialInWorld"]
 [editable path="LevelTransitions/LevelTransition"]
 [editable path="LevelTransitions/LevelTransition2"]
