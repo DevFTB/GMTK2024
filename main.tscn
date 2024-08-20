@@ -50,7 +50,6 @@ start_spawn_point = "Top1"
 
 [node name="Player" parent="World" groups=["manual"] instance=ExtResource("3_yqlic")]
 collision_mask = 27
-starting_skills = 25
 size_changed_cooldown = 0.4
 
 [node name="SpawnPoint" type="Node2D" parent="World"]
