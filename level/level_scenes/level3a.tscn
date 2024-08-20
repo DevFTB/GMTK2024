@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://4lr3ov78jqlk"]
+[gd_scene load_steps=28 format=4 uid="uid://4lr3ov78jqlk"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_jq1ub"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_d0v8e"]
@@ -88,6 +88,9 @@ _data = {
 "fade_in": SubResource("Animation_1oefq"),
 "fade_out": SubResource("Animation_0xi0a")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36q3j"]
+size = Vector2(116, 89)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_jq1ub")
@@ -242,58 +245,62 @@ shape = SubResource("RectangleShape2D_cqwv4")
 position = Vector2(-544, 320)
 skill = 4
 
-[node name="TutorialInWorld" type="Node2D" parent="SkillPickup"]
+[node name="TutorialInWorld" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(436.217, 608.939)
+position = Vector2(-544, 320)
 script = ExtResource("13_xx6q3")
 
-[node name="ControlGUI" type="HBoxContainer" parent="SkillPickup/TutorialInWorld"]
+[node name="ControlGUI" type="HBoxContainer" parent="TutorialInWorld"]
 offset_left = -64.0
 offset_top = -112.0
 offset_right = 68.0
 offset_bottom = -53.0
 
-[node name="HBoxContainer" type="VBoxContainer" parent="SkillPickup/TutorialInWorld/ControlGUI"]
+[node name="HBoxContainer" type="VBoxContainer" parent="TutorialInWorld/ControlGUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="SkillPickup/TutorialInWorld/ControlGUI/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="TutorialInWorld/ControlGUI/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("14_pn5ie")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SkillPickup/TutorialInWorld/ControlGUI/HBoxContainer"]
+[node name="Label" type="Label" parent="TutorialInWorld/ControlGUI/HBoxContainer"]
 layout_mode = 2
 text = "Grow"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="SkillPickup/TutorialInWorld/ControlGUI"]
+[node name="HBoxContainer2" type="VBoxContainer" parent="TutorialInWorld/ControlGUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="SkillPickup/TutorialInWorld/ControlGUI/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="TutorialInWorld/ControlGUI/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("15_k2mdn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="SkillPickup/TutorialInWorld/ControlGUI/HBoxContainer2"]
+[node name="Label" type="Label" parent="TutorialInWorld/ControlGUI/HBoxContainer2"]
 layout_mode = 2
 text = "Grow"
 horizontal_alignment = 1
 
-[node name="Transition" type="AnimationPlayer" parent="SkillPickup/TutorialInWorld"]
+[node name="Transition" type="AnimationPlayer" parent="TutorialInWorld"]
 libraries = {
 "": SubResource("AnimationLibrary_htkvc")
 }
 
-[node name="PlayerInteractor" parent="SkillPickup/TutorialInWorld" instance=ExtResource("16_u5v44")]
+[node name="PlayerInteractor" parent="TutorialInWorld" instance=ExtResource("16_u5v44")]
 
-[connection signal="player_entered" from="SkillPickup/TutorialInWorld/PlayerInteractor" to="SkillPickup/TutorialInWorld" method="_on_player_detector_body_entered"]
-[connection signal="player_exited" from="SkillPickup/TutorialInWorld/PlayerInteractor" to="SkillPickup/TutorialInWorld" method="_on_player_detector_body_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialInWorld/PlayerInteractor"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_36q3j")
+
+[connection signal="player_entered" from="TutorialInWorld/PlayerInteractor" to="TutorialInWorld" method="_on_player_detector_body_entered"]
+[connection signal="player_exited" from="TutorialInWorld/PlayerInteractor" to="TutorialInWorld" method="_on_player_detector_body_exited"]
 
 [editable path="Platforms/BreakablePlatform"]
 [editable path="Platforms/BreakablePlatform2"]
