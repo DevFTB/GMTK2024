@@ -4,7 +4,7 @@ extends Node
 @onready var minimap: Control = $CanvasLayer/GUI/Minimap
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug3"):
+	if event.is_action_pressed("reset"):
 		player.kill()
 	if event.is_action_pressed("minimap"):
 		if not minimap.visible:

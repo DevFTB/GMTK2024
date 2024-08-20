@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmo01t4laheco"]
+[gd_scene load_steps=17 format=3 uid="uid://cmo01t4laheco"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_rs1g5"]
 [ext_resource type="Script" path="res://level/world.gd" id="2_lml2l"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://gui/minimap.gd" id="9_xfdqd"]
 [ext_resource type="Texture2D" uid="uid://bymdss5fes5u3" path="res://gui/minimap.png" id="10_rfixi"]
 [ext_resource type="Texture2D" uid="uid://dn60pab7ehj63" path="res://gui/minimap_player_marker.png" id="11_e8r2v"]
-[ext_resource type="Script" path="res://gui/scripts/debug_gui.gd" id="13_26jet"]
 
 [sub_resource type="Gradient" id="Gradient_hfr04"]
 colors = PackedColorArray(0, 0, 0, 1, 0.916996, 0.818549, 0.798141, 1)
@@ -69,24 +68,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_73vek")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/GUI" node_paths=PackedStringArray("player")]
-layout_mode = 0
-offset_right = 104.0
-offset_bottom = 104.0
-script = ExtResource("13_26jet")
-player = NodePath("../../../World/Player")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GUI/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="GlidingLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="FrameInputLabel" type="Label" parent="CanvasLayer/GUI/Panel/VBoxContainer"]
-layout_mode = 2
 
 [node name="StoryTextLabel" type="RichTextLabel" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
