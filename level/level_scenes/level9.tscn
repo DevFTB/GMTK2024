@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://mq1ccudt5wl0"]
+[gd_scene load_steps=38 format=4 uid="uid://mq1ccudt5wl0"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_i66ry"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_1blf7"]
@@ -25,6 +25,35 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh8ae"]
 size = Vector2(128, 994)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqpuj"]
+size = Vector2(367.696, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7ww"]
+atlas = ExtResource("22_gsg5b")
+region = Rect2(0, 96, 128, 32)
+
+[sub_resource type="Curve" id="Curve_2lidd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.46452, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1iskn"]
+curve = SubResource("Curve_2lidd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j1s6v"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 64, 1)
+spread = 0.0
+initial_velocity_min = 424.77
+initial_velocity_max = 506.11
+gravity = Vector3(0, 0, 0)
+scale_max = 4.78
+scale_curve = SubResource("CurveTexture_1iskn")
+color = Color(0.775063, 0.775063, 0.775063, 0.886275)
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.011
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e570b"]
 size = Vector2(128, 832)
@@ -90,6 +119,15 @@ powered = true
 position = Vector2(3.05176e-05, -495)
 shape = SubResource("RectangleShape2D_qh8ae")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
+[node name="GPUParticles2D" parent="Components/PowerableFan/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
+
 [node name="PowerableFan2" parent="Components" instance=ExtResource("3_jt154")]
 position = Vector2(-1600, 64)
 force = Vector2(0, 12)
@@ -99,8 +137,15 @@ powered = true
 position = Vector2(0, 416)
 shape = SubResource("RectangleShape2D_e570b")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan2/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
 [node name="Sprite2D" parent="Components/PowerableFan2/Fan" index="2"]
 rotation = 3.14159
+texture = SubResource("AtlasTexture_ko7ww")
+
+[node name="GPUParticles2D" parent="Components/PowerableFan2/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan3" parent="Components" instance=ExtResource("3_jt154")]
 position = Vector2(-1472, 64)
@@ -111,8 +156,15 @@ powered = true
 position = Vector2(0, 416)
 shape = SubResource("RectangleShape2D_e570b")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan3/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
 [node name="Sprite2D" parent="Components/PowerableFan3/Fan" index="2"]
 rotation = 3.14159
+texture = SubResource("AtlasTexture_ko7ww")
+
+[node name="GPUParticles2D" parent="Components/PowerableFan3/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="Spikes" parent="Components" instance=ExtResource("4_137db")]
 position = Vector2(0, 384)

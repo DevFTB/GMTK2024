@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://ckfp0gc5hjpo7"]
+[gd_scene load_steps=28 format=4 uid="uid://ckfp0gc5hjpo7"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_q0y81"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_wi6ds"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="3_uqvrs"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="4_6pmg8"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="4_bbcrq"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="4_g4k3l"]
 [ext_resource type="PackedScene" uid="uid://y4wbmdicim1a" path="res://level/components/door/door.tscn" id="5_1owhu"]
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="5_qxpsn"]
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="6_2cirr"]
@@ -22,6 +23,32 @@ size = Vector2(800, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny5xa"]
 size = Vector2(32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7ww"]
+atlas = ExtResource("4_g4k3l")
+region = Rect2(0, 96, 128, 32)
+
+[sub_resource type="Curve" id="Curve_2lidd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.46452, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1iskn"]
+curve = SubResource("Curve_2lidd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j1s6v"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 64, 1)
+spread = 0.0
+initial_velocity_min = 424.77
+initial_velocity_max = 506.11
+gravity = Vector3(0, 0, 0)
+scale_max = 4.78
+scale_curve = SubResource("CurveTexture_1iskn")
+color = Color(0.775063, 0.775063, 0.775063, 0.886275)
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.011
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guijp"]
 size = Vector2(128, 738)
@@ -54,7 +81,7 @@ position = Vector2(-1256, 96)
 
 [node name="PowerableFan" parent="Components" instance=ExtResource("3_uqvrs")]
 position = Vector2(-1200, 240)
-force = Vector2(30, 0)
+force = Vector2(110, 0)
 powered = true
 
 [node name="CollisionShape2D" parent="Components/PowerableFan/Fan/FanArea" index="0"]
@@ -67,9 +94,13 @@ shape = SubResource("RectangleShape2D_ny5xa")
 
 [node name="Sprite2D" parent="Components/PowerableFan/Fan" index="2"]
 rotation = 1.5708
+texture = SubResource("AtlasTexture_ko7ww")
 
 [node name="ClippingRect" parent="Components/PowerableFan/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64.0028, -784, -0.00283813, -784, 63.9971, -784, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="Spikes" parent="Components" instance=ExtResource("4_bbcrq")]
 position = Vector2(-992, 320)
@@ -86,7 +117,7 @@ number_of_spikes = 17
 
 [node name="PowerableFan2" parent="Components" instance=ExtResource("3_uqvrs")]
 position = Vector2(0, 640)
-force = Vector2(0, -100)
+force = Vector2(0, -125)
 powered = true
 
 [node name="CollisionShape2D" parent="Components/PowerableFan2/Fan/FanArea" index="0"]
@@ -97,8 +128,14 @@ shape = SubResource("RectangleShape2D_guijp")
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_ta8dh")
 
+[node name="Sprite2D" parent="Components/PowerableFan2/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan2/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -720, 64, -720, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan2/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="Door" parent="Components" instance=ExtResource("5_1owhu")]
 position = Vector2(-776, 352)

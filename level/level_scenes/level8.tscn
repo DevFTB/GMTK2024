@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bwftuiuvhsvv"]
+[gd_scene load_steps=35 format=4 uid="uid://bwftuiuvhsvv"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_yhf7k"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_lho0l"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="6_pbter"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="7_6xb87"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="7_it521"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="7_jpc5j"]
+[ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="7_klyxj"]
 [ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/assets/keyboard_space_icon.svg" id="8_2u36s"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="8_fcca8"]
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="9_d81sk"]
@@ -57,6 +59,32 @@ size = Vector2(928, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3n8q"]
 size = Vector2(32, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7ww"]
+atlas = ExtResource("7_jpc5j")
+region = Rect2(0, 96, 128, 32)
+
+[sub_resource type="Curve" id="Curve_2lidd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.46452, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1iskn"]
+curve = SubResource("Curve_2lidd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j1s6v"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 64, 1)
+spread = 0.0
+initial_velocity_min = 424.77
+initial_velocity_max = 506.11
+gravity = Vector3(0, 0, 0)
+scale_max = 4.78
+scale_curve = SubResource("CurveTexture_1iskn")
+color = Color(0.775063, 0.775063, 0.775063, 0.886275)
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.011
+
 [sub_resource type="Curve2D" id="Curve2D_hyx7e"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
@@ -64,7 +92,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcy0e"]
-size = Vector2(16, 192)
+size = Vector2(16, 160)
 
 [sub_resource type="Curve2D" id="Curve2D_ou8lf"]
 _data = {
@@ -190,7 +218,7 @@ curve = SubResource("Curve2D_jsmq0")
 
 [node name="PowerableFan" parent="Components" instance=ExtResource("6_pbter")]
 position = Vector2(-432, -592)
-force = Vector2(200, 0)
+force = Vector2(210, 0)
 powered = true
 
 [node name="CollisionShape2D" parent="Components/PowerableFan/Fan/FanArea" index="0"]
@@ -203,9 +231,13 @@ shape = SubResource("RectangleShape2D_l3n8q")
 
 [node name="Sprite2D" parent="Components/PowerableFan/Fan" index="2"]
 rotation = 1.5708
+texture = SubResource("AtlasTexture_ko7ww")
 
 [node name="ClippingRect" parent="Components/PowerableFan/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64.0033, -912, 63.9967, -912, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="MovingPlatform11" parent="Components" instance=ExtResource("5_qn5ov")]
 position = Vector2(400, -432)
@@ -215,11 +247,12 @@ powered = true
 curve = SubResource("Curve2D_hyx7e")
 
 [node name="Sprite2D" parent="Components/MovingPlatform11/StaticBody2D" index="0"]
+position = Vector2(5.88402e-05, 16.2543)
 rotation = -1.5708
-scale = Vector2(3, 1)
+scale = Vector2(2.49205, 1)
 
 [node name="CollisionShape2D" parent="Components/MovingPlatform11/StaticBody2D" index="1"]
-position = Vector2(8, 0)
+position = Vector2(8, 16)
 shape = SubResource("RectangleShape2D_xcy0e")
 
 [node name="MovingPlatform12" parent="Components" instance=ExtResource("5_qn5ov")]
@@ -230,12 +263,16 @@ powered = true
 curve = SubResource("Curve2D_ou8lf")
 
 [node name="Sprite2D" parent="Components/MovingPlatform12/StaticBody2D" index="0"]
+position = Vector2(5.84876e-05, 16.1568)
 rotation = -1.5708
-scale = Vector2(3, 1)
+scale = Vector2(2.4951, 1)
 
 [node name="CollisionShape2D" parent="Components/MovingPlatform12/StaticBody2D" index="1"]
-position = Vector2(8, 0)
+position = Vector2(8, 16)
 shape = SubResource("RectangleShape2D_xcy0e")
+
+[node name="Checkpoint" parent="Components" instance=ExtResource("7_klyxj")]
+position = Vector2(368, -224)
 
 [node name="TutorialInWorld" parent="Components" instance=ExtResource("7_it521")]
 position = Vector2(232, 600)
