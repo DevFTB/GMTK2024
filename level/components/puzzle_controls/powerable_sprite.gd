@@ -6,7 +6,7 @@ extends Sprite2D
 
 func _ready() -> void:
 	puzzle_control.power_changed.connect(_on_power_changed)
-	_on_power_changed(puzzle_control.powering)
+	_on_power_changed(puzzle_control.is_powered())
 	
 func _on_power_changed(new_value: bool) -> void:
 	texture = powered_texture if new_value else unpowered_texture

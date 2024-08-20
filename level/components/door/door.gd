@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 func _on_power_changed(new_value: bool) -> void:
 	collision_shape_2d.set_deferred("disabled", not new_value)
-	
+	prints(name, new_value)
 	if new_value:
 		_deploy()
 	else:
@@ -24,7 +24,7 @@ func _on_power_changed(new_value: bool) -> void:
 	
 func _generate_sprite() -> void:
 	var tiles := extents.size.y / 32
-	
+	prints(extents.size.y, 32, tiles)
 	for child in sprites.get_children():
 		child.queue_free()
 	

@@ -57,7 +57,7 @@ func _remove_player(player: Player) -> void:
 	_player = null
 
 func _apply_force(player: Player) -> void:
-	print(force)
+	print("force applied: ", force)
 	player.external_forces[self] = force / _player.stats.mass
 	_added_force = true
 	

@@ -100,13 +100,17 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if not is_dead:
 		super(delta)
-		for i in get_slide_collision_count():
-			var c = get_slide_collision(i)
-			if c.get_collider() is RigidBody2D:
-				var vec = -c.get_normal()
-				vec.y = 0
-				c.get_collider().apply_central_impulse(vec * stats.mass)
-			
+		if size_mode == SizeMode.BIG:
+			for i in get_slide_collision_count():
+				var c = get_slide_collision(i)
+				var rb = c.get_collider()
+				if rb is RigidBody2D:
+					var vec = -c.get_normal()
+					vec.y = 0
+					var force = vec * stats.mass * 100
+					print(force)
+					#rb.move_and_collide(vec * stats.mass * 3 * delta)
+					rb.apply_central_force(force)
 
 func unlock_skill(skill: Skill) -> void:
 	unlocked_skills = unlocked_skills ^ 2 ** skill
@@ -139,6 +143,9 @@ func switch_size(size: SizeMode) -> void:
 	for s in SizeMode.values():
 		var collider = colliders.get(s)
 		collider.set_deferred("disabled", s != size_mode)
+
+
+	_gliding = false
 
 	active_environment_detector.position = com_dict[size].position
 	size_mode_changed.emit(old_size, size_mode)
