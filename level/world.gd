@@ -17,6 +17,7 @@ var _reloading := false
 @onready var spawn_point: Node2D = $SpawnPoint
 @onready var spawn_point_name := start_spawn_point
 @onready var player: Player = $Player
+@onready var story_text_label: RichTextLabel = %StoryTextLabel
 
 @onready var music_player : MusicPlayer = $MusicPlayer
 
@@ -74,8 +75,17 @@ func load_level(new_level: PackedScene, new_spawn_point_name: String) -> void:
 	
 	level.start()
 	_reloading = false
-	
 
+func display_story_text(text: String) -> void:
+	player.paused = true
+	#music_player.pause()
+
+	story_text_label.display(text)
+	await story_text_label.display_completed
+	
+	player.paused = false
+	#music_player.resume()
+	
 func _on_checkpoint_reached(location: Vector2, checkpoint: Checkpoint) -> void:
 	spawn_point.global_position = location
 	spawn_point_name = checkpoint.name

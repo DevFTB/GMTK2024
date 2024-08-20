@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bj0swktf7h5tp" path="res://level/components/fan/fan.tscn" id="6_pbter"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="7_6xb87"]
 [ext_resource type="PackedScene" uid="uid://nqq71oxvmmll" path="res://level/components/tutorial/TutorialInWorld.tscn" id="7_it521"]
-[ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/keyboard_space_icon.svg" id="8_2u36s"]
+[ext_resource type="Texture2D" uid="uid://wc7n1sg6yxmw" path="res://gui/assets/keyboard_space_icon.svg" id="8_2u36s"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="8_fcca8"]
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="9_d81sk"]
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="10_csec2"]

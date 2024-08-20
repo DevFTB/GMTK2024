@@ -216,6 +216,7 @@ position = Vector2(-1376, 160)
 
 [node name="MovingPlatform" parent="Components" instance=ExtResource("8_1rbag")]
 position = Vector2(-256, -80)
+movement_speed = 100.0
 
 [node name="Path2D" parent="Components/MovingPlatform" index="0"]
 curve = SubResource("Curve2D_ki4ys")
@@ -300,7 +301,7 @@ position = Vector2(2.5, 14)
 shape = SubResource("RectangleShape2D_cvi8s")
 
 [node name="Spike" parent="." instance=ExtResource("15_khqwq")]
-position = Vector2(-160, -608)
+position = Vector2(-160, -544)
 
 [node name="Spike2" parent="." instance=ExtResource("15_khqwq")]
 position = Vector2(-160, -608)

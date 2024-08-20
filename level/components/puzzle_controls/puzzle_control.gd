@@ -13,6 +13,7 @@ func _ready() -> void:
 	set_power(_powering)
 
 func _add_listener(powerable: Powerable) -> void:
+	powerable.is_controlled = true
 	power_changed.connect(powerable.set_power)
 
 func set_power(value: bool):

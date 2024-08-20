@@ -37,7 +37,6 @@ func play(key: String, force := false, is_loop := false) -> void:
 				is_looping = is_loop
 			else:
 				if queue.size() < max_queue_size:
-
 					queue.push_back(AudioQueueItem.new(key, is_loop))
 
 		else:
