@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ctjei7epw10s5"]
+[gd_scene load_steps=27 format=4 uid="uid://ctjei7epw10s5"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_isdxi"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_juosa"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="5_wgq73"]
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="6_akwyr"]
 [ext_resource type="PackedScene" uid="uid://bltceh3qwk1vt" path="res://level/components/turret_camera/turret_camera.tscn" id="6_coye1"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="7_2ym0r"]
 [ext_resource type="Texture2D" uid="uid://b6u24fra7qmab" path="res://level/components/bg/Untitled_Artwork-5.png" id="7_7adlx"]
 [ext_resource type="PackedScene" uid="uid://d3afcrngvlsjr" path="res://level/components/checkpoint/checkpoint.tscn" id="7_tnf1a"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="8_01160"]
@@ -22,6 +23,35 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42adp"]
 size = Vector2(128, 1026)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqpuj"]
+size = Vector2(367.696, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7ww"]
+atlas = ExtResource("7_2ym0r")
+region = Rect2(0, 96, 128, 32)
+
+[sub_resource type="Curve" id="Curve_2lidd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.46452, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1iskn"]
+curve = SubResource("Curve_2lidd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j1s6v"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 64, 1)
+spread = 0.0
+initial_velocity_min = 424.77
+initial_velocity_max = 506.11
+gravity = Vector3(0, 0, 0)
+scale_max = 4.78
+scale_curve = SubResource("CurveTexture_1iskn")
+color = Color(0.775063, 0.775063, 0.775063, 0.886275)
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.011
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at3us"]
 size = Vector2(128, 1186)
@@ -143,8 +173,17 @@ powered = true
 position = Vector2(0, -511)
 shape = SubResource("RectangleShape2D_42adp")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1008, 64, -1008, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="Spikes3" parent="Components" instance=ExtResource("5_wgq73")]
 position = Vector2(544, -576)
@@ -160,8 +199,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan2/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan2/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan2/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan2/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan3" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(-800, 608)
@@ -172,8 +220,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan3/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan3/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan3/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan3/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="SoundFX" parent="Components/PowerableFan3" index="1"]
 position = Vector2(1056, -624)
@@ -187,8 +244,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan4/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan4/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan4/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan4/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan5" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(-544, 608)
@@ -199,8 +265,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan5/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan5/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan5/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan5/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan6" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(-416, 608)
@@ -211,8 +286,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan6/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan6/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan6/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan6/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan7" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(-288, 608)
@@ -223,8 +307,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan7/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan7/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan7/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan7/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan8" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(-160, 608)
@@ -235,8 +328,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan8/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan8/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan8/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan8/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan9" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(-32, 608)
@@ -247,8 +349,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan9/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan9/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan9/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan9/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan10" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(96, 608)
@@ -259,8 +370,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan10/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan10/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan10/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan10/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan11" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(224, 608)
@@ -271,8 +391,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan11/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan11/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan11/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan11/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan12" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(352, 608)
@@ -283,8 +412,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan12/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan12/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan12/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan12/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="PowerableFan13" parent="Components" instance=ExtResource("3_ynqc8")]
 position = Vector2(480, 608)
@@ -295,8 +433,17 @@ powered = true
 position = Vector2(0, -591)
 shape = SubResource("RectangleShape2D_at3us")
 
+[node name="CollisionShape2D" parent="Components/PowerableFan13/Fan" index="1"]
+shape = SubResource("RectangleShape2D_fqpuj")
+
+[node name="Sprite2D" parent="Components/PowerableFan13/Fan" index="2"]
+texture = SubResource("AtlasTexture_ko7ww")
+
 [node name="ClippingRect" parent="Components/PowerableFan13/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-64, -1168, 64, -1168, 65, 17, -62, 16)
+
+[node name="GPUParticles2D" parent="Components/PowerableFan13/Fan/Sprite2D/ClippingRect" index="0"]
+process_material = SubResource("ParticleProcessMaterial_j1s6v")
 
 [node name="Checkpoint" parent="Components" instance=ExtResource("7_tnf1a")]
 position = Vector2(624, 32)
