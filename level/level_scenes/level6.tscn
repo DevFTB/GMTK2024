@@ -153,7 +153,8 @@ position = Vector2(-408, 512)
 inverted_self = true
 
 [node name="Switch2" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
-position = Vector2(-896, 592)
+position = Vector2(-896, 624)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../Door3"), NodePath("../Door5")]
 
@@ -162,7 +163,8 @@ position = Vector2(112, -264)
 skill = 1
 
 [node name="Switch" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
-position = Vector2(-672, 432)
+position = Vector2(-672, 464)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../Door"), NodePath("../Door2")]
 
@@ -174,7 +176,8 @@ inverted_self = true
 position = Vector2(-536, 512)
 
 [node name="Switch3" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_2cirr")]
-position = Vector2(-696, 592)
+position = Vector2(-696, 624)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../Door4")]
 

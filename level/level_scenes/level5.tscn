@@ -83,12 +83,14 @@ shape = SubResource("RectangleShape2D_iufvu")
 position = Vector2(0, -16)
 
 [node name="Switch" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_xfu21")]
-position = Vector2(-48, -656)
+position = Vector2(-48, -624)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../PowerableFan")]
 
 [node name="Switch2" parent="Components" node_paths=PackedStringArray("listeners") instance=ExtResource("6_xfu21")]
-position = Vector2(144, 48)
+position = Vector2(144, 80)
+rotation = 1.5708
 _powering = false
 listeners = [NodePath("../PowerableFan")]
 
