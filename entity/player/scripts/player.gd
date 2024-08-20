@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 			
 
 func unlock_skill(skill: Skill) -> void:
-	unlocked_skills = unlocked_skills ^ 2 ** skill
+	unlocked_skills = unlocked_skills | 2 ** skill
 	print(unlocked_skills)
 
 func kill() -> void:
