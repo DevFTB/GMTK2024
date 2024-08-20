@@ -28,7 +28,7 @@ tile_set = ExtResource("2_25cnl")
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="Left1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
-position = Vector2(-576, -8)
+position = Vector2(-624, 72)
 
 [node name="Right1" type="Node2D" parent="Spawns" groups=["spawn_point"]]
 position = Vector2(112, 312)
@@ -105,8 +105,8 @@ shape = SubResource("RectangleShape2D_cvi8s")
 
 [node name="LevelTransition2" parent="LevelTransitions" instance=ExtResource("8_h1fy5")]
 position = Vector2(-696, 0)
-level_name = "level8"
-spawn_point_name = "Top1"
+level_name = "level0c"
+spawn_point_name = "Right2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTransitions/LevelTransition2/PlayerInteractor" index="0"]
 position = Vector2(-15, -16)
