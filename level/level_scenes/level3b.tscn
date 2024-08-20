@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cjkk032nfgiy2"]
+[gd_scene load_steps=15 format=4 uid="uid://b7hda2yd3e8vg"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_flelm"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_6w7o1"]
@@ -23,6 +23,7 @@ size = Vector2(160, 1064)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_flelm")
+level_name = &"level3b"
 
 [node name="Platforms" type="TileMapLayer" parent="."]
 position = Vector2(120, 8)

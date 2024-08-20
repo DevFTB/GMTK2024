@@ -28,7 +28,7 @@ var should_remove: bool:
 func _ready() -> void:
 	super()
 	
-	var velocity_multiplier = force.length() / base_force_magnitude
+	var velocity_multiplier = log(force.length()) / log(base_force_magnitude)
 	gpu_particles_2d.process_material = gpu_particles_2d.process_material.duplicate()
 	gpu_particles_2d.process_material.initial_velocity_min *= velocity_multiplier
 	gpu_particles_2d.process_material.initial_velocity_max *= velocity_multiplier
@@ -57,6 +57,7 @@ func _remove_player(player: Player) -> void:
 	_player = null
 
 func _apply_force(player: Player) -> void:
+	print("force applied: ", force)
 	player.external_forces[self] = force / _player.stats.mass
 	_added_force = true
 	

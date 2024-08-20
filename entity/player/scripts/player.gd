@@ -1,26 +1,27 @@
 extends GroundedCharacterController
 class_name Player
 
-signal size_mode_changed(old_size:SizeMode, new_size: SizeMode)
+signal size_mode_changed(old_size: SizeMode, new_size: SizeMode)
 signal killed
+signal punched(direction: Vector2)
 
 enum SizeMode {
 	SMALL, NORMAL, BIG
 }
 
 enum Skill {
-	GAUNTLET, GLIDER, DOUBLE_JUMP
+	GAUNTLET, GLIDER, DOUBLE_JUMP, SMALL, BIG
 }
 
 const SCALES = {
-	Player.SizeMode.SMALL: Vector2(16,16),
+	Player.SizeMode.SMALL: Vector2(16, 16),
 	Player.SizeMode.NORMAL: Vector2(32, 48),
 	Player.SizeMode.BIG: Vector2(128, 144),
 }
 
 const order = [Player.SizeMode.SMALL, Player.SizeMode.NORMAL, Player.SizeMode.BIG]
 
-@export_flags("Gauntlet", "Glider", "Double Jump") var starting_skills
+@export_flags("Gauntlet", "Glider", "Double Jump", "Small", "Big") var starting_skills
 @export var size_stats: Dictionary
 
 
@@ -49,20 +50,15 @@ var com: Vector2:
 	SizeMode.NORMAL: $NormalAnimationPlayer,
 	SizeMode.BIG: $BigAnimationPlayer,
 }
-
-@onready var sound_player_dict := {
-	SizeMode.SMALL: $SmallSoundPlayer,
-	SizeMode.NORMAL: $NormalSoundPlayer,
-	SizeMode.BIG: $BigSoundPlayer,
-}
-
 @onready var active_environment_detector: Node2D = $ActiveEnvironmentDetector
 
 # bit 0:gauntlet, bit 1:glider, bit 2: double_jump
-var unlocked_skills : int = 0
+var unlocked_skills: int = 0
 
 var is_walking = false
-var currently_playing : String
+var currently_playing: String 
+
+var is_dead := false
 
 func _ready() -> void:
 	size_mode = SizeMode.NORMAL
@@ -74,64 +70,61 @@ func _input(event: InputEvent) -> void:
 		var index = order.find(size_mode)
 		var new_index = index - 1
 		if new_index >= 0:
+			var new_size = order[new_index]
+			# only go small if unlocked
+			if new_size == SizeMode.SMALL and not unlocked_skills & 2 ** Skill.SMALL:
+				return
+
 			print("huh", new_index)
 
 			switch_size(order[new_index])
-			
-			stop_playback()
-			var sound_player = sound_player_dict[size_mode]
-			sound_player.fx_play("size_down")
-			currently_playing = "size_down"
-
 			
 
 	if event.is_action_pressed("change_size_up"):
 		var index = order.find(size_mode)
 		var new_index = index + 1
 		if new_index < order.size():
+			var new_size = order[new_index]
+			# only go small if unlocked
+			if new_size == SizeMode.BIG and not unlocked_skills & 2 ** Skill.BIG:
+				return
+				
 			if _check_size(order[new_index]):
 				print("hah", new_index)
 				switch_size(order[new_index])
-				
-				var sound_player = sound_player_dict[size_mode]
-				stop_playback()
-				sound_player.fx_play("size_up")
-				currently_playing = "size_up"
-			
 	
-	if event.is_action("move_left") or event.is_action("move_right"):
-		if _grounded == true and currently_playing != "footsteps":
-			var sound_player = sound_player_dict[size_mode]
-			stop_playback()
-			sound_player.fx_play("footsteps")
-			currently_playing = "footsteps"
-			
-	if event.is_action_released("move_left") or event.is_action_released("move_right") or _grounded == false:
-		if currently_playing == "footsteps":
-			stop_playback()
-			currently_playing = "none"
-	
+	if event.is_action_pressed("punch"):
+		if size_mode == SizeMode.BIG:
+			punched.emit(last_inputted_direction)
 
 func _physics_process(delta: float) -> void:
-	super(delta)
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			var vec = -c.get_normal()
-			vec.y = 0
-			c.get_collider().apply_central_impulse(vec * stats.mass)
-			
-
+	if not is_dead:
+		super(delta)
+		if size_mode == SizeMode.BIG:
+			for i in get_slide_collision_count():
+				var c = get_slide_collision(i)
+				var rb = c.get_collider()
+				if rb is RigidBody2D:
+					var vec = -c.get_normal()
+					vec.y = 0
+					var force = vec * stats.mass * 100
+					print(force)
+					#rb.move_and_collide(vec * stats.mass * 3 * delta)
+					rb.apply_central_force(force)
 
 func unlock_skill(skill: Skill) -> void:
-	unlocked_skills = unlocked_skills ^ 2 ** skill
+	unlocked_skills = unlocked_skills | 2 ** skill
 	print(unlocked_skills)
 
+func reset() -> void:
+	is_dead = false
+
 func kill() -> void:
-	_frame_velocity = Vector2.ZERO
-	velocity = Vector2.ZERO
-	
-	killed.emit()
+	if not is_dead:
+		is_dead = true
+		_frame_velocity = Vector2.ZERO
+		velocity = Vector2.ZERO	
+		killed.emit()
 
 func switch_size(size: SizeMode) -> void:
 	var old_player = anim_player_dict[size_mode]
@@ -151,13 +144,16 @@ func switch_size(size: SizeMode) -> void:
 		var collider = colliders.get(s)
 		collider.set_deferred("disabled", s != size_mode)
 
+
+	_gliding = false
+
 	active_environment_detector.position = com_dict[size].position
 	size_mode_changed.emit(old_size, size_mode)
 
 func _check_size(size: SizeMode) -> bool:
 	var dss := get_world_2d().direct_space_state
 	
-	var params : PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
+	var params: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
 	params.collide_with_areas = true
 	params.collision_mask = 0b1
 	
@@ -189,19 +185,3 @@ func set_camera_limits(left, top, right, bottom):
 	$Camera2D.limit_left = left
 	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
-	print(top,left,right,bottom)
-
-
-
-
-func _on_jumped():
-	is_walking = false
-	var sound_player = sound_player_dict[size_mode]
-	stop_playback()
-	sound_player.fx_play("jump")
-	currently_playing = "jump"
-
-func stop_playback():
-	$SmallSoundPlayer.stop()
-	$NormalSoundPlayer.stop()
-	$BigSoundPlayer.stop()

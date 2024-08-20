@@ -1,5 +1,6 @@
 extends Node2D
  
+signal level_loaded
 # TODO: note, this way we can stil potentailly make a minimap by putting all levels in the same scene after
 
 @export var levels: WorldLevels
@@ -10,8 +11,11 @@ extends Node2D
 @export var start_level_name := "level0"
 @export var start_spawn_point := "Left1"
 
+var _reloading := false
+
 @onready var level: Level = get_node_or_null("Level")
 @onready var spawn_point: Node2D = $SpawnPoint
+@onready var spawn_point_name := start_spawn_point
 @onready var player: Player = $Player
 
 @onready var music_player : MusicPlayer = $MusicPlayer
@@ -26,9 +30,16 @@ func _ready() -> void:
 		queue_music(level_music)
 
 func _on_player_kill() -> void:
-	player.global_position = spawn_point.global_position
-	
-func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
+	reload_level()
+
+func reload_level() -> void:
+	if not _reloading:
+		await load_level(levels.get_level(level.level_name), spawn_point_name)
+		player.reset()
+
+
+func load_level(new_level: PackedScene, new_spawn_point_name: String) -> void:
+	_reloading = true
 	level_transition_screen.fade_out()
 	await level_transition_screen.fade_out_completed
 	
@@ -43,13 +54,16 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 	level = new_level.instantiate()
 	add_child(level)
 
-	spawn_point.global_position = level.get_spawn_point(spawn_point_name)
+	spawn_point.global_position = level.get_spawn_point(new_spawn_point_name)
+	spawn_point_name = new_spawn_point_name
+	
 	player.global_position = spawn_point.global_position
+	
+	for cp in level.check_points:
+		cp.checkpoint_reached.connect(_on_checkpoint_reached.bind(cp))
 
 	level_transition_screen.fade_in()
 	connect_level_transitions(level)
-	
-	level.start()
 	
 	var camera_bounds = level.get_camera_bounds()
 
@@ -57,6 +71,14 @@ func load_level(new_level: PackedScene, spawn_point_name: String) -> void:
 		camera_bounds["left"], camera_bounds["top"],
 		camera_bounds["right"], camera_bounds["bottom"]
 	)
+	
+	level.start()
+	_reloading = false
+	
+
+func _on_checkpoint_reached(location: Vector2, checkpoint: Checkpoint) -> void:
+	spawn_point.global_position = location
+	spawn_point_name = checkpoint.name
 	
 func _on_level_transition(level_name: String, spawn_point_name: String):
 	load_level(levels.get_level(level_name), spawn_point_name)

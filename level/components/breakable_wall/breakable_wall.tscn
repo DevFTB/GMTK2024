@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3kqi21bsji6q"]
+
+[ext_resource type="Script" path="res://level/components/breakable_wall/breakable_wall.gd" id="1_v1cik"]
+[ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_w6rkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocu7k"]
+atlas = ExtResource("2_w6rkg")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_furag"]
+atlas = ExtResource("2_w6rkg")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1axr4"]
+atlas = ExtResource("2_w6rkg")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhtig"]
+size = Vector2(32, 256)
+
+[node name="BreakableWall" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_v1cik")
+texture_top = SubResource("AtlasTexture_ocu7k")
+texture_fill = SubResource("AtlasTexture_furag")
+texture_bottom = SubResource("AtlasTexture_1axr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 128)
+shape = SubResource("RectangleShape2D_rhtig")
+
+[node name="Sprites" type="Node2D" parent="."]

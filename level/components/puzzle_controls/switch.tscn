@@ -17,10 +17,9 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("4_u0ocl")
 region = Rect2(64, 0, 32, 32)
 
-[node name="Switch" type="Node2D" node_paths=PackedStringArray("listeners")]
+[node name="Switch" type="Node2D"]
 position = Vector2(64, -16)
 script = ExtResource("1_gweot")
-listeners = [null]
 
 [node name="PlayerInteractor" parent="." instance=ExtResource("2_e4po0")]
 

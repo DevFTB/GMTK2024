@@ -1,19 +1,23 @@
-[gd_resource type="Resource" script_class="WorldLevels" load_steps=15 format=3 uid="uid://ca0ien87if0hp"]
+[gd_resource type="Resource" script_class="WorldLevels" load_steps=19 format=3 uid="uid://ca0ien87if0hp"]
 
 [ext_resource type="Script" path="res://level/WorldLevels.gd" id="1_6waot"]
-[ext_resource type="AudioStream" uid="uid://orevs0xniur0" path="res://sounds/music/built to scale orchestral loop.wav" id="1_8g8w3"]
-[ext_resource type="AudioStream" uid="uid://cl62fqw3p7jfo" path="res://sounds/music/built to scale electronic loop.wav" id="2_ksf72"]
+[ext_resource type="AudioStream" uid="uid://vbhayqhiikxp" path="res://sounds/music/built to scale orchestral loop.ogg" id="1_8g8w3"]
+[ext_resource type="AudioStream" uid="uid://c7y3ird2bnc06" path="res://sounds/music/built to scale electronic loop.ogg" id="2_ksf72"]
 [ext_resource type="PackedScene" uid="uid://c6jlqamc5l531" path="res://level/level_scenes/leveltest.tscn" id="2_n0mpx"]
-[ext_resource type="PackedScene" path="res://level/level_scenes/level_old_main.tscn" id="3_o6kvr"]
+[ext_resource type="PackedScene" uid="uid://yycecebwni2u" path="res://level/level_scenes/level_old_main.tscn" id="3_o6kvr"]
 [ext_resource type="PackedScene" uid="uid://7k8kb8abds7w" path="res://level/level_scenes/level1.tscn" id="4_la30u"]
-[ext_resource type="PackedScene" uid="uid://bnymx5lhmn8t" path="res://level/level_scenes/level2.tscn" id="4_llo1m"]
+[ext_resource type="PackedScene" uid="uid://b58gwei0d8fc3" path="res://level/level_scenes/level2.tscn" id="4_llo1m"]
 [ext_resource type="PackedScene" uid="uid://bpivvhh6cmhrf" path="res://level/level_scenes/level0.tscn" id="5_41smi"]
 [ext_resource type="PackedScene" uid="uid://bap81ui0aassh" path="res://level/level_scenes/level0b.tscn" id="6_ssn02"]
-[ext_resource type="PackedScene" uid="uid://cord1brcsk3di" path="res://level/level_scenes/level4.tscn" id="7_vw3qs"]
-[ext_resource type="PackedScene" uid="uid://35baj8ac63o0" path="res://level/level_scenes/level5.tscn" id="8_8ur1q"]
-[ext_resource type="PackedScene" path="res://level/level_scenes/level0c.tscn" id="11_2k4fs"]
-[ext_resource type="PackedScene" path="res://level/level_scenes/level3a.tscn" id="12_bbnn0"]
-[ext_resource type="PackedScene" uid="uid://cjkk032nfgiy2" path="res://level/level_scenes/level3b.tscn" id="13_fu5cx"]
+[ext_resource type="PackedScene" uid="uid://ctjei7epw10s5" path="res://level/level_scenes/level4.tscn" id="7_vw3qs"]
+[ext_resource type="PackedScene" uid="uid://c3q1u54aahrde" path="res://level/level_scenes/level5.tscn" id="8_8ur1q"]
+[ext_resource type="PackedScene" uid="uid://bg857ygj0kgel" path="res://level/level_scenes/level0c.tscn" id="11_2k4fs"]
+[ext_resource type="PackedScene" uid="uid://posesq04y2w4" path="res://level/level_scenes/level7.tscn" id="11_8wwfm"]
+[ext_resource type="PackedScene" uid="uid://ckfp0gc5hjpo7" path="res://level/level_scenes/level6.tscn" id="12_1ha1y"]
+[ext_resource type="PackedScene" uid="uid://w6rph73mf8i1" path="res://level/level_scenes/level_test.tscn" id="15_di38n"]
+[ext_resource type="PackedScene" uid="uid://mq1ccudt5wl0" path="res://level/level_scenes/level9.tscn" id="15_shxwm"]
+[ext_resource type="PackedScene" uid="uid://4lr3ov78jqlk" path="res://level/level_scenes/level3a.tscn" id="16_wxyea"]
+[ext_resource type="PackedScene" uid="uid://b7hda2yd3e8vg" path="res://level/level_scenes/level3b.tscn" id="17_x2b66"]
 
 [resource]
 script = ExtResource("1_6waot")
@@ -23,10 +27,15 @@ levels = {
 "level0c": ExtResource("11_2k4fs"),
 "level1": ExtResource("4_la30u"),
 "level2": ExtResource("4_llo1m"),
-"level3a": ExtResource("12_bbnn0"),
-"level3b": ExtResource("13_fu5cx"),
+"level3a": ExtResource("16_wxyea"),
+"level3b": ExtResource("17_x2b66"),
 "level4": ExtResource("7_vw3qs"),
 "level5": ExtResource("8_8ur1q"),
+"level6": ExtResource("12_1ha1y"),
+"level7": ExtResource("11_8wwfm"),
+"level8": ExtResource("11_8wwfm"),
+"level9": ExtResource("15_shxwm"),
+"level_fan_test": ExtResource("15_di38n"),
 "leveltest": ExtResource("2_n0mpx"),
 "old_main": ExtResource("3_o6kvr")
 }

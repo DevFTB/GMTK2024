@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_2dqrn")
 max_speed = 100
-acceleration = 100
+acceleration = 400
 ground_deceleration = 800
 air_deceleration = 350
 grounding_force = 1.5
