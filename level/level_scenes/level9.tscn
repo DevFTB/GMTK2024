@@ -292,6 +292,7 @@ shape = SubResource("RectangleShape2D_2rswt")
 
 [node name="PressurePlate" parent="." node_paths=PackedStringArray("listeners") instance=ExtResource("20_r38fy")]
 position = Vector2(-368, -48)
+_powering = false
 listeners = [NodePath("../Components/MovingPlatform")]
 
 [node name="Door2" parent="." instance=ExtResource("16_smcaa")]
