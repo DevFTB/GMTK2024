@@ -148,6 +148,9 @@ rotation = 1.5708
 position = Vector2(0.00012207, -564)
 shape = SubResource("RectangleShape2D_16e1o")
 
+[node name="CollisionShape2D" parent="PowerableFan/Fan" index="1"]
+position = Vector2(-6.10352e-05, -16.0001)
+
 [node name="ClippingRect" parent="PowerableFan/Fan/Sprite2D" index="0"]
 polygon = PackedVector2Array(-63, -534, -64, -1160, 64, -1160, 64, -536, 65, 17, -62, 16)
 
