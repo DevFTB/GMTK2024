@@ -101,7 +101,7 @@ func _on_level_transition(level_name: String, spawn_point_name: String):
 		if level_music:
 			queue_music(level_music)
 	else:
-		get_tree().change_scene_to_packed(END_SCREEN)
+		get_tree().call_deferred("change_scene_to_packed", END_SCREEN)
 
 # TODO: seems to be an error that changle_level is already connected. not causing any grif at the moment, but could be connected to the prior issue
 func connect_level_transitions(new_level: Level):

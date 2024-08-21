@@ -1,0 +1,254 @@
+[gd_scene load_steps=17 format=3 uid="uid://bqfolia6nhe0i"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_2kk8l"]
+[ext_resource type="Script" path="res://level/world.gd" id="2_er1d5"]
+[ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_8isil"]
+[ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="4_2vmag"]
+[ext_resource type="PackedScene" uid="uid://dgq0imk2hl3xo" path="res://level/components/sound & fx/music_player.tscn" id="5_mw5ys"]
+[ext_resource type="FontFile" uid="uid://cx7u1dn3lokjj" path="res://gui/assets/PixelifySans-VariableFont_wght.ttf" id="6_sk5is"]
+[ext_resource type="Script" path="res://gui/scripts/story_text_label.gd" id="7_k0q2b"]
+[ext_resource type="Script" path="res://gui/minimap.gd" id="8_y0drp"]
+[ext_resource type="Texture2D" uid="uid://bymdss5fes5u3" path="res://gui/minimap.png" id="9_gseix"]
+[ext_resource type="Texture2D" uid="uid://dn60pab7ehj63" path="res://gui/minimap_player_marker.png" id="10_uvoyj"]
+[ext_resource type="Script" path="res://level/level_transition_screen.gd" id="11_lx5t0"]
+
+[sub_resource type="Gradient" id="Gradient_hfr04"]
+colors = PackedColorArray(0, 0, 0, 1, 0.916996, 0.818549, 0.798141, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vgysw"]
+gradient = SubResource("Gradient_hfr04")
+
+[sub_resource type="Environment" id="Environment_yrqld"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_contrast = 1.15
+adjustment_color_correction = SubResource("GradientTexture1D_vgysw")
+
+[sub_resource type="Theme" id="Theme_73vek"]
+default_font = ExtResource("6_sk5is")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64trb"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1296, 0.25128, 0.27, 0.756863)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Main" type="Node"]
+script = ExtResource("1_2kk8l")
+
+[node name="World" type="Node2D" parent="." node_paths=PackedStringArray("level_transition_screen") groups=["world"]]
+script = ExtResource("2_er1d5")
+levels = ExtResource("3_8isil")
+level_transition_screen = NodePath("../CanvasLayer/LevelTransitionScreen")
+start_level_name = "level9"
+start_spawn_point = "Checkpoint2"
+
+[node name="Player" parent="World" groups=["manual"] instance=ExtResource("4_2vmag")]
+collision_mask = 27
+starting_skills = 31
+size_changed_cooldown = 0.4
+
+[node name="SpawnPoint" type="Node2D" parent="World"]
+
+[node name="MusicPlayer" parent="World" instance=ExtResource("5_mw5ys")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_yrqld")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_73vek")
+
+[node name="StoryTextLabel" type="RichTextLabel" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -349.0
+offset_top = 20.0
+offset_right = 350.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_64trb")
+bbcode_enabled = true
+scroll_active = false
+scroll_following = true
+script = ExtResource("7_k0q2b")
+character_speed = 15.0
+
+[node name="Minimap" type="Control" parent="CanvasLayer/GUI" node_paths=PackedStringArray("world")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_y0drp")
+world = NodePath("../../../World")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GUI/Minimap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00356623, 0.0428837, 0.0527218, 1)
+
+[node name="MinimapTexture" type="TextureRect" parent="CanvasLayer/GUI/Minimap"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -527.5
+offset_top = -328.0
+offset_right = 527.5
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_gseix")
+
+[node name="level0" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 362.0
+offset_right = 303.0
+offset_bottom = 439.0
+
+[node name="level0b" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 310.0
+offset_top = 361.0
+offset_right = 374.0
+offset_bottom = 440.0
+
+[node name="level0c" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 381.0
+offset_top = 361.0
+offset_right = 447.0
+offset_bottom = 438.0
+
+[node name="level1" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 452.0
+offset_top = 362.0
+offset_right = 758.0
+offset_bottom = 534.0
+
+[node name="level2" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 782.0
+offset_top = 349.0
+offset_right = 964.0
+offset_bottom = 457.0
+
+[node name="level3a" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 800.0
+offset_top = 218.0
+offset_right = 945.0
+offset_bottom = 265.0
+
+[node name="level3b" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 620.0
+offset_top = 219.0
+offset_right = 753.0
+offset_bottom = 356.0
+
+[node name="level4" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 980.0
+offset_top = 367.0
+offset_right = 1314.0
+offset_bottom = 549.0
+
+[node name="level5" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 925.0
+offset_top = 574.0
+offset_right = 1110.0
+offset_bottom = 748.0
+
+[node name="level6" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 1139.0
+offset_top = 589.0
+offset_right = 1317.0
+offset_bottom = 717.0
+
+[node name="level7" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 243.0
+offset_top = 468.0
+offset_right = 424.0
+offset_bottom = 604.0
+
+[node name="level8" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 133.0
+offset_top = 289.0
+offset_right = 227.0
+offset_bottom = 602.0
+
+[node name="level9" type="Control" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+anchors_preset = 0
+offset_left = 1342.0
+offset_top = 412.0
+offset_right = 1613.0
+offset_bottom = 767.0
+
+[node name="PlayerIcon" type="TextureRect" parent="CanvasLayer/GUI/Minimap/MinimapTexture"]
+layout_mode = 0
+offset_left = 84.5
+offset_top = 159.0
+offset_right = 124.5
+offset_bottom = 199.0
+texture = ExtResource("10_uvoyj")
+
+[node name="LevelTransitionScreen" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("11_lx5t0")
+transition_time = 0.6
+
+[node name="ColourRect" type="ColorRect" parent="CanvasLayer/LevelTransitionScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
