@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://y4wbmdicim1a"]
 
-[ext_resource type="Script" path="res://level/components/door/door.gd" id="1_mwc01"]
+[ext_resource type="Script" uid="uid://c2t0h6ld8n7e2" path="res://level/components/door/door.gd" id="1_mwc01"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_0du1l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhwb8"]

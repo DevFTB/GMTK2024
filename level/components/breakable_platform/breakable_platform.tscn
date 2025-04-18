@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://r14oxhoghyh7"]
 
-[ext_resource type="Script" path="res://level/components/breakable_platform/breakable_platform.gd" id="1_l1rfn"]
+[ext_resource type="Script" uid="uid://cbyb54ggfc4p1" path="res://level/components/breakable_platform/breakable_platform.gd" id="1_l1rfn"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_62lqo"]
-[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_nb7qm"]
+[ext_resource type="Script" uid="uid://5mwe5uyhwcas" path="res://level/components/interactor/player_interactor.gd" id="3_nb7qm"]
 [ext_resource type="AudioStream" uid="uid://dhe5hou4y6r7c" path="res://sounds/environment/ground break.wav" id="4_dwuay"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mbeo"]

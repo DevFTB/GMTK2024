@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=4 uid="uid://baag05okdkinh"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1_jq1ub"]
+[ext_resource type="Script" uid="uid://cnq4kcakprt0h" path="res://level/level.gd" id="1_jq1ub"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_d0v8e"]
 [ext_resource type="PackedScene" uid="uid://b1n6yi2vb51yw" path="res://level/components/spikes/spikes.tscn" id="4_0ydo0"]
 [ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="4_n1v7n"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d3kqi21bsji6q" path="res://level/components/breakable_wall/breakable_wall.tscn" id="11_8r3sr"]
 [ext_resource type="PackedScene" uid="uid://cv6bxphghmjsm" path="res://level/components/level_transition/level_transition.tscn" id="12_7jtj2"]
 [ext_resource type="PackedScene" uid="uid://dj7dnbfgo3bod" path="res://level/components/skill_pickup/skill_pickup.tscn" id="12_f7p3v"]
-[ext_resource type="Script" path="res://level/components/tutorial/tutorial_in_world.gd" id="13_xx6q3"]
+[ext_resource type="Script" uid="uid://2e3mr7xh48et" path="res://level/components/tutorial/tutorial_in_world.gd" id="13_xx6q3"]
 [ext_resource type="Texture2D" uid="uid://6ggvlr8vl3gs" path="res://gui/assets/keyboard_k.png" id="14_pn5ie"]
 [ext_resource type="Texture2D" uid="uid://dyuh7ssg0aokc" path="res://gui/assets/keyboard_e.png" id="15_k2mdn"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="16_u5v44"]
@@ -86,9 +86,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_htkvc"]
 _data = {
-"RESET": SubResource("Animation_i3dua"),
-"fade_in": SubResource("Animation_1oefq"),
-"fade_out": SubResource("Animation_0xi0a")
+&"RESET": SubResource("Animation_i3dua"),
+&"fade_in": SubResource("Animation_1oefq"),
+&"fade_out": SubResource("Animation_0xi0a")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36q3j"]

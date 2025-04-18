@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bltceh3qwk1vt"]
 
-[ext_resource type="Script" path="res://level/components/turret_camera/turret_camera.gd" id="1_ca7je"]
-[ext_resource type="Script" path="res://level/components/turret_camera/ray_shooter.gd" id="2_70cdj"]
+[ext_resource type="Script" uid="uid://b45xuffix0wu3" path="res://level/components/turret_camera/turret_camera.gd" id="1_ca7je"]
+[ext_resource type="Script" uid="uid://cst8qaaycetd3" path="res://level/components/turret_camera/ray_shooter.gd" id="2_70cdj"]
 [ext_resource type="AudioStream" uid="uid://d2fami3mqd0bm" path="res://level/components/turret_camera/turret_build.wav" id="3_bdfia"]
 [ext_resource type="AudioStream" uid="uid://dtq8jp1qnugja" path="res://level/components/turret_camera/turret_shoot.wav" id="4_6xfh2"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="5_3bwu0"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="AnimationLibrary" uid="uid://caylj8ll2xsqi" path="res://entity/player/assets/normal_anim_library.tres" id="1_k6r4r"]
 [ext_resource type="AnimationLibrary" uid="uid://bufno8qvsq2rw" path="res://entity/player/assets/small_anim_library.tres" id="2_j4wrt"]
-[ext_resource type="Script" path="res://entity/player/scripts/player_animation.gd" id="3_bkw8o"]
+[ext_resource type="Script" uid="uid://cq7rp4p2r8lcm" path="res://entity/player/scripts/player_animation.gd" id="3_bkw8o"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dh3h2srvegr8a" path="res://entity/player/assets/small_state_machine.tres" id="4_jeox8"]
 
 [sub_resource type="Animation" id="Animation_8ljjk"]
@@ -225,18 +225,18 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yq77u"]
 _data = {
-"RESET": SubResource("Animation_8ljjk"),
-"fall_left": SubResource("Animation_i85gg"),
-"fall_right": SubResource("Animation_tcl85"),
-"glide": SubResource("Animation_ehc47"),
-"idle": SubResource("Animation_a3k11"),
-"jump_left": SubResource("Animation_ek7uh"),
-"jump_right": SubResource("Animation_v2y58"),
-"land_left": SubResource("Animation_dc7od"),
-"land_right": SubResource("Animation_2dmwm"),
-"move_left": SubResource("Animation_6u34k"),
-"move_right": SubResource("Animation_ma8us"),
-"push": SubResource("Animation_54nci")
+&"RESET": SubResource("Animation_8ljjk"),
+&"fall_left": SubResource("Animation_i85gg"),
+&"fall_right": SubResource("Animation_tcl85"),
+&"glide": SubResource("Animation_ehc47"),
+&"idle": SubResource("Animation_a3k11"),
+&"jump_left": SubResource("Animation_ek7uh"),
+&"jump_right": SubResource("Animation_v2y58"),
+&"land_left": SubResource("Animation_dc7od"),
+&"land_right": SubResource("Animation_2dmwm"),
+&"move_left": SubResource("Animation_6u34k"),
+&"move_right": SubResource("Animation_ma8us"),
+&"push": SubResource("Animation_54nci")
 }
 
 [node name="SmallAnimationPlayer" type="AnimationPlayer"]

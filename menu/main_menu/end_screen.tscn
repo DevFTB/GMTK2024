@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://btl3gf78lpark"]
 
 [ext_resource type="FontFile" uid="uid://cx7u1dn3lokjj" path="res://gui/assets/PixelifySans-VariableFont_wght.ttf" id="1_lxv11"]
-[ext_resource type="Script" path="res://menu/main_menu/end_screen.gd" id="2_e8o5i"]
+[ext_resource type="Script" uid="uid://cb0twiau1sc6a" path="res://menu/main_menu/end_screen.gd" id="2_e8o5i"]
 [ext_resource type="Texture2D" uid="uid://bbyoi0tjgh7ua" path="res://gui/cutscene_-1.png" id="4_emwv7"]
 
 [sub_resource type="Theme" id="Theme_7wpd1"]
@@ -140,8 +140,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_171bu"]
 _data = {
-"RESET": SubResource("Animation_674sc"),
-"show": SubResource("Animation_e63jf")
+&"RESET": SubResource("Animation_674sc"),
+&"show": SubResource("Animation_e63jf")
 }
 
 [node name="EndScreen" type="Control"]

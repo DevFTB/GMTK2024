@@ -1,33 +1,33 @@
 [gd_scene load_steps=43 format=3 uid="uid://ddwfgepcoitce"]
 
-[ext_resource type="Script" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
+[ext_resource type="Script" uid="uid://bnr6rx7eccgxk" path="res://entity/player/scripts/player.gd" id="1_4po7g"]
 [ext_resource type="Resource" uid="uid://f05heqoffn6w" path="res://entity/player/assets/small_stats.tres" id="2_37fej"]
 [ext_resource type="Resource" uid="uid://cn6yin4quysjt" path="res://entity/player/assets/normal_stats.tres" id="3_8w4te"]
 [ext_resource type="Resource" uid="uid://bta17un35teqs" path="res://entity/player/assets/big_stats.tres" id="4_jwny2"]
 [ext_resource type="Texture2D" uid="uid://dxry51skjxppt" path="res://entity/player/assets/walk-1-sheet.png" id="5_jhvpg"]
-[ext_resource type="Script" path="res://entity/player/player_sound_player.gd" id="5_s2ap8"]
+[ext_resource type="Script" uid="uid://bpj5qpjyhmy3s" path="res://entity/player/player_sound_player.gd" id="5_s2ap8"]
 [ext_resource type="AudioStream" uid="uid://bm470sw6um1fw" path="res://sounds/player/footsteps light.wav" id="6_a1evr"]
 [ext_resource type="Texture2D" uid="uid://dqfirpa5duekj" path="res://entity/player/assets/small_size_sheet.png" id="6_jjdme"]
-[ext_resource type="Script" path="res://entity/player/scripts/player_animation.gd" id="6_m02uo"]
+[ext_resource type="Script" uid="uid://cq7rp4p2r8lcm" path="res://entity/player/scripts/player_animation.gd" id="6_m02uo"]
 [ext_resource type="AudioStream" uid="uid://jfpnu4wmqpes" path="res://sounds/player/jump light.wav" id="7_63xwt"]
 [ext_resource type="AudioStream" uid="uid://chp2a544sx7l4" path="res://sounds/player/sizeup.wav" id="7_dpa12"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bnqujhkkbeg1w" path="res://entity/player/assets/normal_state_machine.tres" id="7_e483d"]
 [ext_resource type="AnimationLibrary" uid="uid://caylj8ll2xsqi" path="res://entity/player/assets/normal_anim_library.tres" id="7_jmn20"]
 [ext_resource type="AudioStream" uid="uid://doswe1501nm36" path="res://sounds/player/footsteps medium.wav" id="7_qijco"]
-[ext_resource type="Script" path="res://entity/player/scripts/player_active_environment_detector.gd" id="7_wk34v"]
-[ext_resource type="Script" path="res://entity/player/scripts/active_environment_detector.gd" id="8_fpsw3"]
+[ext_resource type="Script" uid="uid://dwkt5jut0e6ud" path="res://entity/player/scripts/player_active_environment_detector.gd" id="7_wk34v"]
+[ext_resource type="Script" uid="uid://dfms2qeecdlnc" path="res://entity/player/scripts/active_environment_detector.gd" id="8_fpsw3"]
 [ext_resource type="AudioStream" uid="uid://se2ubsjb86ek" path="res://sounds/player/footsteps heavy.wav" id="8_gorsm"]
 [ext_resource type="AnimationLibrary" uid="uid://bufno8qvsq2rw" path="res://entity/player/assets/small_anim_library.tres" id="8_i4i6t"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dh3h2srvegr8a" path="res://entity/player/assets/small_state_machine.tres" id="8_n58a0"]
-[ext_resource type="Script" path="res://entity/player/scripts/sinusodal_point_light_2d.gd" id="9_aa1p4"]
+[ext_resource type="Script" uid="uid://b64r4747oys16" path="res://entity/player/scripts/sinusodal_point_light_2d.gd" id="9_aa1p4"]
 [ext_resource type="AudioStream" uid="uid://bc875dd4ic8ve" path="res://sounds/player/sizedown.wav" id="9_qfaku"]
 [ext_resource type="AnimationLibrary" uid="uid://bqumykax8k2dr" path="res://entity/player/assets/big_anim_library.tres" id="11_p8l41"]
 [ext_resource type="AudioStream" uid="uid://d0qo1268wfwma" path="res://sounds/player/jump medium.wav" id="11_r3er0"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c2slo88fd2yc1" path="res://entity/player/assets/big_state_machine.tres" id="12_pdx75"]
 [ext_resource type="AudioStream" uid="uid://d3tlclkgqqfu4" path="res://sounds/player/jump heavy.wav" id="13_r8481"]
-[ext_resource type="Script" path="res://entity/player/camera_2d.gd" id="14_4bkmd"]
-[ext_resource type="Script" path="res://entity/player/player_sound.gd" id="17_eebbm"]
-[ext_resource type="Script" path="res://entity/player/breaker.gd" id="18_dec1t"]
+[ext_resource type="Script" uid="uid://cpk502gyw6n1c" path="res://entity/player/camera_2d.gd" id="14_4bkmd"]
+[ext_resource type="Script" uid="uid://diedqr7dewpuf" path="res://entity/player/player_sound.gd" id="17_eebbm"]
+[ext_resource type="Script" uid="uid://balch4epotdw1" path="res://entity/player/breaker.gd" id="18_dec1t"]
 [ext_resource type="AudioStream" uid="uid://clqp7y57b73q1" path="res://sounds/player/death.wav" id="23_vvr1e"]
 
 [sub_resource type="Gradient" id="Gradient_flrl2"]
@@ -172,7 +172,7 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yq77u"]
 _data = {
-"RESET": SubResource("Animation_8ljjk")
+&"RESET": SubResource("Animation_8ljjk")
 }
 
 [sub_resource type="Gradient" id="Gradient_5n57s"]

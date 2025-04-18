@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WorldLevels" load_steps=21 format=3 uid="uid://ca0ien87if0hp"]
 
-[ext_resource type="Script" path="res://level/WorldLevels.gd" id="1_6waot"]
+[ext_resource type="Script" uid="uid://b281oak0c8u05" path="res://level/WorldLevels.gd" id="1_6waot"]
 [ext_resource type="AudioStream" uid="uid://vbhayqhiikxp" path="res://sounds/music/built to scale orchestral loop.ogg" id="1_8g8w3"]
 [ext_resource type="AudioStream" uid="uid://c7y3ird2bnc06" path="res://sounds/music/built to scale electronic loop.ogg" id="2_ksf72"]
 [ext_resource type="PackedScene" uid="uid://c6jlqamc5l531" path="res://level/level_scenes/leveltest.tscn" id="2_n0mpx"]

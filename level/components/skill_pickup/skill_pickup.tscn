@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dj7dnbfgo3bod"]
 
-[ext_resource type="Script" path="res://level/components/skill_pickup/skill_pickup.gd" id="1_qqf6h"]
+[ext_resource type="Script" uid="uid://box0st6v4ddbx" path="res://level/components/skill_pickup/skill_pickup.gd" id="1_qqf6h"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_6e8iv"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_wc8ji"]
 

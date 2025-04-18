@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bj0swktf7h5tp"]
 
-[ext_resource type="Script" path="res://level/components/fan/fan.gd" id="1_gt6ov"]
-[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="2_gs2by"]
+[ext_resource type="Script" uid="uid://dr4rd1ijqmmpe" path="res://level/components/fan/fan.gd" id="1_gt6ov"]
+[ext_resource type="Script" uid="uid://5mwe5uyhwcas" path="res://level/components/interactor/player_interactor.gd" id="2_gs2by"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_ym1gb"]
 [ext_resource type="AudioStream" uid="uid://d2mpwo5jpnt5c" path="res://sounds/environment/fan.wav" id="4_dugc2"]
 

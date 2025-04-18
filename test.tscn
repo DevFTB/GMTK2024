@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=3 uid="uid://bqfolia6nhe0i"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_2kk8l"]
-[ext_resource type="Script" path="res://level/world.gd" id="2_er1d5"]
+[ext_resource type="Script" uid="uid://cg4v6bd28l7vy" path="res://main.gd" id="1_2kk8l"]
+[ext_resource type="Script" uid="uid://lm7i5qe18rvm" path="res://level/world.gd" id="2_er1d5"]
 [ext_resource type="Resource" uid="uid://ca0ien87if0hp" path="res://level/world_levels.tres" id="3_8isil"]
 [ext_resource type="PackedScene" uid="uid://ddwfgepcoitce" path="res://entity/player/player.tscn" id="4_2vmag"]
 [ext_resource type="PackedScene" uid="uid://dgq0imk2hl3xo" path="res://level/components/sound & fx/music_player.tscn" id="5_mw5ys"]
 [ext_resource type="FontFile" uid="uid://cx7u1dn3lokjj" path="res://gui/assets/PixelifySans-VariableFont_wght.ttf" id="6_sk5is"]
-[ext_resource type="Script" path="res://gui/scripts/story_text_label.gd" id="7_k0q2b"]
-[ext_resource type="Script" path="res://gui/minimap.gd" id="8_y0drp"]
+[ext_resource type="Script" uid="uid://wny2dm8324ct" path="res://gui/scripts/story_text_label.gd" id="7_k0q2b"]
+[ext_resource type="Script" uid="uid://bi2ib1lg3yyff" path="res://gui/minimap.gd" id="8_y0drp"]
 [ext_resource type="Texture2D" uid="uid://bymdss5fes5u3" path="res://gui/minimap.png" id="9_gseix"]
 [ext_resource type="Texture2D" uid="uid://dn60pab7ehj63" path="res://gui/minimap_player_marker.png" id="10_uvoyj"]
-[ext_resource type="Script" path="res://level/level_transition_screen.gd" id="11_lx5t0"]
+[ext_resource type="Script" uid="uid://c0tglggaqv50r" path="res://level/level_transition_screen.gd" id="11_lx5t0"]
 
 [sub_resource type="Gradient" id="Gradient_hfr04"]
 colors = PackedColorArray(0, 0, 0, 1, 0.916996, 0.818549, 0.798141, 1)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1n6yi2vb51yw"]
 
-[ext_resource type="Script" path="res://level/components/spikes/spikes.gd" id="1_2pncc"]
+[ext_resource type="Script" uid="uid://bw6wfcm0bxln8" path="res://level/components/spikes/spikes.gd" id="1_2pncc"]
 [ext_resource type="Texture2D" uid="uid://wbir48vj5ioi" path="res://level/components/spikes/spike_texture.png" id="2_nmoqx"]
-[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="3_6437b"]
+[ext_resource type="Script" uid="uid://5mwe5uyhwcas" path="res://level/components/interactor/player_interactor.gd" id="3_6437b"]
 
 [node name="Spikes" type="Node2D" groups=["manual"]]
 script = ExtResource("1_2pncc")

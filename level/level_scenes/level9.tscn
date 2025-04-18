@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=4 uid="uid://mq1ccudt5wl0"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1_i66ry"]
+[ext_resource type="Script" uid="uid://cnq4kcakprt0h" path="res://level/level.gd" id="1_i66ry"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_1blf7"]
 [ext_resource type="Texture2D" uid="uid://dfmv6mga8j6f1" path="res://level/components/bg/Untitled_Artwork-1.png" id="3_6estj"]
 [ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="3_fe0jl"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c1hm8bmiruoi" path="res://level/components/puzzle_controls/switch.tscn" id="18_wsfwa"]
 [ext_resource type="PackedScene" uid="uid://d3kqi21bsji6q" path="res://level/components/breakable_wall/breakable_wall.tscn" id="19_fjcoq"]
 [ext_resource type="PackedScene" uid="uid://cb2vyfq2h3prd" path="res://level/components/puzzle_controls/pressure_plate.tscn" id="20_r38fy"]
-[ext_resource type="Script" path="res://level/components/moving_platforms/moving_platform.gd" id="21_pn4kk"]
+[ext_resource type="Script" uid="uid://bs6kcte5i1woq" path="res://level/components/moving_platforms/moving_platform.gd" id="21_pn4kk"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="22_gsg5b"]
 [ext_resource type="PackedScene" uid="uid://c4wn5jpxh2t21" path="res://level/components/story_item/story_item.tscn" id="23_gqsej"]
 

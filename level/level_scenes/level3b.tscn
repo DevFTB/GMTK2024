@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=4 uid="uid://cgnmn7p3m4lln"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1_flelm"]
+[ext_resource type="Script" uid="uid://cnq4kcakprt0h" path="res://level/level.gd" id="1_flelm"]
 [ext_resource type="TileSet" uid="uid://b73oh2j4enl2e" path="res://level/level_tileset.tres" id="2_6w7o1"]
 [ext_resource type="TileSet" uid="uid://dwihw1lasq07p" path="res://level/decor_tileset.tres" id="3_6bpkj"]
 [ext_resource type="PackedScene" uid="uid://r14oxhoghyh7" path="res://level/components/breakable_platform/breakable_platform.tscn" id="3_7dxns"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dj7dnbfgo3bod" path="res://level/components/skill_pickup/skill_pickup.tscn" id="5_4043j"]
 [ext_resource type="Texture2D" uid="uid://dt5mnafd2ysqk" path="res://level/components/bg/Untitled_Artwork-2.png" id="5_mrora"]
 [ext_resource type="Texture2D" uid="uid://dm7n0o4b0rgpw" path="res://level/components/bg/Untitled_Artwork-3.png" id="6_gqfau"]
-[ext_resource type="Script" path="res://level/components/tutorial/tutorial_in_world.gd" id="6_qvdtk"]
+[ext_resource type="Script" uid="uid://2e3mr7xh48et" path="res://level/components/tutorial/tutorial_in_world.gd" id="6_qvdtk"]
 [ext_resource type="PackedScene" uid="uid://d3kqi21bsji6q" path="res://level/components/breakable_wall/breakable_wall.tscn" id="6_s1uua"]
 [ext_resource type="Texture2D" uid="uid://dhow7osjupv2w" path="res://level/components/bg/Untitled_Artwork-4.png" id="7_71fuv"]
 [ext_resource type="Texture2D" uid="uid://bncwc2d6mx1yk" path="res://gui/assets/keyboard_r.png" id="7_x55d7"]
@@ -80,9 +80,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_htkvc"]
 _data = {
-"RESET": SubResource("Animation_i3dua"),
-"fade_in": SubResource("Animation_1oefq"),
-"fade_out": SubResource("Animation_0xi0a")
+&"RESET": SubResource("Animation_i3dua"),
+&"fade_in": SubResource("Animation_1oefq"),
+&"fade_out": SubResource("Animation_0xi0a")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6kdx"]

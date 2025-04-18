@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://d3afcrngvlsjr"]
 
-[ext_resource type="Script" path="res://level/components/checkpoint/checkpoint.gd" id="1_njxrx"]
+[ext_resource type="Script" uid="uid://bv223k5i3gp52" path="res://level/components/checkpoint/checkpoint.gd" id="1_njxrx"]
 [ext_resource type="PackedScene" uid="uid://cc8jownhx5wi2" path="res://level/components/interactor/player_interactor.tscn" id="2_iv4o1"]
-[ext_resource type="Shader" path="res://menu/main_menu/saturation_shader.gdshader" id="3_8o8n2"]
-[ext_resource type="Script" path="res://level/components/checkpoint/state_sprite.gd" id="3_ajttg"]
+[ext_resource type="Shader" uid="uid://baqb1o7yuugtf" path="res://menu/main_menu/saturation_shader.gdshader" id="3_8o8n2"]
+[ext_resource type="Script" uid="uid://y47h3xiajriv" path="res://level/components/checkpoint/state_sprite.gd" id="3_ajttg"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="4_scgle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8epr"]
@@ -102,8 +102,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6cvd"]
 _data = {
-"RESET": SubResource("Animation_l8bj6"),
-"pulse": SubResource("Animation_c06ur")
+&"RESET": SubResource("Animation_l8bj6"),
+&"pulse": SubResource("Animation_c06ur")
 }
 
 [sub_resource type="Gradient" id="Gradient_gsukf"]

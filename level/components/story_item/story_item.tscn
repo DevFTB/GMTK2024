@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://c4wn5jpxh2t21"]
 
-[ext_resource type="Script" path="res://level/components/story_item/story_item.gd" id="1_ji8g8"]
+[ext_resource type="Script" uid="uid://bpcnmsmdqx6gm" path="res://level/components/story_item/story_item.gd" id="1_ji8g8"]
 [ext_resource type="Texture2D" uid="uid://ger4v588x3s0" path="res://level/components/component_sheet.png" id="2_pohql"]
-[ext_resource type="Script" path="res://level/components/interactor/player_interactor.gd" id="2_uhjoi"]
-[ext_resource type="Script" path="res://level/components/tutorial/tutorial_in_world.gd" id="3_3uldr"]
+[ext_resource type="Script" uid="uid://5mwe5uyhwcas" path="res://level/components/interactor/player_interactor.gd" id="2_uhjoi"]
+[ext_resource type="Script" uid="uid://2e3mr7xh48et" path="res://level/components/tutorial/tutorial_in_world.gd" id="3_3uldr"]
 [ext_resource type="Texture2D" uid="uid://cpedhg404t87s" path="res://gui/assets/keyboard_f.png" id="4_l1jgj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8x0a"]
@@ -62,9 +62,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_htkvc"]
 _data = {
-"RESET": SubResource("Animation_i3dua"),
-"fade_in": SubResource("Animation_1oefq"),
-"fade_out": SubResource("Animation_0xi0a")
+&"RESET": SubResource("Animation_i3dua"),
+&"fade_in": SubResource("Animation_1oefq"),
+&"fade_out": SubResource("Animation_0xi0a")
 }
 
 [node name="StoryItem" type="Node2D"]
