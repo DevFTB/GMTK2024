@@ -7,4 +7,4 @@ func _ready() -> void:
 	animation_player.play("show")
 
 func _on_confirm_button_pressed() -> void:
-	get_tree().change_scene_to_packed(MAIN_MENU)
+	get_tree().change_scene_to_file("res://menu/main_menu/main_menu.tscn")

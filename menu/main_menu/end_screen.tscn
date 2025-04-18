@@ -191,7 +191,7 @@ text = "CONFIRM"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_171bu")
+&"": SubResource("AnimationLibrary_171bu")
 }
 
 [connection signal="pressed" from="VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]

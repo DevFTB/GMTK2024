@@ -317,15 +317,15 @@ resource_name = "push"
 
 [resource]
 _data = {
-"RESET": SubResource("Animation_yw8jf"),
-"fall_left": SubResource("Animation_1wr7o"),
-"fall_right": SubResource("Animation_6myp8"),
-"idle": SubResource("Animation_hps8b"),
-"jump_left": SubResource("Animation_uxi7o"),
-"jump_right": SubResource("Animation_eg4lj"),
-"land_left": SubResource("Animation_2xi8m"),
-"land_right": SubResource("Animation_lu12s"),
-"move_left": SubResource("Animation_5b1fc"),
-"move_right": SubResource("Animation_37d3o"),
-"push": SubResource("Animation_xbiwo")
+&"RESET": SubResource("Animation_yw8jf"),
+&"fall_left": SubResource("Animation_1wr7o"),
+&"fall_right": SubResource("Animation_6myp8"),
+&"idle": SubResource("Animation_hps8b"),
+&"jump_left": SubResource("Animation_uxi7o"),
+&"jump_right": SubResource("Animation_eg4lj"),
+&"land_left": SubResource("Animation_2xi8m"),
+&"land_right": SubResource("Animation_lu12s"),
+&"move_left": SubResource("Animation_5b1fc"),
+&"move_right": SubResource("Animation_37d3o"),
+&"push": SubResource("Animation_xbiwo")
 }

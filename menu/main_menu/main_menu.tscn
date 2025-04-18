@@ -818,7 +818,7 @@ stretch_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_x5jpb")
+&"": SubResource("AnimationLibrary_x5jpb")
 }
 
 [node name="TitleLabel" type="Label" parent="."]

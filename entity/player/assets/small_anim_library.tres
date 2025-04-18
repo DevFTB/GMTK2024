@@ -411,16 +411,16 @@ resource_name = "push"
 
 [resource]
 _data = {
-"fall_left": SubResource("Animation_4aufj"),
-"fall_right": SubResource("Animation_yh7tk"),
-"glide_left": SubResource("Animation_lyy8x"),
-"glide_right": SubResource("Animation_nlbpx"),
-"idle": SubResource("Animation_6fmsb"),
-"jump_left": SubResource("Animation_v5h8i"),
-"jump_right": SubResource("Animation_rpsf7"),
-"land_left": SubResource("Animation_gajod"),
-"land_right": SubResource("Animation_rny0h"),
-"move_left": SubResource("Animation_ahdcl"),
-"move_right": SubResource("Animation_x30p0"),
-"push": SubResource("Animation_l5iae")
+&"fall_left": SubResource("Animation_4aufj"),
+&"fall_right": SubResource("Animation_yh7tk"),
+&"glide_left": SubResource("Animation_lyy8x"),
+&"glide_right": SubResource("Animation_nlbpx"),
+&"idle": SubResource("Animation_6fmsb"),
+&"jump_left": SubResource("Animation_v5h8i"),
+&"jump_right": SubResource("Animation_rpsf7"),
+&"land_left": SubResource("Animation_gajod"),
+&"land_right": SubResource("Animation_rny0h"),
+&"move_left": SubResource("Animation_ahdcl"),
+&"move_right": SubResource("Animation_x30p0"),
+&"push": SubResource("Animation_l5iae")
 }
